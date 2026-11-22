@@ -140,6 +140,7 @@ work.
 | 2026-11-22 | Support template updates for existing projects | Handoff must refresh docs without losing verified facts |
 | 2026-11-22 | Write final viewer artifacts to `builds\` and keep tools in `build\` | Owner separates build tools from final output artifacts |
 | 2026-11-22 | Store every regression gate in `build\gates\` | Keep gates separate from tools and templates |
+| 2026-11-22 | Keep `favicon.ico` at 16x16 pixels | A larger icon adds bytes without improving the browser tab |
 
 ## 7. Change log
 
@@ -180,6 +181,9 @@ work.
 - Replaced the SVG link and title emoji with one PNG favicon link.
 - Fixed artifact verification to compare Buffers so the PNG is checked byte for byte.
 - Replaced the robot emoji favicon with a resized LOOM icon from `branding\icon.png`.
+- Replaced the PNG favicon with a 64x64 ICO derived from `branding\icon.png`.
+- Documented that `desktop.ini` must never be committed and added it to `.gitignore`.
+- Set `favicon.ico` to 16x16 pixels and added the size rule to every note.
 
 #### Build record
 
@@ -190,6 +194,45 @@ work.
 | Commit | `2364ede` |
 | Uncommitted paths | 17 modified files plus untracked `branding\icon.ico`, `build\favicon.png`, `builds\`, `desktop.ini` |
 | Artifact | `builds\` static viewer with `index.html`, `styles.css`, `app.js`, `favicon.png`, `docs.js` |
+| Gate verdict | `check-docs` PASS, `check-contradictions` PASS |
+| Not run | Browser smoke test skipped because Playwright is absent |
+| Signing | Not performed because no signing step exists |
+
+#### Build record 2
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-11-22 |
+| Branch | `main` |
+| Commit | `7924c5e` |
+| Uncommitted paths | ICO favicon and `desktop.ini` source edits plus untracked `branding\icon.ico` |
+| Artifact | `builds\` static viewer with `index.html`, `styles.css`, `app.js`, `favicon.ico`, `docs.js` |
+| Gate verdict | `check-docs` PASS, `check-contradictions` PASS |
+| Not run | Browser smoke test skipped because Playwright is absent |
+| Signing | Not performed because no signing step exists |
+
+#### Build record 3
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-11-22 |
+| Branch | `main` |
+| Commit | `7924c5e` |
+| Uncommitted paths | Favicon size rule and note edits plus untracked `branding\icon.ico` |
+| Artifact | `builds\` static viewer with `index.html`, `styles.css`, `app.js`, `favicon.ico`, `docs.js` |
+| Gate verdict | `check-docs` PASS, `check-contradictions` PASS |
+| Not run | Browser smoke test skipped because Playwright is absent |
+| Signing | Not performed because no signing step exists |
+
+#### Build record 4
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-11-22 |
+| Branch | `main` |
+| Commit | `7924c5e` |
+| Uncommitted paths | Favicon, note, and generated-file edits plus untracked `branding\icon.ico` |
+| Artifact | `builds\` static viewer with `index.html`, `styles.css`, `app.js`, `favicon.ico`, `docs.js` |
 | Gate verdict | `check-docs` PASS, `check-contradictions` PASS |
 | Not run | Browser smoke test skipped because Playwright is absent |
 | Signing | Not performed because no signing step exists |

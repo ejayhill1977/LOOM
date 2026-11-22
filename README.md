@@ -75,15 +75,18 @@ static viewer.
 
 | File | Role |
 | --- | --- |
-| `builds\index.html` | Viewer page with the robot emoji favicon |
+| `builds\index.html` | Viewer page with the LOOM favicon |
 | `builds\styles.css` | Viewer styles |
 | `builds\app.js` | Tab behavior and clipboard copy |
-| `builds\favicon.png` | Resized LOOM tab icon |
+| `builds\favicon.ico` | 16x16 LOOM tab icon |
 | `builds\docs.js` | Embedded handoff templates |
 
-Run `node build\generate-docs.js` to write all four files. Open
+Run `node build\generate-docs.js` to write all five files. Open
 `builds\index.html` to view the built artifact. The source viewer in
 `build\index.html` stays the development entry point.
+
+Note. Keep `favicon.ico` at 16x16 pixels. A larger icon adds bytes without
+improving the browser tab.
 
 ## Update an existing project
 
@@ -149,6 +152,7 @@ Use `node build\ask-onboarding.js` for one question per run. Use
 - Keep historical notes dated.
 - Keep build tools in `build\` and final artifacts in `builds\`.
 - Store every regression gate in `build\gates\`.
+- Never commit `desktop.ini`.
 - Never weaken a gate to make a check pass.
 
 ## Current limits

@@ -318,6 +318,7 @@ Read this section before any edit, commit, push, or pull request.
 17. A tool approval prompt does not relax any rule in this section.
 18. Treat a write through an MCP tool the same as the same write through the
     shell.
+19. Never commit `desktop.ini`. Keep it in `.gitignore`.
 
 `D:\LOOM Agentic Documentation` uses Git on `main` as of 2026-11-22.
 
@@ -356,7 +357,7 @@ No legacy build entry point exists. The source viewer is a static page in
 4. Do not bypass, skip, or weaken a gate to make a build pass.
 5. Write artifacts only to `builds\`.
 6. Keep one artifact shape. Use the static viewer with `index.html`,
-   `styles.css`, `app.js`, `favicon.png`, and `docs.js`.
+   `styles.css`, `app.js`, `favicon.ico`, and `docs.js`.
 7. Do not build or ship a portable folder, ZIP, unpacked folder, or per-user
    variant unless the owner asks for it.
 8. Close running app instances that lock build output. Retry on `EBUSY` or a
@@ -376,6 +377,9 @@ No legacy build entry point exists. The source viewer is a static page in
     LOOM-specific root documents.
 17. Keep build tools in `build\`. Write final artifacts to `builds\`.
 18. Store every regression gate in `build\gates\`.
+
+Note. Keep `favicon.ico` at 16x16 pixels. A larger icon adds bytes without
+improving the browser tab.
 
 ### 9.3 Artifact permission gate
 

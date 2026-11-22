@@ -19,7 +19,7 @@ const artifact = {
   'index.html': fs.readFileSync(path.join(buildDir, 'index.html')),
   'styles.css': fs.readFileSync(path.join(buildDir, 'styles.css')),
   'app.js': fs.readFileSync(path.join(buildDir, 'app.js')),
-  'favicon.png': fs.readFileSync(path.join(buildDir, 'favicon.png')),
+  'favicon.ico': fs.readFileSync(path.join(buildDir, 'favicon.ico')),
   'docs.js': Buffer.from(docsSource, 'utf8')
 };
 

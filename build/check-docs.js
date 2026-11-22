@@ -108,6 +108,29 @@ const citedSkills = fs.readFileSync(path.join(handoffDir, 'SKILLS.md'), 'utf8');
 if (!citedSkills.includes('[agentskills.io](https://agentskills.io/)')) {
   failures.push('Handoff SKILLS.md is missing the format citation');
 }
+const rootIgnore = fs.readFileSync(path.join(root, '.gitignore'), 'utf8');
+if (!rootIgnore.split(/\r?\n/).includes('desktop.ini')) {
+  failures.push('Root .gitignore omits desktop.ini');
+}
+const rootVcs = fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8');
+if (!rootVcs.includes('Never commit `desktop.ini`')) {
+  failures.push('Root AGENTS.md omits the desktop.ini rule');
+}
+const faviconSizeFiles = [
+  path.join(root, 'AGENTS.md'),
+  path.join(root, 'README.md'),
+  path.join(root, 'ROADMAP.md'),
+  path.join(root, 'SKILLS.md'),
+  path.join(root, 'build', 'AGENTS.template.md'),
+  path.join(root, 'build', 'README.md'),
+  path.join(handoffDir, 'AGENTS.md'),
+  path.join(handoffDir, 'SKILLS.md')
+];
+for (const file of faviconSizeFiles) {
+  if (!fs.readFileSync(file, 'utf8').includes('16x16')) {
+    failures.push('Missing favicon size rule: ' + path.relative(root, file));
+  }
+}
 
 global.window = {};
 try {
@@ -133,12 +156,13 @@ if (!html.includes('<title>Agent Handoff Templates</title>')) {
 if (!html.includes('<h1>Agent Handoff Templates</h1>')) {
   failures.push('Viewer H1 is not set to Agent Handoff Templates');
 }
-const faviconLink = '<link rel="icon" type="image/png" href="favicon.png">';
+const faviconLink = '<link rel="icon" type="image/x-icon" href="favicon.ico">';
 if (!html.includes(faviconLink)) {
   failures.push('Viewer favicon link is missing');
 }
-if (fs.readFileSync(path.join(__dirname, 'favicon.png')).subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') {
-  failures.push('Viewer favicon file is not a PNG');
+const faviconBytes = fs.readFileSync(path.join(__dirname, 'favicon.ico'));
+if (faviconBytes.subarray(0, 4).toString('hex') !== '00000100' || faviconBytes[6] !== 16 || faviconBytes[7] !== 16) {
+  failures.push('Viewer favicon file is not a 16x16 ICO');
 }
 if (!html.includes(readyStatus)) {
   failures.push('Viewer status text is stale');
@@ -198,7 +222,7 @@ for (const file of scripts) {
 }
 
 const outputDir = path.join(root, 'builds');
-const artifactFiles = ['index.html', 'styles.css', 'app.js', 'favicon.png', 'docs.js'];
+const artifactFiles = ['index.html', 'styles.css', 'app.js', 'favicon.ico', 'docs.js'];
 
 for (const file of artifactFiles) {
   const outputPath = path.join(outputDir, file);

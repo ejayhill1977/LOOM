@@ -321,6 +321,7 @@ Read this section before any edit, commit, push, or pull request.
 17. A tool approval prompt does not relax any rule in this section.
 18. Treat a write through an MCP tool the same as the same write through the
     shell.
+19. Never commit `desktop.ini`. Keep it in `.gitignore`.
 
 ## 9. Building and running
 
@@ -367,6 +368,9 @@ Use `{{SUPPORTED_BUILD_ENTRY_POINT}}` as the supported build entry point.
 16. Keep build tools in `build\`. Write final artifacts to
     `{{BUILD_OUTPUT_DIRECTORY}}`.
 17. Store every regression gate in `build\gates\`.
+
+Note. Keep `favicon.ico` at 16x16 pixels. A larger icon adds bytes without
+improving the browser tab.
 
 ### 9.3 Artifact permission gate
 

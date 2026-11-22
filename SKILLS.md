@@ -162,6 +162,8 @@ Closure check: the commit contains only the current change and sits on `main`.
 11. Record provenance: commit, branch, uncommitted paths, artifact name, and gate
     verdict.
 12. Run the documented smoke test before calling the build successful.
+13. Keep `favicon.ico` at 16x16 pixels. A larger icon adds bytes without
+    improving the browser tab.
 
 Closure check: the artifact exists in the expected folder, and its provenance
 and smoke test are recorded.

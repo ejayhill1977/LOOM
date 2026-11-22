@@ -128,6 +128,8 @@ Use section 18 to apply the current template after the audit.
 6. Clean staging after success and failure.
 7. Rebuild the build tool after its source changes.
 8. Verify the artifact with the documented smoke test.
+9. Keep `favicon.ico` at 16x16 pixels. A larger icon adds bytes without
+   improving the browser tab.
 
 ## 10. Analyze local sources
 

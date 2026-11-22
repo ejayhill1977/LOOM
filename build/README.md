@@ -8,7 +8,7 @@ checks.
 | File | Role |
 | --- | --- |
 | `index.html` | Static tabbed viewer for four handoff templates |
-| `favicon.png` | Resized LOOM tab icon copied to `builds\` |
+| `favicon.ico` | LOOM tab icon copied to `builds\` |
 | `styles.css` | Light and dark styles for the viewer |
 | `app.js` | Tab behavior and clipboard copy |
 | `handoff\` | Four generic templates served by the viewer |
@@ -26,8 +26,8 @@ checks.
 | `git-details.local.json` | LOOM-only Git author details |
 | `fixtures\` | Small test fixtures for onboarding and contradictions |
 
-Resize `branding\icon.png` to 64x64 with high-quality interpolation when the
-favicon source changes. Keep the result at `build\favicon.png`.
+Resize `branding\icon.png` to 16x16 with high-quality interpolation when the
+favicon source changes. Keep the result at `build\favicon.ico`.
 
 ## Run the viewer
 
@@ -53,14 +53,17 @@ and gates.
 
 | File | Role |
 | --- | --- |
-| `builds\index.html` | Viewer page with the robot emoji favicon |
+| `builds\index.html` | Viewer page with the LOOM favicon |
 | `builds\styles.css` | Viewer styles |
 | `builds\app.js` | Tab behavior and clipboard copy |
-| `builds\favicon.png` | Resized LOOM tab icon |
+| `builds\favicon.ico` | 16x16 LOOM tab icon |
 | `builds\docs.js` | Embedded handoff templates |
 
-Run the generator from the project root to write all four files. The gate checks
+Run the generator from the project root to write all five files. The gate checks
 that each artifact matches its source. Do not edit files in `builds\` by hand.
+
+Note. Keep `favicon.ico` at 16x16 pixels. A larger icon adds bytes without
+improving the browser tab.
 
 ## Update an existing project
 
