@@ -126,7 +126,7 @@ Use `node build\ask-onboarding.js` for one question per run. Use
 - The controlled language module is documented, not enforced.
 - MCP discovery is local and config based. LOOM has no MCP surface.
 - The browser smoke test reports a skip when Playwright is not installed.
-- Git is initialized on `main`. Public remote setup is pending.
+- Git is published on `main` at `ejayhill1977/LOOM`.
 
 ## Related documents
 

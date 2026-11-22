@@ -42,7 +42,7 @@ Verified on 2026-11-22.
 | MCP surface | None | No configured server or tool |
 | Browser smoke test | Present, not run | `build\smoke-test.js` |
 | Browser verification | Not run | No Playwright browser is installed |
-| Version control | `main` initialized | `git branch --show-current` |
+| Version control | `main` published | `git status -sb` and `git branch -vv` |
 | Controlled language enforcement | Absent | Rules documented, not checked |
 
 The active branch is `main`.
@@ -105,7 +105,6 @@ work.
 ## 5. Known gaps and debt
 
 - Browser verification has not run. The smoke test reports a skip.
-- Public remote setup is pending. No push has run.
 - No full controlled language check exists.
 - MCP discovery reads local config files only.
 - Some evidence line counts for MOXY are partial because its docs are large.
@@ -134,6 +133,7 @@ work.
 | 2026-11-22 | Order viewer tabs by coding agent handoff flow | Agents read rules, skills, context, then status |
 | 2026-11-22 | Serve handoff templates in the viewer instead of LOOM docs | The tabs are for handoff to other projects |
 | 2026-11-22 | Initialize Git on `main` before the first public commit | The owner requested a public GitHub repository |
+| 2026-11-22 | Merge the remote initial commit before publishing | The remote already held the repository license |
 
 ## 7. Change log
 
@@ -162,6 +162,7 @@ work.
 - Added a gate check that binds the generator to handoff templates.
 - Added `.gitignore` for local Git details and environment files.
 - Initialized Git on `main` for the first public commit.
+- Merged the remote initial commit and published `main` to `ejayhill1977/LOOM`.
 
 ## 8. Maintenance
 
