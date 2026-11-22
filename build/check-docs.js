@@ -131,6 +131,16 @@ for (const file of faviconSizeFiles) {
     failures.push('Missing favicon size rule: ' + path.relative(root, file));
   }
 }
+const brandFiles = [path.join(root, 'branding', 'icon.ico'), path.join(root, 'branding', 'icon.png')];
+for (const file of brandFiles) {
+  if (!fs.existsSync(file)) {
+    failures.push('Missing branding file: ' + path.relative(root, file));
+  }
+}
+const featuredIcon = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+if (!featuredIcon.includes('branding/icon.png')) {
+  failures.push('README does not feature the LOOM icon');
+}
 
 global.window = {};
 try {

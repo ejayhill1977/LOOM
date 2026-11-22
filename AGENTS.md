@@ -203,6 +203,7 @@ step failed and why. Report evidence, not intent.
   write project data to the OS temp folder.
 - Keep dependency versions pinned. Keep related runtime packages compatible.
 - Bundle every runtime binary the product needs.
+- Keep LOOM branding in `branding\`. Track both icon files in Git.
 - Validate and sanitize IPC input, external data, file paths, and URI input.
 - Treat external addresses, stores, logs, and protocol handlers as untrusted.
 - Never edit a live data store by hand. Use application code or a supported

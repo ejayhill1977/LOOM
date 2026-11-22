@@ -184,6 +184,7 @@ work.
 - Replaced the PNG favicon with a 64x64 ICO derived from `branding\icon.png`.
 - Documented that `desktop.ini` must never be committed and added it to `.gitignore`.
 - Set `favicon.ico` to 16x16 pixels and added the size rule to every note.
+- Tracked `branding\icon.ico` and featured `branding\icon.png` in the README.
 
 #### Build record
 

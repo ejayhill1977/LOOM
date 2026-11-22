@@ -1,5 +1,7 @@
 # LOOM
 
+<img src="branding/icon.png" alt="LOOM icon" width="160">
+
 LOOM is a documentation workshop for agentic coding projects. It turns
 project-specific rules into reusable templates. The templates help a new project
 start with a proven rulebook and help an existing project repair its docs.
@@ -20,6 +22,7 @@ start with a proven rulebook and help an existing project repair its docs.
 | `build\handoff\` | Generic viewer templates for handoff |
 | `build\README.md` | Viewer and local gate procedures |
 | `builds\` | Final static viewer artifact |
+| `branding\` | LOOM icon assets shown on GitHub |
 
 ## Evidence base
 
@@ -152,6 +155,7 @@ Use `node build\ask-onboarding.js` for one question per run. Use
 - Keep historical notes dated.
 - Keep build tools in `build\` and final artifacts in `builds\`.
 - Store every regression gate in `build\gates\`.
+- Track every file in `branding\`.
 - Never commit `desktop.ini`.
 - Never weaken a gate to make a check pass.
 
