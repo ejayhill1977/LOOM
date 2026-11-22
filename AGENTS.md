@@ -13,7 +13,8 @@ status and open work in `ROADMAP.md`. Keep the generic template in
 
 ## 0. Agent onboarding
 
-Use this section before editing a project that has not been onboarded.
+Use this section before editing any project. Ask every required question for a
+new project. Confirm the stored answers for an existing project.
 
 ### 0.1 Question protocol
 
@@ -63,7 +64,7 @@ Use this section before editing a project that has not been onboarded.
 | Q6 | Static HTML, CSS, JavaScript, and Node local checks |
 | Q7 | `node build\generate-docs.js` |
 | Q8 | `node build\check-docs.js; node build\check-contradictions.js` |
-| Q9 | `build\docs.js` |
+| Q9 | `builds\` |
 | Q10 | None |
 | Q11 | No known conflict |
 
@@ -74,6 +75,23 @@ Use `node build\ask-onboarding.js` to ask one question per run. Use
 `onboarding-answers.json`.
 
 Run `node build\check-contradictions.js` before manual contradiction review.
+
+### 0.6 Update an existing project
+
+Use this procedure before you change the docs of a project that is onboarded.
+
+1. Read each current root document. List the facts that it owns.
+2. Run the local gates. Record the current result.
+3. Compare each documented command with executable configuration.
+4. Name one conflict in one sentence. Ask the owner which source is true.
+5. Trust executable configuration until the owner answers.
+6. Keep every verified project fact. Replace only stale or missing content.
+7. Re-ask a required question when its answer is missing or contradicted.
+8. Run the gates after the edit. Record the result in `ROADMAP.md`.
+9. State each check that did not run.
+
+Do not replace a verified fact with a placeholder. Do not remove a decision or
+a dated record.
 
 ## 1. Authority and scope
 
@@ -253,7 +271,7 @@ Rules:
 
 Gate contract:
 
-- Store gates in `build\`.
+- Store regression gates in `build\gates\`.
 - Name a gate file `check-*.js`.
 - Give each gate a title header in its file or output.
 - Exit `0` on pass and non-zero on failure.
@@ -325,8 +343,8 @@ these values in another project or in a generic template. Keep
 | Clean staging | `None` |
 
 Use `node build\generate-docs.js` as the supported build entry point.
-No legacy build entry point exists. The viewer is a static page in
-`build\index.html`.
+No legacy build entry point exists. The source viewer is a static page in
+`build\index.html`. The build writes the final static viewer to `builds\`.
 
 ### 9.2 Build rules
 
@@ -336,8 +354,9 @@ No legacy build entry point exists. The viewer is a static page in
    asking about a build.
 3. Run gates first. A failed gate stops the run before any artifact is written.
 4. Do not bypass, skip, or weaken a gate to make a build pass.
-5. Write artifacts only to `build\`.
-6. Keep one artifact shape. Use `docs.js`.
+5. Write artifacts only to `builds\`.
+6. Keep one artifact shape. Use the static viewer with `index.html`,
+   `styles.css`, `app.js`, `favicon.png`, and `docs.js`.
 7. Do not build or ship a portable folder, ZIP, unpacked folder, or per-user
    variant unless the owner asks for it.
 8. Close running app instances that lock build output. Retry on `EBUSY` or a
@@ -355,6 +374,8 @@ No legacy build entry point exists. The viewer is a static page in
     build successful.
 16. Keep the tabbed viewer bound to `build\handoff\`. Do not point it at
     LOOM-specific root documents.
+17. Keep build tools in `build\`. Write final artifacts to `builds\`.
+18. Store every regression gate in `build\gates\`.
 
 ### 9.3 Artifact permission gate
 

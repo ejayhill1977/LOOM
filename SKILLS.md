@@ -23,6 +23,7 @@ patterns recorded in `ANALYSIS.md`. Use them with the rules in `AGENTS.md`.
 | Write a handoff contract | Two systems or projects exchange data | `README.md`, subsystem docs |
 | Protect paths, data, and secrets | Code touches files, stores, logs, or credentials | `AGENTS.md` sections 5 and 11 |
 | Document MCP integration | A project exposes or consumes MCP surfaces | `AGENTS.md` section 10 |
+| Update an existing project | An onboarded project needs its docs refreshed | `AGENTS.md` section 0, `ROADMAP.md` |
 
 ## 1. Apply the project template
 
@@ -97,7 +98,7 @@ cause, fix, and verification.
 
 1. Choose one behavior to protect.
 2. Give the gate a stable id and title.
-3. Put the gate in the documented gate directory.
+3. Put the gate in `build\gates\`.
 4. Run the gate from the project root with the project runtime.
 5. Exit `0` on pass and non-zero on failure.
 6. Print `PASS: ...` or `FAIL: ...`.
@@ -349,3 +350,16 @@ Do not simulate a missing tool or invent its output.
 
 Closure check: the MCP section matches executable configuration, and every tool
 has a documented trust rule.
+
+## 18. Update an existing project
+
+1. Read each current root document. List the facts that it owns.
+2. Compare each documented command with executable configuration.
+3. List each stale section, missing rule, and contradicted answer.
+4. Confirm each contradicted answer with the owner. Ask one question at a time.
+5. Apply the current template sections to the existing documents.
+6. Keep every verified fact, decision, and dated history entry.
+7. Record the update in `ROADMAP.md` with the date and gate result.
+8. Run the verification skill. State each check that did not run.
+
+Closure check: no placeholder remains, and every gate passes.

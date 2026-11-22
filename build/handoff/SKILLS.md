@@ -3,6 +3,11 @@
 Use these skills when work repeats across projects. Keep rules in `AGENTS.md`.
 Keep product behavior in `README.md`. Keep measured status in `ROADMAP.md`.
 
+The open Agent Skills standard at [agentskills.io](https://agentskills.io/)
+defines `SKILL.md` as a portable folder of agent instructions. It packages
+specialized knowledge and repeatable workflows. Agents load a skill when a task
+matches its description. This file keeps those procedures in one catalogue.
+
 ## Catalogue
 
 | Section | Skill | Use when |
@@ -24,6 +29,7 @@ Keep product behavior in `README.md`. Keep measured status in `ROADMAP.md`.
 | 15 | Run an onboarding interview | Required project facts are missing. |
 | 16 | Resolve contradictions | Documents disagree with executable configuration. |
 | 17 | Document MCP integration | The project exposes or consumes MCP surfaces. |
+| 18 | Update an existing project | A project needs its docs brought to the current template. |
 
 ## 1. Start a new project
 
@@ -35,6 +41,8 @@ Keep product behavior in `README.md`. Keep measured status in `ROADMAP.md`.
 6. Record the first measured status entry in `ROADMAP.md`.
 7. Run the local gates before the first edit.
 
+Use section 18 for a project that already has these documents.
+
 ## 2. Audit an existing project
 
 1. List the root files and executable configuration.
@@ -45,6 +53,8 @@ Keep product behavior in `README.md`. Keep measured status in `ROADMAP.md`.
 6. Ask the owner which source is true when code alone cannot decide.
 7. Repair the losing document.
 8. Record each decision and date in `ROADMAP.md`.
+
+Use section 18 to apply the current template after the audit.
 
 ## 3. Compare documents with code
 
@@ -95,7 +105,7 @@ Keep product behavior in `README.md`. Keep measured status in `ROADMAP.md`.
 5. Keep the check deterministic and bounded.
 6. Print `PASS: ...` or `FAIL: ...`.
 7. Exit with `0` on pass and non-zero on failure.
-8. Keep the gate under version control.
+8. Store the gate in `build\gates\` under version control.
 9. Document the gate in the owning subsystem guide.
 
 ## 8. Prepare a build gate
@@ -213,3 +223,19 @@ Keep credentials in the environment or an untracked local file. Restart a
 client after its MCP configuration changes. Document each tool in `README.md`
 or a subsystem document. Record a missing tool as a gap. Do not simulate its
 output.
+
+## 18. Update an existing project
+
+Use this skill to bring an existing project onto the current template.
+
+1. Run the audit in section 2. List the stale and missing sections.
+2. Read the stored answers. Mark each answer that code or config contradicts.
+3. Ask the owner for each marked answer. Ask one question at a time.
+4. Apply the current template sections to the project documents.
+5. Keep every verified project fact. Replace only stale or missing content.
+6. Preserve the decisions and dated history in `ROADMAP.md`.
+7. Record the update with the date, source, change, and gate result.
+8. Run the checks in section 14. State each check that did not run.
+
+Closure check: no placeholder remains, every answer matches configuration, and
+all gates pass.

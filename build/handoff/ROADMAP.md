@@ -30,6 +30,17 @@ out of this table. Do not duplicate it.
 Trust executable configuration until the owner decides otherwise. Record each
 contradiction decision here. Keep historical decisions dated.
 
+## Update record
+
+Record each refresh of this project with the template source and gate result.
+
+| Date | Template source | Change | Gate result |
+| --- | --- | --- | --- |
+| `{{DATE}}` | `{{TEMPLATE_SOURCE}}` | `{{UPDATE_CHANGE}}` | `{{GATE_RESULT}}` |
+
+Use a verified template version or source commit. Keep each entry dated. Do not
+rewrite an earlier entry.
+
 ## Change log
 
 | Date | Change | Verification | Result |

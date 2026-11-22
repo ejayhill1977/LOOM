@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
+const outputDir = path.join(root, 'builds');
 const args = process.argv.slice(2);
 const strict = args.includes('--strict');
 
@@ -18,13 +19,13 @@ try {
 }
 
 global.window = {};
-require('./docs.js');
+require(path.join(outputDir, 'docs.js'));
 const docs = global.window.LOOM_DOCS;
 delete global.window;
 
 // Reminder: compare the viewer with handoff templates, not LOOM-specific root docs.
 const files = ['AGENTS.md', 'SKILLS.md', 'README.md', 'ROADMAP.md'];
-const target = 'file:///' + path.join(root, 'build', 'index.html').replace(/\\/g, '/');
+const target = 'file:///' + path.join(outputDir, 'index.html').replace(/\\/g, '/');
 
 function fail(message) {
   console.log('FAIL: browser smoke test. ' + message);

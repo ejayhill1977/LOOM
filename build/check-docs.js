@@ -9,18 +9,18 @@ const tabbedFiles = ['AGENTS.md', 'SKILLS.md', 'README.md', 'ROADMAP.md'];
 const failures = [];
 
 const requiredSections = {
-  'README.md': ['## Document map', '## Agent onboarding', '## How to use LOOM', '## Terminology'],
+  'README.md': ['## Document map', '## Agent onboarding', '## How to use LOOM', '## Update an existing project', '## Build output', '## Terminology'],
   'ANALYSIS.md': ['## 1. Scope', '## 6. Conflicts found'],
-  'AGENTS.md': ['## 0. Agent onboarding', '## 3. Writing rules', '## 7. Linting, formatting, typechecking, and testing', '## 8. Version control', '## 9. Building and running', '## 10. MCP integration', '## 12. Definition of done'],
-  'SKILLS.md': ['## Skill catalogue', '## 15. Run an onboarding interview', '## 16. Resolve documentation contradictions', '## 17. Document MCP integration'],
+  'AGENTS.md': ['## 0. Agent onboarding', '### 0.6 Update an existing project', '## 3. Writing rules', '## 7. Linting, formatting, typechecking, and testing', '## 8. Version control', '## 9. Building and running', '## 10. MCP integration', '## 12. Definition of done'],
+  'SKILLS.md': ['## Skill catalogue', '## 15. Run an onboarding interview', '## 16. Resolve documentation contradictions', '## 17. Document MCP integration', '## 18. Update an existing project'],
   'ROADMAP.md': ['## 2. Status snapshot', '## 3. Open work', '## 7. Change log']
 };
 
 const handoffSections = {
-  'AGENTS.md': ['## 0. Agent onboarding', '## 3. Writing rules', '## 7. Linting, formatting, typechecking, and testing', '## 10. MCP integration', '## 12. Definition of done'],
-  'SKILLS.md': ['## Catalogue', '## 15. Run an onboarding interview', '## 16. Resolve contradictions', '## 17. Document MCP integration'],
-  'README.md': ['## Document map', '## Setup', '## Operation', '## Verification', '## MCP surface', '## Terminology'],
-  'ROADMAP.md': ['## Status snapshot', '## Open work', '## Decisions', '## Change log']
+  'AGENTS.md': ['## 0. Agent onboarding', '### 0.6 Update an existing project', '## 3. Writing rules', '## 7. Linting, formatting, typechecking, and testing', '## 10. MCP integration', '## 12. Definition of done'],
+  'SKILLS.md': ['## Catalogue', '## 15. Run an onboarding interview', '## 16. Resolve contradictions', '## 17. Document MCP integration', '## 18. Update an existing project'],
+  'README.md': ['## Document map', '## Setup', '## Update an existing project', '## Operation', '## Verification', '## MCP surface', '## Terminology'],
+  'ROADMAP.md': ['## Status snapshot', '## Open work', '## Decisions', '## Update record', '## Change log']
 };
 
 function stripCode(text) {
@@ -100,6 +100,15 @@ for (const name of tabbedFiles) {
   checkLinks('handoff\\' + name, filePath, text);
 }
 
+const citedAgents = fs.readFileSync(path.join(handoffDir, 'AGENTS.md'), 'utf8');
+if (!citedAgents.includes('[agents.md](https://agents.md/)')) {
+  failures.push('Handoff AGENTS.md is missing the format citation');
+}
+const citedSkills = fs.readFileSync(path.join(handoffDir, 'SKILLS.md'), 'utf8');
+if (!citedSkills.includes('[agentskills.io](https://agentskills.io/)')) {
+  failures.push('Handoff SKILLS.md is missing the format citation');
+}
+
 global.window = {};
 try {
   require('./docs.js');
@@ -123,6 +132,13 @@ if (!html.includes('<title>Agent Handoff Templates</title>')) {
 }
 if (!html.includes('<h1>Agent Handoff Templates</h1>')) {
   failures.push('Viewer H1 is not set to Agent Handoff Templates');
+}
+const faviconLink = '<link rel="icon" type="image/png" href="favicon.png">';
+if (!html.includes(faviconLink)) {
+  failures.push('Viewer favicon link is missing');
+}
+if (fs.readFileSync(path.join(__dirname, 'favicon.png')).subarray(0, 8).toString('hex') !== '89504e470d0a1a0a') {
+  failures.push('Viewer favicon file is not a PNG');
 }
 if (!html.includes(readyStatus)) {
   failures.push('Viewer status text is stale');
@@ -179,6 +195,37 @@ for (const file of scripts) {
   } catch (error) {
     failures.push('Syntax error in ' + file + ': ' + error.message);
   }
+}
+
+const outputDir = path.join(root, 'builds');
+const artifactFiles = ['index.html', 'styles.css', 'app.js', 'favicon.png', 'docs.js'];
+
+for (const file of artifactFiles) {
+  const outputPath = path.join(outputDir, file);
+  if (!fs.existsSync(outputPath)) {
+    failures.push('Missing build artifact: builds\\' + file);
+    continue;
+  }
+  if (fs.readFileSync(outputPath, 'utf8') !== fs.readFileSync(path.join(__dirname, file), 'utf8')) {
+    failures.push('Stale build artifact: builds\\' + file);
+  }
+}
+
+const gateRule = 'Store every regression gate in `build\\gates\\`.';
+const rootAgentsText = fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8');
+if (!rootAgentsText.includes(gateRule) || !rootAgentsText.includes('Write final artifacts to `builds\\`.')) {
+  failures.push('Root build rules omit the artifact folder or gate folder');
+}
+const handoffAgentsText = fs.readFileSync(path.join(handoffDir, 'AGENTS.md'), 'utf8');
+if (!handoffAgentsText.includes(gateRule) || !handoffAgentsText.includes('Keep build tools in `build\\`.')) {
+  failures.push('Handoff build rules omit the artifact folder or gate folder');
+}
+
+const builtHtml = fs.existsSync(path.join(outputDir, 'index.html'))
+  ? fs.readFileSync(path.join(outputDir, 'index.html'), 'utf8')
+  : '';
+if (!builtHtml.includes('<title>Agent Handoff Templates</title>') || !builtHtml.includes(faviconLink)) {
+  failures.push('Built viewer title or favicon is stale');
 }
 
 if (failures.length > 0) {

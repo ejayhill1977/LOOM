@@ -8,6 +8,7 @@ checks.
 | File | Role |
 | --- | --- |
 | `index.html` | Static tabbed viewer for four handoff templates |
+| `favicon.png` | Resized LOOM tab icon copied to `builds\` |
 | `styles.css` | Light and dark styles for the viewer |
 | `app.js` | Tab behavior and clipboard copy |
 | `handoff\` | Four generic templates served by the viewer |
@@ -25,10 +26,16 @@ checks.
 | `git-details.local.json` | LOOM-only Git author details |
 | `fixtures\` | Small test fixtures for onboarding and contradictions |
 
+Resize `branding\icon.png` to 64x64 with high-quality interpolation when the
+favicon source changes. Keep the result at `build\favicon.png`.
+
 ## Run the viewer
 
-Open `index.html` in a browser. Click a tab to display its template and copy the
-full text to the clipboard. The viewer has no runtime dependencies.
+Open `build\index.html` in a browser for development. Click a tab to display
+its template and copy the full text to the clipboard. The viewer has no runtime
+dependencies.
+
+Open `builds\index.html` to view the final artifact.
 
 The templates are generic and intended for handoff to other projects. The viewer
 does not show LOOM-specific documents. Do not retarget the viewer to LOOM
@@ -38,6 +45,41 @@ Tab order follows the coding agent handoff flow. The order is `AGENTS.md`,
 `SKILLS.md`, `README.md`, then `ROADMAP.md`.
 
 If clipboard access fails, select the displayed text and copy it manually.
+
+## Build output
+
+`builds\` holds the final static viewer. `build\` holds the tools, templates,
+and gates.
+
+| File | Role |
+| --- | --- |
+| `builds\index.html` | Viewer page with the robot emoji favicon |
+| `builds\styles.css` | Viewer styles |
+| `builds\app.js` | Tab behavior and clipboard copy |
+| `builds\favicon.png` | Resized LOOM tab icon |
+| `builds\docs.js` | Embedded handoff templates |
+
+Run the generator from the project root to write all four files. The gate checks
+that each artifact matches its source. Do not edit files in `builds\` by hand.
+
+## Update an existing project
+
+Each handoff template carries an update path for an already onboarded project.
+
+| Template | Update section |
+| --- | --- |
+| `handoff\AGENTS.md` | `### 0.6 Update an existing project` |
+| `handoff\SKILLS.md` | `## 18. Update an existing project` |
+| `handoff\README.md` | `## Update an existing project` |
+| `handoff\ROADMAP.md` | `## Update record` |
+
+Use the `AGENTS.md` section to confirm stored answers. Use the `SKILLS.md`
+section for the update steps. Use the `README.md` section for the operator
+checklist. Use the `ROADMAP.md` section to record the result.
+
+Copy each full template from the viewer into the matching project document.
+Keep verified project facts. Replace every placeholder. Run the local gates.
+Record the result in the target `ROADMAP.md`.
 
 ## Local Git details
 
@@ -63,19 +105,23 @@ Run this command from the project root after any handoff template changes.
 
 `node build\generate-docs.js`
 
-The command reads `build\handoff\` and rewrites `docs.js`. Do not edit `docs.js`
-by hand.
+The command reads `build\handoff\` and rewrites `build\docs.js`. It then copies
+the viewer files and generated data into `builds\`. Do not edit `docs.js` or the
+files in `builds\` by hand.
 
 ## Gates
 
 | Gate | Command | Rule |
 | --- | --- | --- |
-| Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, writing markers, embedded templates, tab order, and syntax |
+| Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
 
 Both gates exit `0` on pass and non-zero on failure. Both print `PASS: ...` or
 `FAIL: ...`. The contradiction gate reports one conflict per run. Use
 `--answers <path>` to test another answer file.
+
+Store every regression gate in `build\gates\`. Name each gate file `check-*.js`.
+The gates in this folder remain in `build\` until the move is complete.
 
 ## MCP discovery
 

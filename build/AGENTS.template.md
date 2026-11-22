@@ -11,9 +11,15 @@ Replace every `{{PLACEHOLDER}}` before using this file. Keep project facts in
 this file. Keep product description in `README.md`. Keep status and open work in
 `ROADMAP.md`.
 
+The open `AGENTS.md` format is defined at [agents.md](https://agents.md/).
+It gives coding agents one predictable place for project context, commands, and
+conventions. It complements `README.md`, which stays focused on human
+contributors.
+
 ## 0. Agent onboarding
 
-Use this section before editing a project that has not been onboarded.
+Use this section before editing any project. Ask every required question for a
+new project. Confirm the stored answers for an existing project.
 
 ### 0.1 Question protocol
 
@@ -74,6 +80,23 @@ exists. Store answers in `onboarding-answers.json`.
 
 Run the local contradiction check before manual contradiction review when one
 exists.
+
+### 0.6 Update an existing project
+
+Use this procedure before you change the docs of a project that is onboarded.
+
+1. Read each current root document. List the facts that it owns.
+2. Run the local gates. Record the current result.
+3. Compare each documented command with executable configuration.
+4. Name one conflict in one sentence. Ask the owner which source is true.
+5. Trust executable configuration until the owner answers.
+6. Keep every verified project fact. Replace only stale or missing content.
+7. Re-ask a required question when its answer is missing or contradicted.
+8. Run the gates after the edit. Record the result in `ROADMAP.md`.
+9. State each check that did not run.
+
+Do not replace a verified fact with a placeholder. Do not remove a decision or
+a dated record.
 
 ## 1. Authority and scope
 
@@ -251,7 +274,7 @@ Rules:
 
 Gate contract:
 
-- Store gates in `{{GATE_DIRECTORY}}`.
+- Store regression gates in `build\gates\`.
 - Name a gate file `{{GATE_FILE_PATTERN}}`.
 - Give each gate a title header.
 - Exit `0` on pass and non-zero on failure.
@@ -341,6 +364,9 @@ Use `{{SUPPORTED_BUILD_ENTRY_POINT}}` as the supported build entry point.
 14. Rebuild any required companion application before the main installer build.
 15. Verify the built artifact with the documented smoke test before calling the
     build successful.
+16. Keep build tools in `build\`. Write final artifacts to
+    `{{BUILD_OUTPUT_DIRECTORY}}`.
+17. Store every regression gate in `build\gates\`.
 
 ### 9.3 Artifact permission gate
 

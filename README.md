@@ -19,6 +19,7 @@ start with a proven rulebook and help an existing project repair its docs.
 | `build\AGENTS.template.md` | Generic agent rulebook source |
 | `build\handoff\` | Generic viewer templates for handoff |
 | `build\README.md` | Viewer and local gate procedures |
+| `builds\` | Final static viewer artifact |
 
 ## Evidence base
 
@@ -67,6 +68,39 @@ The reusable outputs are:
 
 Do not copy the evidence table into a target project. Link back to LOOM instead.
 
+## Build output
+
+`build\` holds the build tools, templates, and gates. `builds\` holds the final
+static viewer.
+
+| File | Role |
+| --- | --- |
+| `builds\index.html` | Viewer page with the robot emoji favicon |
+| `builds\styles.css` | Viewer styles |
+| `builds\app.js` | Tab behavior and clipboard copy |
+| `builds\favicon.png` | Resized LOOM tab icon |
+| `builds\docs.js` | Embedded handoff templates |
+
+Run `node build\generate-docs.js` to write all four files. Open
+`builds\index.html` to view the built artifact. The source viewer in
+`build\index.html` stays the development entry point.
+
+## Update an existing project
+
+Use this path to refresh the docs of a project that already uses LOOM.
+
+1. Read each current root document. List the facts that it owns.
+2. Run the named checks. Record the current result.
+3. Compare every documented command with executable configuration.
+4. Confirm missing or contradicted answers with the owner. Ask one question per
+   message.
+5. Apply the current template sections to the project documents.
+6. Keep every verified fact, decision, and dated history entry.
+7. Record the update and the gate result in `ROADMAP.md`.
+8. Run the checks again. State each check that did not run.
+
+Do not replace a verified fact with a placeholder. Do not remove a dated record.
+
 ## Agent onboarding
 
 When an agent receives these documents, it must ask for missing project facts
@@ -99,7 +133,7 @@ Use `node build\ask-onboarding.js` for one question per run. Use
 | Baseline gate | A gate that blocks new failures but tolerates recorded debt |
 | Advisory check | A check that reports findings without blocking |
 | Closure check | The condition that proves an open roadmap item is done |
-| Artifact | A build output written to the documented output folder |
+| Artifact | A file written to `builds\` by the build |
 | Controlled language | A restricted writing style with short sentences and one meaning per word |
 | MCP | Model Context Protocol, a surface that exposes tools, resources, or prompts |
 | MCP surface | One configured MCP server, tool, resource, or prompt |
@@ -113,6 +147,8 @@ Use `node build\ask-onboarding.js` for one question per run. Use
 - Keep the viewer source fixed to `build\handoff\`.
 - Do not retarget the viewer to LOOM documents.
 - Keep historical notes dated.
+- Keep build tools in `build\` and final artifacts in `builds\`.
+- Store every regression gate in `build\gates\`.
 - Never weaken a gate to make a check pass.
 
 ## Current limits

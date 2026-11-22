@@ -28,6 +28,22 @@ Link to a focused subdocument instead of copying its content.
 3. Configure required values with `{{CONFIGURATION_STEPS}}`.
 4. Confirm the setup with `{{VERIFY_SETUP_COMMAND}}`.
 
+## Update an existing project
+
+Use this section to refresh an already onboarded project.
+
+1. Read `AGENTS.md`, `SKILLS.md`, `README.md`, and `ROADMAP.md`.
+2. Run the local checks. Record the current result.
+3. Compare each documented command with executable configuration.
+4. Confirm missing or contradicted answers with the owner. Ask one question at
+   a time.
+5. Apply the current template sections. Keep every verified project fact.
+6. Preserve decisions and dated history in `ROADMAP.md`.
+7. Run the checks in the Verification section. Record the result and each
+   skipped check.
+
+Do not replace a verified fact with a placeholder. Do not remove a dated record.
+
 ## Operation
 
 | Task | Command or control | Result |

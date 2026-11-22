@@ -28,6 +28,8 @@ Verified on 2026-11-22.
 | Root docs drafted | 5 | `README.md`, `ANALYSIS.md`, `AGENTS.md`, `SKILLS.md`, `ROADMAP.md` |
 | Template applied to LOOM | 1 | `AGENTS.md` has no placeholders |
 | Handoff template set | 4 | `build\handoff\` |
+| Existing-project update path | Present | Update sections in the four handoff templates |
+| Final output folder | `builds\` | Five viewer files in `builds\` |
 | Tabbed viewer | Present | `build\index.html` and `build\handoff\` |
 | Docs embed generator | Present | `build\generate-docs.js` |
 | Document check gate | Present | `build\check-docs.js` |
@@ -104,6 +106,7 @@ work.
 
 ## 5. Known gaps and debt
 
+- Regression gates still live in `build\`. The `build\gates\` rule is documented, not applied.
 - Browser verification has not run. The smoke test reports a skip.
 - No full controlled language check exists.
 - MCP discovery reads local config files only.
@@ -134,6 +137,9 @@ work.
 | 2026-11-22 | Serve handoff templates in the viewer instead of LOOM docs | The tabs are for handoff to other projects |
 | 2026-11-22 | Initialize Git on `main` before the first public commit | The owner requested a public GitHub repository |
 | 2026-11-22 | Merge the remote initial commit before publishing | The remote already held the repository license |
+| 2026-11-22 | Support template updates for existing projects | Handoff must refresh docs without losing verified facts |
+| 2026-11-22 | Write final viewer artifacts to `builds\` and keep tools in `build\` | Owner separates build tools from final output artifacts |
+| 2026-11-22 | Store every regression gate in `build\gates\` | Keep gates separate from tools and templates |
 
 ## 7. Change log
 
@@ -163,6 +169,30 @@ work.
 - Added `.gitignore` for local Git details and environment files.
 - Initialized Git on `main` for the first public commit.
 - Merged the remote initial commit and published `main` to `ejayhill1977/LOOM`.
+- Added an existing-project update path to the four handoff templates.
+- Added update sections to the generic rulebook source and the root documents.
+- Added gate coverage for the new update sections.
+- Separated build tools in `build\` from final artifacts in `builds\`.
+- Added the artifact split and `build\gates\` rules to templates and LOOM docs.
+- Moved the emoji favicon from an inline data URI to `favicon.svg` in `builds\`.
+- Cited agents.md and agentskills.io in the two handoff tabs.
+- Added the robot emoji to the start of the viewer page title.
+- Replaced the SVG link and title emoji with one PNG favicon link.
+- Fixed artifact verification to compare Buffers so the PNG is checked byte for byte.
+- Replaced the robot emoji favicon with a resized LOOM icon from `branding\icon.png`.
+
+#### Build record
+
+| Field | Value |
+| --- | --- |
+| Date | 2026-11-22 |
+| Branch | `main` |
+| Commit | `2364ede` |
+| Uncommitted paths | 17 modified files plus untracked `branding\icon.ico`, `build\favicon.png`, `builds\`, `desktop.ini` |
+| Artifact | `builds\` static viewer with `index.html`, `styles.css`, `app.js`, `favicon.png`, `docs.js` |
+| Gate verdict | `check-docs` PASS, `check-contradictions` PASS |
+| Not run | Browser smoke test skipped because Playwright is absent |
+| Signing | Not performed because no signing step exists |
 
 ## 8. Maintenance
 

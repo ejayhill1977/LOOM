@@ -7,7 +7,7 @@
   "Q6": "Static HTML, CSS, JavaScript, and Node local checks",
   "Q7": "node build\\generate-docs.js",
   "Q8": "node build\\check-docs.js; node build\\check-contradictions.js",
-  "Q9": "build\\docs.js",
+  "Q9": "builds\\",
   "Q10": "None",
   "Q11": "No known conflict"
 }
