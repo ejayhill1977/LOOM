@@ -1,0 +1,429 @@
+# AGENTS.md
+
+Template for `{{PROJECT_NAME}}`.
+
+Project root: `{{PROJECT_ROOT}}`
+Owner: `{{OWNER}}`
+Default branch: `main`
+Last reviewed: `{{DATE}}`
+
+Replace every `{{PLACEHOLDER}}` before using this file. Keep project facts in
+this file. Keep product description in `README.md`. Keep status and open work in
+`ROADMAP.md`.
+
+## 0. Agent onboarding
+
+Use this section before editing a project that has not been onboarded.
+
+### 0.1 Question protocol
+
+1. Ask one question in each message.
+2. Wait for the answer before asking the next question.
+3. Offer one short answer field. Offer a default when a default is known.
+4. Do not combine questions. Do not infer a missing answer from a path.
+5. Record each answer in the owning document.
+6. Ask a follow-up question when an answer is unclear.
+7. Stop when every required answer is known.
+
+### 0.2 Required questions
+
+| ID | Question | Store in |
+| --- | --- | --- |
+| Q1 | What is the project name or title? | `README.md` |
+| Q2 | What is the main project directory? | `AGENTS.md` |
+| Q3 | Who owns the project? | `AGENTS.md` |
+| Q4 | Which branch is the default branch? | `AGENTS.md` |
+| Q5 | What does the product do in one sentence? | `README.md` |
+| Q6 | Which runtime and stack does the project use? | `AGENTS.md` |
+| Q7 | Which command builds the supported artifact? | `AGENTS.md` |
+| Q8 | Which commands run checks and gates? | `AGENTS.md` |
+| Q9 | Where does the build write artifacts? | `AGENTS.md` |
+| Q10 | Which MCP servers or tools does the project use? | `AGENTS.md` section 10 |
+| Q11 | Does any current document disagree with executable configuration? | `ROADMAP.md` |
+
+### 0.3 Contradiction protocol
+
+1. Compare each current document with executable configuration.
+2. Name one conflict in one sentence.
+3. Ask which source is true.
+4. Trust executable configuration until the owner answers.
+5. Repair the losing document.
+6. Record the decision and date in `ROADMAP.md`.
+7. Repeat from step 2 for the next conflict.
+
+### 0.4 Answers
+
+| ID | Answer |
+| --- | --- |
+| Q1 | `{{PROJECT_TITLE}}` |
+| Q2 | `{{PROJECT_ROOT}}` |
+| Q3 | `{{OWNER}}` |
+| Q4 | `{{DEFAULT_BRANCH}}` |
+| Q5 | `{{PRODUCT_PURPOSE}}` |
+| Q6 | `{{RUNTIME_AND_STACK}}` |
+| Q7 | `{{BUILD_COMMAND}}` |
+| Q8 | `{{CHECK_COMMANDS}}` |
+| Q9 | `{{BUILD_OUTPUT_PATH}}` |
+| Q10 | `{{MCP_SURFACE}}` |
+| Q11 | `{{DOCUMENTATION_CONTRADICTIONS}}` |
+
+### 0.5 Onboarding tools
+
+Use a local onboarding runner when one exists. Use a copyable prompt when one
+exists. Store answers in `onboarding-answers.json`.
+
+Run the local contradiction check before manual contradiction review when one
+exists.
+
+## 1. Authority and scope
+
+1. `{{PROJECT_ROOT}}` is the only location for project files. Do not write
+   project files to another directory.
+2. Commands in this file run from `{{PROJECT_ROOT}}` unless stated otherwise.
+3. `AGENTS.md` owns stack facts, commands, rules, and file ownership.
+4. `README.md` owns product behavior, controls, setup, and operator procedures.
+5. `ROADMAP.md` owns measured status, open work, decisions, and change history.
+6. A focused subdocument such as `build\README.md` owns one subsystem. Link to
+   it instead of restating it here.
+7. If a document and executable configuration disagree, trust the executable
+   configuration and repair the document.
+8. Do not read, edit, move, delete, or commit a directory marked private by the
+   owner. Never un-ignore a private directory.
+
+## 2. Professional standard
+
+Apply this standard to every code and documentation change.
+
+- Write clean, correct, well-structured code.
+- Assume another engineer will read every line.
+- Keep functions small and focused.
+- Use explicit data flow instead of hidden global state.
+- Do not add hacks, commented-out code, magic numbers, or silent failures.
+- Do not add a setting, UI control, or diagnostic surface that the owner did not
+  request. If one appears necessary, state the need and ask first.
+- Make the smallest correct change in the existing style.
+- Preserve the detected architecture. Record a required architecture change in
+  `ROADMAP.md` before implementation.
+
+## 3. Writing rules
+
+These rules apply to code comments, documentation, commit messages, pull
+request descriptions, changelog entries, and client-facing text. Conversational
+chat replies may use clear standard English.
+
+### 3.1 Language
+
+- Use short, simple words. Use one meaning for each word.
+- Use the same word for the same thing every time.
+- Maintain a terminology list in `README.md` or a dedicated glossary.
+- Use simple verb forms: infinitive, imperative, simple present, simple past,
+  simple future, and past participle as an adjective.
+- Use active voice. Use passive voice in descriptive text only when no active
+  construction is possible.
+- Write instructions in imperative form. Write one instruction per sentence.
+- Put a condition before the instruction it governs.
+- Keep an instruction sentence to 20 words or fewer.
+- Keep a descriptive sentence to 25 words or fewer.
+- Limit a paragraph to one topic and six sentences.
+- Keep a noun cluster to three words or fewer.
+- Do not omit articles. Do not use contractions. Do not use semicolons.
+- Use a vertical list for a complex sequence.
+- Mark a safety statement with `WARNING`, `CAUTION`, or `Note`. State the risk
+  or the result.
+- Do not use the em-dash character. Use a comma, colon, parentheses, or a new
+  sentence.
+
+### 3.2 Document structure
+
+- Use one H1 per document. Use H2 for major sections and H3 for nested detail.
+- Use tables for inventories, status, commands, and gate catalogues.
+- Use fenced blocks for commands, JSON, and directory trees.
+- Wrap paths, commands, filenames, branch names, tool names, and literal values
+  in backticks.
+- Use numbered lists when order matters. Use bullets for unordered rules.
+- Use blockquotes for brief status callouts.
+- Keep dates in one format per project. Prefer `YYYY-MM-DD`.
+- Link to another document instead of copying its content.
+- Keep historical sections dated. Do not rewrite history as current state.
+
+### 3.3 Documentation maintenance
+
+- Update comments and documentation with the code change.
+- Verify commands against the executable configuration, not against prose.
+- Re-measure every roadmap figure before editing it.
+- Use verified commit IDs only. Verify a commit with `git log -1 --format=%s <hash>`.
+- Move shipped work out of open work. Do not duplicate it.
+- Add no speculative roadmap entry. Every open item states a closure check.
+- Record a build, measurement, or tooling investigation with the fix and the
+  rule that must not break.
+
+## 4. Change workflow
+
+Use this loop for every defect or requested change.
+
+1. Reproduce. Name the failing command, gate, page, or live surface. Capture the
+   actual error.
+2. Inspect. Read logs, state, diffs, and the relevant source block. Use bounded
+   output.
+3. Hypothesize. State one cause in one sentence. Name a file and symbol.
+4. Patch. Change the cause with the smallest edit. Do not weaken an assertion,
+   skip a gate, or add a suppression.
+5. Verify. Run the focused check. Run the broader check when shared code
+   changed. Repeat the original reproduction.
+6. Record. Add the measurement and the rule to the correct document.
+
+Do not declare a fix before step 5 passes. If a step cannot run, state which
+step failed and why. Report evidence, not intent.
+
+## 5. Engineering conventions
+
+- Resolve application, resource, and user data paths at runtime. Do not hard-code
+  absolute paths in program code.
+- Keep user data inside the project root unless the product documents a narrow
+  installed-app exception.
+- Put test sandboxes inside the project and add them to `.gitignore`. Do not
+  write project data to the OS temp folder.
+- Keep dependency versions pinned. Keep related runtime packages compatible.
+- Bundle every runtime binary the product needs.
+- Validate and sanitize IPC input, external data, file paths, and URI input.
+- Treat external addresses, stores, logs, and protocol handlers as untrusted.
+- Never edit a live data store by hand. Use application code or a supported
+  tool. Back up before a manual repair.
+- Never print a secret value. Redact secrets in logs and error reports.
+- Keep credentials in the environment or an untracked local file. Never commit
+  a token, certificate, password, or personal key.
+
+## 6. Context hygiene and tool use
+
+Use the first tool that covers the domain. Use a raw shell command only when no
+structured tool covers the work.
+
+1. Symbol lookup or native code intelligence.
+2. Structured source control for status, diff, and history.
+3. Documentation lookup for external APIs. Query by library id, major version,
+   and exact question.
+4. Structured runtime inspection for a live app, browser, or service.
+5. Scoped shell for builds, tests, and commands with no structured tool.
+6. Raw file reads and text search for prose, config, and CSS.
+
+Additional rules:
+
+- Use file discovery first, then a narrow search, then a bounded read window.
+- Do not read a large source file end to end. Resolve the symbol first.
+- Do not grep for a symbol that a code intelligence tool can resolve.
+- Use filters and line limits on logs. Do not load a whole log.
+- Project one field from a large JSON store. Do not print the whole store.
+- Keep gate output to the result line and failed checks. Preserve exit status.
+- Restart a client after its tool configuration changes.
+- Do not invent a missing tool or simulate its output. Record the gap.
+
+## 7. Linting, formatting, typechecking, and testing
+
+Run verification before you declare work finished. The named commands are the
+only source of truth.
+
+| Check | Command | Gate style | Rule |
+| --- | --- | --- | --- |
+| Lint | `{{LINT_COMMAND}}` | `{{HARD_OR_ADVISORY}}` | `{{LINT_RULE}}` |
+| Format check | `{{FORMAT_COMMAND}}` | `{{HARD_OR_ADVISORY}}` | `{{FORMAT_RULE}}` |
+| Typecheck | `{{TYPECHECK_COMMAND}}` | `{{HARD_OR_BASELINE}}` | `{{TYPECHECK_RULE}}` |
+| Focused test | `{{FOCUSED_TEST_COMMAND}}` | `{{HARD_OR_ADVISORY}}` | `{{FOCUSED_TEST_RULE}}` |
+| Full test | `{{TEST_COMMAND}}` | `{{HARD_OR_ADVISORY}}` | `{{TEST_RULE}}` |
+| Gates | `{{GATE_COMMAND}}` | `{{HARD_OR_BASELINE}}` | `{{GATE_RULE}}` |
+
+Rules:
+
+- Run the focused check before the full suite when a specific defect is under
+  repair.
+- Add coverage for new behavior. Keep existing suites green.
+- Do not weaken a test to make a gate pass. Repair the cause or retire a suite
+  whose subject was removed, and state why.
+- A broken tool must not read as green. A missing tool is a failure or a stated
+  gap, never a silent pass.
+- A baseline gate blocks new failures. It does not require unrelated debt to be
+  fixed in the same change.
+- Pay down baseline debt one family at a time. Update the baseline after each
+  verified batch.
+- Never report a test, lint, typecheck, or gate run that did not happen.
+- State clearly which check ran and which check did not run.
+- If no linter, formatter, typechecker, test runner, or CI exists, say so. Local
+  checks are the whole gate.
+
+Gate contract:
+
+- Store gates in `{{GATE_DIRECTORY}}`.
+- Name a gate file `{{GATE_FILE_PATTERN}}`.
+- Give each gate a title header.
+- Exit `0` on pass and non-zero on failure.
+- Print `PASS: ...` or `FAIL: ...`.
+- Run gates from the project root with the project runtime.
+- Keep a gate baseline at `{{GATE_BASELINE_PATH}}` when debt is tracked.
+- Document every new gate in `{{GATE_DOCUMENTATION}}`.
+
+## 8. Version control
+
+Read this section before any edit, commit, push, or pull request.
+
+1. Run `git branch --show-current` and `git branch --list main master` before
+   the first edit.
+2. Use `main` for every task. Use another branch only when the current prompt
+   explicitly names it.
+3. If `master` exists and `main` does not, rename `master` to `main`. If the
+   rename fails, stop and report the error.
+4. If `main` and `master` both exist, stop and report both. Do not merge,
+   delete, or rename either without an instruction.
+5. Do not create a branch. This covers feature, bugfix, release, hotfix,
+   experiment, and temporary branches.
+6. Do not create a worktree for another branch.
+7. Do not switch branches or open a pull request from another branch unless the
+   current prompt explicitly instructs it.
+8. If you find an unexpected branch, stop and report it. Do not move, delete,
+   or rewrite it without an instruction.
+9. Commit to `main` after each completed change. Stage only files from the
+   current change.
+10. Write a detailed commit message that states what changed and why. State the
+    change in the subject line.
+11. The owner authors every commit. Do not add `Co-Authored-By`, `Generated
+    with`, or any other AI attribution line. Keep `includeCoAuthoredBy` set to
+    `false` where the tool supports it.
+12. Do not push, amend, rebase, force-push, or open a pull request unless the
+    current prompt asks for that action.
+13. Do not rename or delete a remote branch without explicit confirmation.
+14. Never commit secrets, tokens, personal data, certificate data, or `.env`
+    files.
+15. Never force-push, reset a shared branch, clean the worktree destructively,
+    or rewrite history without a direct request.
+16. Keep `.git` visible on every operating system. Never set Hidden or System
+    attributes on it. Check again after a restore.
+17. A tool approval prompt does not relax any rule in this section.
+18. Treat a write through an MCP tool the same as the same write through the
+    shell.
+
+## 9. Building and running
+
+### 9.1 Supported commands
+
+| Purpose | Command |
+| --- | --- |
+| Install dependencies | `{{INSTALL_COMMAND}}` |
+| Run in development | `{{DEV_COMMAND}}` |
+| Run checks | `{{VERIFY_COMMAND}}` |
+| Build | `{{BUILD_COMMAND}}` |
+| Build gates only | `{{GATE_ONLY_COMMAND}}` |
+| Rebuild build tool | `{{BUILD_TOOL_COMMAND}}` |
+| Clean staging | `{{CLEAN_COMMAND}}` |
+
+Use `{{SUPPORTED_BUILD_ENTRY_POINT}}` as the supported build entry point.
+`{{LEGACY_BUILD_ENTRY_POINT}}` is reference only and does not run gates.
+
+### 9.2 Build rules
+
+1. Ask before a new installer build. Build only after explicit agreement. A
+   standing owner request is the only exception.
+2. Do code work, comments, documentation, verification, and the commit before
+   asking about a build.
+3. Run gates first. A failed gate stops the run before any artifact is written.
+4. Do not bypass, skip, or weaken a gate to make a build pass.
+5. Write artifacts only to `{{BUILD_OUTPUT_DIRECTORY}}`.
+6. Keep one artifact shape. Use `{{ARTIFACT_NAME_PATTERN}}`.
+7. Do not build or ship a portable folder, ZIP, unpacked folder, or per-user
+   variant unless the owner asks for it.
+8. Close running app instances that lock build output. Retry on `EBUSY` or a
+   lock error. Do not force-kill a running app during a build.
+9. Keep staging inside the checkout. Clean staging after success and failure.
+10. Keep the newest artifact. Delete older artifacts only under the documented
+    retention rule.
+11. Record build provenance: commit, branch, uncommitted paths, artifact name,
+    and gate verdict.
+12. State a build limit when a full sweep was not run or a signing step was not
+    performed.
+13. Rebuild the build tool after its source changes.
+14. Rebuild any required companion application before the main installer build.
+15. Verify the built artifact with the documented smoke test before calling the
+    build successful.
+
+### 9.3 Artifact permission gate
+
+Before a build, state the following in the request:
+
+- the artifact name and output folder,
+- the checks that passed,
+- the checks that did not run,
+- whether the artifact replaces a previous build,
+- any known limit.
+
+Wait for the owner's answer. Do not infer permission from a previous build.
+
+## 10. MCP integration
+
+Use this section when the project exposes or consumes MCP servers, tools,
+resources, or prompts. State `None` when no MCP surface exists.
+
+Run local MCP discovery before recording the MCP answers.
+
+| Item | Value |
+| --- | --- |
+| Project MCP role | `{{MCP_ROLE}}` |
+| Server packages | `{{MCP_SERVER_PACKAGES}}` |
+| Configuration path | `{{MCP_CONFIG_PATH}}` |
+| Exposed tools | `{{MCP_TOOLS}}` |
+| Trust boundary | `{{MCP_TRUST_BOUNDARY}}` |
+
+1. Treat MCP tool input as untrusted.
+2. Validate every tool argument against its schema.
+3. Put write tools behind explicit confirmation.
+4. Redact secrets in logs and error reports.
+5. Keep credentials in the environment or an untracked local file.
+6. Restart a client after its MCP configuration changes.
+7. Document each tool in `README.md` or a subsystem document.
+8. Record a missing tool as a gap. Do not simulate its output.
+
+## 11. Autonomy and safety
+
+Auto-approved:
+
+- reads, symbol lookup, documentation queries,
+- read-only state and store queries,
+- log, console, and network inspection with bounded output,
+- task-scoped source edits,
+- focused tests, read-only projections, and syntax checks,
+- read-only git commands.
+
+Explicit confirmation required:
+
+- destructive data mutation, migration, `DROP`, or `TRUNCATE`,
+- force-push, history rewrite, branch deletion, or remote change,
+- production write, release, deploy, or billing action,
+- secret, credential, token, vault, or environment file change,
+- new runtime dependency,
+- build or installer creation,
+- global tooling change,
+- deletion or move of source, test, or user data outside the task.
+
+Never:
+
+- commit a secret or personal data,
+- print a secret,
+- write project files outside the project root,
+- weaken a gate to make a build pass,
+- claim a check that did not run,
+- hide `.git`,
+- write to production or a remote environment without instruction.
+
+## 12. Definition of done
+
+A change is complete only when every applicable item is true.
+
+- The requested behavior works.
+- The smallest correct cause was changed.
+- No unrequested setting or surface was added.
+- Focused verification passed.
+- Full verification passed, or the gap is stated.
+- Gates passed, or the baseline rule is stated.
+- Documentation matches code.
+- Roadmap facts were re-measured.
+- User data and secrets are untouched or safely migrated.
+- `git status --short`, `git diff`, and `git log -1 --oneline` were reviewed.
+- The commit is on `main` with a message that states what and why.
+- No generated artifact was created without permission.
+- The final report names the checks that ran and the checks that did not.

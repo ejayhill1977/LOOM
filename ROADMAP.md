@@ -1,0 +1,175 @@
+# LOOM Roadmap
+
+LOOM turns observed agentic documentation patterns into reusable templates.
+This file states measured status, open work, decisions, and change history. It
+links to the other documents instead of restating them.
+
+## 1. Purpose
+
+- `README.md` owns product purpose, use, and terminology.
+- `ANALYSIS.md` owns evidence and extraction decisions.
+- `AGENTS.md` owns the LOOM project rulebook.
+- `build\AGENTS.template.md` owns the generic rulebook source.
+- `build\handoff\` owns the four generic templates served by the viewer.
+- `SKILLS.md` owns reusable procedures.
+- This file owns measured status and open work.
+
+## 2. Status snapshot
+
+Verified on 2026-11-22.
+
+| Item | State | Evidence |
+| --- | --- | --- |
+| Source projects analysed | 5 of 5 | `ANALYSIS.md` section 2 |
+| Universal core rules extracted | 12 | `ANALYSIS.md` section 3 |
+| Strong consensus rules extracted | 10 | `ANALYSIS.md` section 4 |
+| Optional minority patterns recorded | 5 | `ANALYSIS.md` section 5 |
+| Conflicts recorded with precedence | 6 | `ANALYSIS.md` section 6 |
+| Root docs drafted | 5 | `README.md`, `ANALYSIS.md`, `AGENTS.md`, `SKILLS.md`, `ROADMAP.md` |
+| Template applied to LOOM | 1 | `AGENTS.md` has no placeholders |
+| Handoff template set | 4 | `build\handoff\` |
+| Tabbed viewer | Present | `build\index.html` and `build\handoff\` |
+| Docs embed generator | Present | `build\generate-docs.js` |
+| Document check gate | Present | `build\check-docs.js` |
+| Onboarding question catalogue | Present | `AGENTS.md` section 0 |
+| Onboarding answer file | Present | `onboarding-answers.json` |
+| Onboarding question runner | Present | `build\ask-onboarding.js` |
+| Onboarding prompt | Present | `build\ONBOARDING-PROMPT.md` |
+| Contradiction protocol | Present | `AGENTS.md` section 0 |
+| Contradiction detector gate | Present | `build\check-contradictions.js` |
+| MCP integration section | Present | `AGENTS.md` section 10 |
+| MCP discovery helper | Present | `build\discover-mcp.js` |
+| MCP surface | None | No configured server or tool |
+| Browser smoke test | Present, not run | `build\smoke-test.js` |
+| Browser verification | Not run | No Playwright browser is installed |
+| Version control | `main` initialized | `git branch --show-current` |
+| Controlled language enforcement | Absent | Rules documented, not checked |
+
+The active branch is `main`.
+
+## 3. Open work
+
+### 3.1 Verify the tabbed viewer in a browser
+
+**Goal:** prove that each tab displays and copies its handoff template.
+
+**Work:** run `node build\smoke-test.js` with Playwright installed. The script
+opens `build\index.html`, clicks each tab, compares displayed text with the
+matching file in `build\handoff\`, and reads the clipboard after each click.
+
+**Done when:** the script prints `PASS: browser smoke test` for all four tabs.
+
+### 3.2 Add a project template generator
+
+**Goal:** remove manual copy errors.
+
+**Work:** add a script that creates a new project documentation set from the
+generic template and prompts for each named placeholder.
+
+**Done when:** the script creates a complete doc set in a sandbox inside this
+repository, and every generated file passes `node build\check-docs.js`.
+
+### 3.3 Add an optional controlled language module
+
+**Goal:** support projects that require full ASD-STE100 without forcing it on
+all projects.
+
+**Work:** expand the optional module in `SKILLS.md` with an approved-term
+template and a sentence-length check.
+
+**Done when:** the module can be enabled in one project without editing the
+universal rules, and its check runs locally.
+
+### 3.4 Add a reusable gate catalogue example
+
+**Goal:** give new projects a working gate pattern.
+
+**Work:** add an example gate directory with a title header, `PASS:` and
+`FAIL:` output, hard and baseline styles, and a gate README.
+
+**Done when:** the example gate passes a healthy fixture, fails a broken
+fixture, and is documented with its closure check.
+
+## 4. Planned work
+
+- Add a glossary template for project terms.
+- Add a verification command table generator from `package.json` or equivalent.
+- Add a handoff template registry for common protocol contracts.
+- Add a migration checklist from legacy docs into the three-document model.
+- Add an onboarding answer validator gate.
+- Add a command table generator from `package.json` or equivalent.
+
+Each planned item needs a measurable closure check before it moves to open
+work.
+
+## 5. Known gaps and debt
+
+- Browser verification has not run. The smoke test reports a skip.
+- Public remote setup is pending. No push has run.
+- No full controlled language check exists.
+- MCP discovery reads local config files only.
+- Some evidence line counts for MOXY are partial because its docs are large.
+- The source projects disagree on lint warning policy, gate order, and AI
+  attribution. `ANALYSIS.md` records the chosen precedence.
+
+## 6. Decisions
+
+| Date | Decision | Reason |
+| --- | --- | --- |
+| 2026-11-22 | Keep three root documents with separate ownership | All five projects use this shape |
+| 2026-11-22 | Default to `main` with no branches | All five projects require it |
+| 2026-11-22 | Put gates before artifacts | Four projects state it explicitly, and one contains a stale conflicting line |
+| 2026-11-22 | Treat controlled English as optional | Three projects require it, two do not |
+| 2026-11-22 | Trust executable config over prose | Source projects contain stale documentation |
+| 2026-11-22 | Keep historical notes dated | Source projects preserve past reports and decisions |
+| 2026-11-22 | Preserve the generic template in `build\AGENTS.template.md` | The root rulebook is now project-specific |
+| 2026-11-22 | Use `build\check-docs.js` and `build\check-contradictions.js` as the local gates | No external linter or test runner exists |
+| 2026-11-22 | Ask onboarding questions one at a time | Gives the owner one simple answer field |
+| 2026-11-22 | Handle contradictions one at a time | Prevents mixed decisions |
+| 2026-11-22 | Include an MCP section in every rulebook | Agents need a trust boundary for external tools |
+| 2026-11-22 | Store onboarding answers in a JSON file | One answer field maps to one stored value |
+| 2026-11-22 | Fail the contradiction gate on the first conflict | One conflict per run keeps decisions clear |
+| 2026-11-22 | Skip the browser test when Playwright is absent | A missing tool must not read as a pass |
+| 2026-11-22 | Keep LOOM Git details in a local config file | Prevents owner data from entering generic docs |
+| 2026-11-22 | Order viewer tabs by coding agent handoff flow | Agents read rules, skills, context, then status |
+| 2026-11-22 | Serve handoff templates in the viewer instead of LOOM docs | The tabs are for handoff to other projects |
+| 2026-11-22 | Initialize Git on `main` before the first public commit | The owner requested a public GitHub repository |
+
+## 7. Change log
+
+### 2026-11-22
+
+- Analysed the first-party docs of five projects.
+- Extracted universal, strong-consensus, and optional patterns.
+- Drafted `README.md`, `ANALYSIS.md`, `AGENTS.md`, `SKILLS.md`, and `ROADMAP.md`.
+- Added writing, linting, version control, and building sections.
+- Built the static tabbed viewer under `build\`.
+- Preserved the generic rulebook in `build\AGENTS.template.md`.
+- Replaced every placeholder in the root `AGENTS.md`.
+- Added `build\check-docs.js` as the local documentation gate.
+- Regenerated `build\docs.js` from the four root documents.
+- Added one-by-one onboarding and contradiction questions.
+- Added MCP integration sections and trust rules.
+- Added the onboarding answer file, template, question runner, and prompt.
+- Added the contradiction detector gate with a seeded conflict fixture.
+- Added MCP config discovery with answer update support.
+- Added a browser smoke test with explicit skip reporting.
+- Recorded LOOM-only Git details in a local config file.
+- Reordered viewer tabs for the coding agent handoff flow.
+- Added four generic handoff templates under `build\handoff\`.
+- Retargeted the viewer and generator from LOOM docs to handoff templates.
+- Added viewer source reminders to code comments and documentation.
+- Added a gate check that binds the generator to handoff templates.
+- Added `.gitignore` for local Git details and environment files.
+- Initialized Git on `main` for the first public commit.
+
+## 8. Maintenance
+
+1. Re-measure every figure with the named command before editing it.
+2. Verify a commit ID with `git log -1 --format=%s <hash>` before using it.
+3. Move shipped work out of open work. Do not duplicate it.
+4. Add no speculative open item.
+5. Date each snapshot and each decision.
+6. Link to the owning document instead of copying its content.
+7. Keep this file aligned with `ANALYSIS.md` when new source projects are
+   analysed.

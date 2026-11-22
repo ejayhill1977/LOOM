@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Handoff Templates</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Agent Handoff Templates</h1>
+      <p id="copy-status" class="status" role="status" aria-live="polite">Ready. Click a tab to display and copy its template.</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Agent handoff templates">
+      <button class="tab is-active" id="tab-agents" type="button" role="tab" aria-selected="true" aria-controls="doc-panel" data-doc="AGENTS.md">AGENTS.md</button>
+      <button class="tab" id="tab-skills" type="button" role="tab" aria-selected="false" aria-controls="doc-panel" data-doc="SKILLS.md">SKILLS.md</button>
+      <button class="tab" id="tab-readme" type="button" role="tab" aria-selected="false" aria-controls="doc-panel" data-doc="README.md">README.md</button>
+      <button class="tab" id="tab-roadmap" type="button" role="tab" aria-selected="false" aria-controls="doc-panel" data-doc="ROADMAP.md">ROADMAP.md</button>
+    </div>
+
+    <section id="doc-panel" class="panel" role="tabpanel" aria-labelledby="tab-agents" tabindex="0">
+      <pre id="document-content"></pre>
+    </section>
+  </main>
+
+  <script src="docs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

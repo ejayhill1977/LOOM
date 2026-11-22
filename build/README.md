@@ -1,0 +1,102 @@
+# build
+
+This folder holds the LOOM documentation viewer, onboarding tools, and local
+checks.
+
+## Files
+
+| File | Role |
+| --- | --- |
+| `index.html` | Static tabbed viewer for four handoff templates |
+| `styles.css` | Light and dark styles for the viewer |
+| `app.js` | Tab behavior and clipboard copy |
+| `handoff\` | Four generic templates served by the viewer |
+| `AGENTS.template.md` | Generic rulebook source for new projects |
+| `ONBOARDING-PROMPT.md` | Copyable prompt for an agent session |
+| `onboarding-answers.template.json` | Empty answer file template |
+| `ask-onboarding.js` | Asks one onboarding question per run |
+| `generate-docs.js` | Embeds handoff templates into `docs.js` |
+| `docs.js` | Generated template data used by the viewer |
+| `check-docs.js` | Documentation gate |
+| `check-contradictions.js` | Contradiction detector gate |
+| `mcp-lib.js` | Shared MCP config discovery logic |
+| `discover-mcp.js` | MCP config discovery command |
+| `smoke-test.js` | Browser smoke test |
+| `git-details.local.json` | LOOM-only Git author details |
+| `fixtures\` | Small test fixtures for onboarding and contradictions |
+
+## Run the viewer
+
+Open `index.html` in a browser. Click a tab to display its template and copy the
+full text to the clipboard. The viewer has no runtime dependencies.
+
+The templates are generic and intended for handoff to other projects. The viewer
+does not show LOOM-specific documents. Do not retarget the viewer to LOOM
+documents.
+
+Tab order follows the coding agent handoff flow. The order is `AGENTS.md`,
+`SKILLS.md`, `README.md`, then `ROADMAP.md`.
+
+If clipboard access fails, select the displayed text and copy it manually.
+
+## Local Git details
+
+`git-details.local.json` holds LOOM-only author details. Use it only for LOOM.
+Do not copy its values into generic templates or shared documents.
+
+## Onboard a project
+
+Copy `onboarding-answers.template.json` to the project root as
+`onboarding-answers.json`. Run this command from the project root.
+
+`node build\ask-onboarding.js`
+
+The runner prints one question and records one answer per run. It asks about the
+next missing answer on the next run. Use `--preview` to print the next question
+without recording an answer.
+
+Use `ONBOARDING-PROMPT.md` when an agent will ask the questions in chat.
+
+## Regenerate document data
+
+Run this command from the project root after any handoff template changes.
+
+`node build\generate-docs.js`
+
+The command reads `build\handoff\` and rewrites `docs.js`. Do not edit `docs.js`
+by hand.
+
+## Gates
+
+| Gate | Command | Rule |
+| --- | --- | --- |
+| Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, writing markers, embedded templates, tab order, and syntax |
+| Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
+
+Both gates exit `0` on pass and non-zero on failure. Both print `PASS: ...` or
+`FAIL: ...`. The contradiction gate reports one conflict per run. Use
+`--answers <path>` to test another answer file.
+
+## MCP discovery
+
+Run this command from the project root.
+
+`node build\discover-mcp.js`
+
+The command reads local config files only. It prints server names and paths. It
+never prints tool arguments or secrets. Use `--json` for a structured report.
+Use `--update-answers` to write the result to `Q10` in the answer file.
+
+## Browser smoke test
+
+Run this command from the project root.
+
+`node build\smoke-test.js`
+
+The test needs Playwright. When Playwright is absent, the command prints a
+`SKIP:` line and exits `0`. Use `--strict` to fail instead of skipping.
+
+## Known limit
+
+The viewer has not been verified in a browser because Playwright is not
+installed in this environment.

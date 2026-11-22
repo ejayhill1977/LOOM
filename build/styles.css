@@ -1,0 +1,132 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4f6f8;
+  --fg: #17202a;
+  --panel: #ffffff;
+  --muted: #4a5968;
+  --border: #cbd3da;
+  --tab: #e9edf1;
+  --tab-hover: #dde4ea;
+  --active: #17202a;
+  --active-fg: #ffffff;
+  --focus: #4a90e2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 2rem auto;
+}
+
+.app-header {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+}
+
+.status {
+  min-height: 1.25rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  appearance: none;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: var(--tab);
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.tab:hover {
+  background: var(--tab-hover);
+}
+
+.tab.is-active {
+  border-color: var(--active);
+  background: var(--active);
+  color: var(--active-fg);
+}
+
+.tab:focus-visible,
+.panel:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.panel {
+  margin-top: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: var(--panel);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "Cascadia Code", Consolas, "Liberation Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111820;
+    --fg: #e8edf2;
+    --panel: #18222d;
+    --muted: #aab7c4;
+    --border: #2f3e4d;
+    --tab: #202d3a;
+    --tab-hover: #293949;
+    --active: #4a90e2;
+    --active-fg: #0b1118;
+    --focus: #8ab6f0;
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    width: calc(100% - 1rem);
+    margin: 1rem auto;
+  }
+
+  .tabs {
+    gap: 0.35rem;
+  }
+
+  .tab {
+    flex: 1 1 auto;
+    padding: 0.55rem 0.75rem;
+  }
+}
