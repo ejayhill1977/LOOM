@@ -52,9 +52,8 @@ This document records approved UI components, design tokens, interaction require
 | `--text-lg` | 18px |
 | `--text-xl` | 20px |
 
-- Written content uses Poppins at 16px base size.
-- All GUI elements (forms, buttons, labels, menus, tabs, headers) use Poppins.
-- Poppins is loaded from a CDN or bundled locally with `font-display: swap`.
+- All written content, form elements, buttons, and all GUI elements must use the embedded Poppins font at a font size of 16.
+- Poppins is embedded locally with `font-display: swap`.
 
 ### 3.4 Radius and shadows
 
