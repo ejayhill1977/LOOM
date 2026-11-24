@@ -52,8 +52,9 @@ This document records approved UI components, design tokens, interaction require
 | `--text-lg` | 18px |
 | `--text-xl` | 20px |
 
-- All written content, form elements, buttons, and all GUI elements must use the embedded Poppins font at a font size of 16.
+- All written content, form elements, buttons, and other GUI elements must use an embedded Poppins font as the default font face and 16px as the default font size.
 - Poppins is embedded locally with `font-display: swap`.
+- Settings must allow the user to change the font face and font size.
 
 ### 3.4 Radius and shadows
 
