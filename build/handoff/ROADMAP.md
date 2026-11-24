@@ -5,6 +5,8 @@ operator procedures. `DESIGN.md` owns UI components, tokens, interaction,
 accessibility, and prohibitions. This file owns measured status, open work,
 decisions, and change history.
 
+> This template is designed for use with agentic coding agents (e.g., Freebuff, Opencode, Qoder, GitHub Copilot, Kilo Code, Kiro, Cursor, and similar tools). It provides a structured roadmap that agents can read and update to track project status, open work, and decisions.
+
 ## Status snapshot
 
 | Area | Status | Evidence | Last measured |

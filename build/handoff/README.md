@@ -3,6 +3,8 @@
 {{PRODUCT_PURPOSE}}
 
 > Status: `{{STATUS_SUMMARY}}`. See `ROADMAP.md` for measured status and open work.
+>
+> This template is designed for use with agentic coding agents (e.g., Freebuff, Opencode, Qoder, GitHub Copilot, Kilo Code, Kiro, Cursor, and similar tools). It provides a structured product document that agents can read to understand the project's behavior, setup, and procedures.
 
 ## Scope
 

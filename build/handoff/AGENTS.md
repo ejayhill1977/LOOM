@@ -7,6 +7,8 @@ Owner: `{{OWNER}}`
 Default branch: `main`
 Last reviewed: `{{DATE}}`
 
+> This template is designed for use with agentic coding agents (e.g., Freebuff, Opencode, Qoder, GitHub Copilot, Kilo Code, Kiro, Cursor, and similar tools). It provides a structured rulebook that agents can read and follow to maintain consistency across the project.
+
 Replace every `{{PLACEHOLDER}}` before using this file. Keep project facts in
 this file. Keep product description in `README.md`. Keep status and open work in
 `ROADMAP.md`.

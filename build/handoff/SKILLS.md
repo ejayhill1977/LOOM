@@ -3,6 +3,8 @@
 Use these skills when work repeats across projects. Keep rules in `AGENTS.md`.
 Keep product behavior in `README.md`. Keep measured status in `ROADMAP.md`.
 
+> This template is designed for use with agentic coding agents (e.g., Freebuff, Opencode, Qoder, GitHub Copilot, Kilo Code, Kiro, Cursor, and similar tools). It provides reusable procedures that agents can load and execute to maintain consistency across the project.
+
 The open Agent Skills standard at [agentskills.io](https://agentskills.io/)
 defines `SKILL.md` as a portable folder of agent instructions. It packages
 specialized knowledge and repeatable workflows. Agents load a skill when a task
