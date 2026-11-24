@@ -27,13 +27,8 @@ start with a proven rulebook and help an existing project repair its docs.
 
 ## Evidence base
 
-The templates were extracted from the first-party docs of five projects.
-
-- `D:\BRICK Floor Planner`
-- `D:\CONTXT Menu Editor`
-- `D:\FLUX Feed Reader`
-- `D:\MOXY Web Browser`
-- `D:\NETLIX Media Streamer`
+The templates were distilled from first-party documentation across multiple
+agentic coding projects. The source projects are not named here.
 
 Dependency folders, generated output, binaries, and vendor files were excluded.
 `ANALYSIS.md` records the documents, the pattern frequency, and the conflicts.

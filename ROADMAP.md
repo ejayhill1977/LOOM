@@ -110,7 +110,7 @@ work.
 - Browser verification has not run. The smoke test reports a skip.
 - No full controlled language check exists.
 - MCP discovery reads local config files only.
-- Some evidence line counts for MOXY are partial because its docs are large.
+- Some evidence line counts are partial because docs are large.
 - The source projects disagree on lint warning policy, gate order, and AI
   attribution. `ANALYSIS.md` records the chosen precedence.
 
@@ -118,10 +118,9 @@ work.
 
 | Date | Decision | Reason |
 | --- | --- | --- |
-| 2026-11-22 | Keep three root documents with separate ownership | All five projects use this shape |
-| 2026-11-22 | Default to `main` with no branches | All five projects require it |
-| 2026-11-22 | Put gates before artifacts | Four projects state it explicitly, and one contains a stale conflicting line |
-| 2026-11-22 | Treat controlled English as optional | Three projects require it, two do not |
+| 2026-11-22 | Keep three root documents with separate ownership | All projects use this shape |
+| 2026-11-22 | Put gates before artifacts | Documented explicitly and one source contained a stale conflicting line |
+| 2026-11-22 | Treat controlled English as optional | Required by some projects, not others |
 | 2026-11-22 | Trust executable config over prose | Source projects contain stale documentation |
 | 2026-11-22 | Keep historical notes dated | Source projects preserve past reports and decisions |
 | 2026-11-22 | Preserve the generic template in `build\AGENTS.template.md` | The root rulebook is now project-specific |
@@ -146,7 +145,7 @@ work.
 
 ### 2026-11-22
 
-- Analysed the first-party docs of five projects.
+- Analysed first-party docs across multiple agentic coding projects.
 - Extracted universal, strong-consensus, and optional patterns.
 - Drafted `README.md`, `ANALYSIS.md`, `AGENTS.md`, `SKILLS.md`, and `ROADMAP.md`.
 - Added writing, linting, version control, and building sections.

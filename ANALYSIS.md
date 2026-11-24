@@ -1,63 +1,59 @@
 # LOOM Documentation Analysis
 
-LOOM extracts reusable documentation rules from existing agentic coding projects.
-This file records the evidence base and the decisions behind the reusable
-templates in this repository.
+LOOM extracts reusable documentation rules from existing agentic coding
+projects. This file records the evidence base and the decisions behind the
+reusable templates in this repository.
 
 ## 1. Scope
 
-The following projects were analysed. Only first-party documentation was used.
-Dependency folders, generated output, binaries, and vendor files were excluded.
+The source documentation came from real agentic coding projects. Only
+first-party documentation was used. Dependency folders, generated output,
+binaries, and vendor files were excluded.
 
-| Project | Core first-party docs reviewed | Other first-party docs reviewed |
-| --- | --- | --- |
-| `D:\BRICK Floor Planner` | `AGENTS.md` 198 lines, `README.md` 261, `ROADMAP.md` 125 | `build\gates\README.md` 56, `.agents\CONTEXT.md` 34, `package.json` |
-| `D:\CONTXT Menu Editor` | `AGENTS.md` 152, `README.md` 140, `ROADMAP.md` 125 | `.github\workflows\build.yml`, `build\build.rs`, 7 gate scripts, config files |
-| `D:\FLUX Feed Reader` | `AGENTS.md` 244, `README.md` 344, `ROADMAP.md` 348 | `build\README.md` 49, `mcp-server\README.md` 216, config files |
-| `D:\MOXY Web Browser` | `AGENTS.md`, `ROADMAP.md` | `PLAN.md` 488, `FEATURES.md` 211, `FLUX-FEED-HANDOFF.md` 170, `build\gates\torrent_streaming_tests.md` 356 |
-| `D:\NETLIX Media Streamer` | `AGENTS.md` 336, `README.md` 209, `ROADMAP.md` 309 | `INVESTIGATION.md` 199, `docs\MCP.md` 247, `docs\SCROLL-PERFORMANCE.md` 228, `docs\SOURCES.md` 99, `docs\SOURCE-RESEARCH.md` 75, `engine\README.md` 10 |
+The sources covered several agentic coding products. The reviewed docs came
+from core rulebooks, operator guides, status plans, and build gate records.
 
 ## 2. Evidence matrix
 
 Legend: Y means the rule is explicit. P means the rule is partial or implied.
 N means the rule is absent or contradicted.
 
-| Pattern | BRICK | CONTXT | FLUX | MOXY | NETLIX | Verdict |
-| --- | --- | --- | --- | --- | --- | --- |
-| Root `AGENTS.md`, `README.md`, `ROADMAP.md` | Y | Y | Y | Y | Y | Universal |
-| `AGENTS.md` owns agent rules | Y | Y | Y | Y | Y | Universal |
-| `README.md` owns product or operator description | Y | Y | Y | Y | Y | Universal |
-| `ROADMAP.md` owns status and open work | Y | Y | Y | Y | Y | Universal |
-| Quality gates block builds | Y | Y | Y | Y | P | Universal in intent |
-| One supported build entry point | Y | Y | Y | Y | Y | Universal |
-| Build output under `builds\` | Y | Y | Y | Y | Y | Universal |
-| Ask before an installer build | Y | P | Y | Y | Y | Strong |
-| Run verification before completion | Y | Y | Y | Y | Y | Universal |
-| Never report an unrun check | P | P | Y | Y | Y | Strong |
-| Work on `main` by default | Y | Y | Y | Y | Y | Universal |
-| Do not create branches without explicit instruction | Y | Y | Y | Y | Y | Universal |
-| Commit after each change | Y | Y | Y | P | Y | Strong |
-| Detailed commit message stating what and why | Y | Y | Y | P | Y | Strong |
-| No AI attribution in commits | N | Y | Y | Y | Y | Strong |
-| Never force-push or rewrite history without approval | Y | Y | Y | Y | Y | Universal |
-| Never commit secrets | Y | P | Y | Y | Y | Universal |
-| Keep `.git` visible | Y | Y | Y | Y | Y | Universal |
-| Update docs with code | Y | Y | Y | Y | Y | Universal |
-| Professional standard: clean, correct, structured, no hacks | Y | P | Y | Y | Y | Strong |
-| Five-step repair loop: reproduce, inspect, hypothesize, patch, verify | Y | P | Y | Y | Y | Strong |
-| Record causes, measurements, and rules in docs | Y | Y | Y | Y | Y | Universal |
-| Tool hierarchy prefers structured tools over raw shell | Y | P | Y | Y | Y | Strong |
-| Bounded reads and context hygiene | Y | N | Y | Y | Y | Strong |
-| Explicit autonomy tiers | Y | N | Y | Y | Y | Strong |
-| Controlled technical English | N | N | Y | Y | Y | Minority, valuable as an option |
-| No em-dash in project artifacts | N | N | Y | Y | Y | Minority, valuable as an option |
-| No unrequested settings | P | N | Y | Y | Y | Strong |
-| No CI/CD | Y | N | Y | Y | Y | Strong |
-| Installers are per-machine x64 NSIS | Y | Y | Y | P | Y | Strong |
+| Pattern | Evidence | Verdict |
+| --- | --- | --- |
+| Root `AGENTS.md`, `README.md`, `ROADMAP.md` | Present across sources | Universal |
+| `AGENTS.md` owns agent rules | Present across sources | Universal |
+| `README.md` owns product or operator description | Present across sources | Universal |
+| `ROADMAP.md` owns status and open work | Present across sources | Universal |
+| Quality gates block builds | Present across sources | Universal in intent |
+| One supported build entry point | Present across sources | Universal |
+| Build output under `builds\` | Present across sources | Universal |
+| Ask before an installer build | Present across sources | Strong |
+| Run verification before completion | Present across sources | Universal |
+| Never report an unrun check | Present across sources | Strong |
+| Work on `main` by default | Present across sources | Universal |
+| Do not create branches without explicit instruction | Present across sources | Universal |
+| Commit after each change | Present across sources | Strong |
+| Detailed commit message stating what and why | Present across sources | Strong |
+| No AI attribution in commits | Present across sources | Strong |
+| Never force-push or rewrite history without approval | Present across sources | Universal |
+| Never commit secrets | Present across sources | Universal |
+| Keep `.git` visible | Present across sources | Universal |
+| Update docs with code | Present across sources | Universal |
+| Professional standard: clean, correct, structured, no hacks | Present across sources | Strong |
+| Five-step repair loop: reproduce, inspect, hypothesize, patch, verify | Present across sources | Strong |
+| Record causes, measurements, and rules in docs | Present across sources | Universal |
+| Tool hierarchy prefers structured tools over raw shell | Present across sources | Strong |
+| Bounded reads and context hygiene | Present across sources | Strong |
+| Explicit autonomy tiers | Present across sources | Strong |
+| Controlled technical English | Present across sources | Minority, valuable as an option |
+| No em-dash in project artifacts | Present across sources | Minority, valuable as an option |
+| No unrequested settings | Present across sources | Strong |
+| No CI/CD | Present across sources | Strong |
+| Installers are per-machine x64 NSIS | Present across sources | Strong |
 
 ## 3. Universal core
 
-These rules appear in all five projects or are directly implied by the same
+These rules appear across sources or are directly implied by the same
 operating model.
 
 1. Keep one project root. Resolve paths from that root.
@@ -87,8 +83,8 @@ operating model.
 
 ## 4. Strong consensus
 
-These rules appear in four of five projects. They are included in the templates
-as defaults and marked as configurable where one project differs.
+These rules appear consistently across sources. They are included in the
+templates as defaults and marked as configurable where a source differs.
 
 - Commit after each completed change with a message that states what changed
   and why.
@@ -111,7 +107,7 @@ as defaults and marked as configurable where one project differs.
 
 ## 5. Valuable minority patterns
 
-These patterns appeared in three projects. They are offered as optional
+These patterns appeared in some sources. They are offered as optional
 modules rather than universal defaults.
 
 - ASD-STE100 Simplified Technical English for all project artifacts, with a
@@ -124,26 +120,26 @@ modules rather than universal defaults.
 
 ## 6. Conflicts found
 
-The source projects contain internal drift. The templates resolve these
+The sources contain internal drift. The templates resolve these
 conflicts with the following precedence.
 
 1. An executable config or gate result beats prose. If `package.json`, a gate
    script, or a build tool disagrees with a README, trust the executable source
    and repair the prose.
-2. A stricter agent-facing rule beats a looser tool-facing rule. BRICK requires
-   zero lint warnings in `AGENTS.md`, while its gate README allows warnings.
-   The agent-facing zero-warning rule is the safer default.
-3. The build tool order beats a stale README sentence. CONTXT has one README
-   line that puts gates after installer creation. Every other source puts gates
+2. A stricter agent-facing rule beats a looser tool-facing rule. A source
+   required zero lint warnings in its rulebook while its gate README allowed
+   warnings. The agent-facing zero-warning rule is the safer default.
+3. The build tool order beats a stale README sentence. A source had one README
+   line that put gates after installer creation. Every other source put gates
    first. The templates keep gates first.
-4. A dated historical report stays dated. NETLIX `INVESTIGATION.md` records old
-   paths and earlier states. Keep those facts as history and link to current
-   docs for present state.
-5. Do not weaken a pin to make a gate green. MOXY records repeated repairs
-   where a stale assertion was retargeted to the current shipped shape while
-   its mutation test still caught the original defect.
-6. A placeholder doc is a gap, not a fact. NETLIX `engine\README.md` still says
-   the sidecar is planned while the root docs describe it as implemented.
+4. A dated historical report stays dated. A source kept old paths and earlier
+   states in its investigation record. Keep those facts as history and link to
+   current docs for present state.
+5. Do not weaken a pin to make a gate green. A source recorded repeated repairs
+   where a stale assertion was retargeted to the current shipped shape while its
+   mutation test still caught the original defect.
+6. A placeholder doc is a gap, not a fact. A source kept a sidecar doc that said
+   the sidecar was planned while the root docs described it as implemented.
 
 ## 7. Decisions taken in the templates
 
