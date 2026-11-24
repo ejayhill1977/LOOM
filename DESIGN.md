@@ -1,6 +1,6 @@
 # DESIGN.md
 
-Design rules for LOOM handoff templates and generated artifacts.
+Design rules for this project's UI surfaces.
 
 ## 1. Purpose
 
@@ -8,9 +8,9 @@ This document records approved UI components, design tokens, interaction require
 
 ## 2. Scope
 
-- Applies to all HTML, CSS, and JavaScript produced by the LOOM viewer (`builds\`).
-- Applies to template source in `build\handoff\` and `build\index.html`.
-- Does not apply to external documentation rendered by the viewer.
+- Applies to all HTML, CSS, and JavaScript in this project.
+- Applies to template source and generated artifacts.
+- Does not apply to external documentation rendered by the project.
 
 ## 3. Design tokens
 
