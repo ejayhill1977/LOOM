@@ -258,6 +258,7 @@ only source of truth.
 | Focused test | `{{FOCUSED_TEST_COMMAND}}` | `{{HARD_OR_ADVISORY}}` | `{{FOCUSED_TEST_RULE}}` |
 | Full test | `{{TEST_COMMAND}}` | `{{HARD_OR_ADVISORY}}` | `{{TEST_RULE}}` |
 | Gates | `{{GATE_COMMAND}}` | `{{HARD_OR_BASELINE}}` | `{{GATE_RULE}}` |
+| one-shot pipeline | `{{ONE_SHOT_COMMAND}}` | `{{HARD_OR_BASELINE}}` | `{{ONE_SHOT_RULE}}` |
 
 Rules:
 

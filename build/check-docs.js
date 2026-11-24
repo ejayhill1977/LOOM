@@ -215,10 +215,10 @@ const scripts = [
   'ask-onboarding.js',
   'check-contradictions.js',
   'check-docs.js',
-  'discover-mcp.js',
   'docs.js',
   'generate-docs.js',
   'mcp-lib.js',
+  'one-shot.js',
   'smoke-test.js'
 ];
 

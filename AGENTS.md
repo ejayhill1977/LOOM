@@ -254,6 +254,7 @@ only source of truth.
 | Browser smoke test | `node build\smoke-test.js` | Gap when unavailable | Run when Playwright is installed. State a skip. |
 | Full test | `node build\check-docs.js; node build\check-contradictions.js; node build\generate-docs.js; node --check build\app.js; node --check build\generate-docs.js; node --check build\docs.js; node build\smoke-test.js` | Hard | Run all local checks before completion. State a browser skip. |
 | Gates | `node build\check-docs.js; node build\check-contradictions.js` | Hard | Do not weaken or skip a gate. |
+| one-shot pipeline | `node build\one-shot.js one-shot` | Hard | Run gates, update documentation, commit, push, and build in one command. |
 
 Rules:
 
