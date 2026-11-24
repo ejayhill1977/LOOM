@@ -1,8 +1,9 @@
 # {{PROJECT_TITLE}} Roadmap
 
 `AGENTS.md` owns rules and commands. `README.md` owns product behavior and
-operator procedures. This file owns measured status, open work, decisions, and
-change history.
+operator procedures. `DESIGN.md` owns UI components, tokens, interaction,
+accessibility, and prohibitions. This file owns measured status, open work,
+decisions, and change history.
 
 ## Status snapshot
 

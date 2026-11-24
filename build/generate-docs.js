@@ -5,7 +5,7 @@ const path = require('path');
 const handoffDir = path.join(__dirname, 'handoff');
 const buildDir = __dirname;
 const outputDir = path.resolve(buildDir, '..', 'builds');
-const files = ['AGENTS.md', 'SKILLS.md', 'README.md', 'ROADMAP.md'];
+const files = ['AGENTS.md', 'SKILLS.md', 'README.md', 'ROADMAP.md', 'DESIGN.md'];
 const docs = {};
 
 for (const file of files) {

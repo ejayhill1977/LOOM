@@ -106,11 +106,14 @@ a dated record.
 3. `AGENTS.md` owns stack facts, commands, rules, and file ownership.
 4. `README.md` owns product behavior, controls, setup, and operator procedures.
 5. `ROADMAP.md` owns measured status, open work, decisions, and change history.
-6. A focused subdocument such as `build\README.md` owns one subsystem. Link to
+6. `DESIGN.md` owns approved UI components, design tokens, interaction and
+   accessibility requirements, and explicit prohibitions. Read `DESIGN.md`
+   before changing any UI surface.
+7. A focused subdocument such as `build\README.md` owns one subsystem. Link to
    it instead of restating it here.
-7. If a document and executable configuration disagree, trust the executable
+8. If a document and executable configuration disagree, trust the executable
    configuration and repair the document.
-8. Do not read, edit, move, delete, or commit a directory marked private by the
+9. Do not read, edit, move, delete, or commit a directory marked private by the
    owner. Never un-ignore a private directory.
 
 ## 2. Professional standard

@@ -18,6 +18,7 @@ start with a proven rulebook and help an existing project repair its docs.
 | `AGENTS.md` | Reusable agent rulebook template |
 | `SKILLS.md` | Reusable skills for agentic coding work |
 | `ROADMAP.md` | Measured status, open work, and change history |
+| `DESIGN.md` | Approved UI components, tokens, interaction, accessibility, and prohibitions |
 | `build\AGENTS.template.md` | Generic agent rulebook source |
 | `build\handoff\` | Generic viewer templates for handoff |
 | `build\README.md` | Viewer and local gate procedures |
@@ -134,6 +135,7 @@ Use `node build\ask-onboarding.js` for one question per run. Use
 | Agent rulebook | `AGENTS.md`, the authority for agent rules and commands |
 | Product doc | `README.md`, the authority for product behavior and procedures |
 | Plan ledger | `ROADMAP.md`, the authority for status and open work |
+| Design guide | `DESIGN.md`, the authority for UI components, tokens, and accessibility |
 | Gate | An executable check that protects a known behavior |
 | Hard gate | A gate that blocks completion or a build on failure |
 | Baseline gate | A gate that blocks new failures but tolerates recorded debt |

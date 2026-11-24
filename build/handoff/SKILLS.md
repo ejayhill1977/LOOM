@@ -21,15 +21,16 @@ matches its description. This file keeps those procedures in one catalogue.
 | 7 | Engineer a regression gate | A defect needs a guard that cannot silently pass. |
 | 8 | Prepare a build gate | An artifact requires checks before creation. |
 | 9 | Design a build system | The project needs a supported artifact path. |
-| 10 | Analyze local sources | A template needs evidence from real projects. |
-| 11 | Write controlled prose | Docs, comments, or commit text need review. |
-| 12 | Resolve a conflict | Two documents or settings make different claims. |
-| 13 | Apply a change | A defect or request needs a controlled edit. |
-| 14 | Finish a change | Work needs verification and a final report. |
-| 15 | Run an onboarding interview | Required project facts are missing. |
-| 16 | Resolve contradictions | Documents disagree with executable configuration. |
-| 17 | Document MCP integration | The project exposes or consumes MCP surfaces. |
-| 18 | Update an existing project | A project needs its docs brought to the current template. |
+| 10 | Write a `DESIGN.md` | The project needs UI components, tokens, and accessibility rules. |
+| 11 | Analyze local sources | A template needs evidence from real projects. |
+| 12 | Write controlled prose | Docs, comments, or commit text need review. |
+| 13 | Resolve a conflict | Two documents or settings make different claims. |
+| 14 | Apply a change | A defect or request needs a controlled edit. |
+| 15 | Finish a change | Work needs verification and a final report. |
+| 16 | Run an onboarding interview | Required project facts are missing. |
+| 17 | Resolve contradictions | Documents disagree with executable configuration. |
+| 18 | Document MCP integration | The project exposes or consumes MCP surfaces. |
+| 19 | Update an existing project | A project needs its docs brought to the current template. |
 
 ## 1. Start a new project
 
@@ -131,7 +132,19 @@ Use section 18 to apply the current template after the audit.
 9. Keep `favicon.ico` at 16x16 pixels. A larger icon adds bytes without
    improving the browser tab.
 
-## 10. Analyze local sources
+## 10. Write a `DESIGN.md`
+
+1. List approved UI components with markup and CSS examples.
+2. Define design tokens: colors, spacing, typography, radius, shadows.
+3. Specify interaction requirements: focus, touch, animations.
+4. Specify accessibility requirements: semantic HTML, ARIA, contrast, text.
+5. List explicit prohibitions: obsolete HTML, CSS, and JavaScript APIs.
+6. Add platform-specific sections (Windows desktop, web app).
+7. Document linting and enforcement rules.
+8. Provide a verification checklist for PR review.
+9. Link `DESIGN.md` from `AGENTS.md` authority section.
+
+## 11. Analyze local sources
 
 1. List candidate projects before reading files.
 2. Exclude dependencies, generated output, binaries, vendor files, and private notes.

@@ -8,7 +8,8 @@
 
 This document owns product behavior, setup, controls, operator procedures, and
 terminology. `AGENTS.md` owns rules and commands. `ROADMAP.md` owns measured
-status, decisions, and change history.
+status, decisions, and change history. `DESIGN.md` owns UI components, tokens,
+interaction, accessibility, and prohibitions.
 
 Link to a focused subdocument instead of copying its content.
 
@@ -20,6 +21,7 @@ Link to a focused subdocument instead of copying its content.
 | `SKILLS.md` | Repeatable work procedures. |
 | `README.md` | Product behavior and operator procedures. |
 | `ROADMAP.md` | Status, open work, decisions, and change history. |
+| `DESIGN.md` | UI components, tokens, interaction, accessibility, prohibitions. |
 
 ## Setup
 
@@ -32,7 +34,7 @@ Link to a focused subdocument instead of copying its content.
 
 Use this section to refresh an already onboarded project.
 
-1. Read `AGENTS.md`, `SKILLS.md`, `README.md`, and `ROADMAP.md`.
+1. Read `AGENTS.md`, `SKILLS.md`, `README.md`, `ROADMAP.md`, and `DESIGN.md`.
 2. Run the local checks. Record the current result.
 3. Compare each documented command with executable configuration.
 4. Confirm missing or contradicted answers with the owner. Ask one question at
