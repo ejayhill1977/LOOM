@@ -44,13 +44,17 @@ This document records approved UI components, design tokens, interaction require
 
 | Token | Value |
 | --- | --- |
-| `--font-sans` | `system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif` |
+| `--font-sans` | `Poppins, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif` |
 | `--font-mono` | `ui-monospace, SFMono-Regular, Menlo, Consolas, monospace` |
 | `--text-xs` | 12px |
 | `--text-sm` | 14px |
 | `--text-base` | 16px |
 | `--text-lg` | 18px |
 | `--text-xl` | 20px |
+
+- Written content uses Poppins at 16px base size.
+- All GUI elements (forms, buttons, labels, menus, tabs, headers) use Poppins.
+- Poppins is loaded from a CDN or bundled locally with `font-display: swap`.
 
 ### 3.4 Radius and shadows
 
