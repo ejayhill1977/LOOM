@@ -119,7 +119,7 @@ files in `builds\` by hand.
 | --- | --- | --- |
 | Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
-| Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules and onboarding defaults in the handoff templates |
+| Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules, secret protection rules, and onboarding defaults in the handoff templates |
 
 Both gates exit `0` on pass and non-zero on failure. Both print `PASS: ...` or
 `FAIL: ...`. The contradiction gate reports one conflict per run. Use

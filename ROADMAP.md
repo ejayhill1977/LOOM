@@ -48,6 +48,7 @@ Verified on 2026-11-25.
 | Controlled language enforcement | Absent | Rules documented, not checked |
 | Data storage rules | Present | `AGENTS.md` section 1 and section 5 |
 | Data rules gate | Present | `build\gates\check-data-rules.js` |
+| Secret protection rules | Present | `AGENTS.md` section 8.1 and section 11 |
 
 The active branch is `main`.
 
@@ -146,6 +147,7 @@ work.
 | 2026-11-25 | Treat locations outside the project root as read only during analysis | Owner rule for every project |
 | 2026-11-25 | Bake onboarding defaults into the handoff templates | Owner wants sensible defaults for each question |
 | 2026-11-25 | Add a data rules regression gate in `build\gates\` | Prevent silent removal of the data rules and defaults |
+| 2026-11-25 | Add a secret and credential protection policy to every rulebook | Prevent secrets from entering commits |
 
 ## 7. Change log
 
@@ -252,6 +254,7 @@ work.
 - Added `build\gates\check-data-rules.js` and wired it into the gates, full test, and one-shot pipeline.
 - Clarified that the Q9 installer timestamp uses the local build time.
 - Recorded the browser smoke test skip as an accepted gap.
+- Added the secret and credential protection policy to the handoff, root, and template rulebooks and to the data rules gate.
 
 ## 8. Maintenance
 

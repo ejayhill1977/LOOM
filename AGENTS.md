@@ -265,7 +265,7 @@ only source of truth.
 | --- | --- | --- | --- |
 | Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, and writing markers. |
 | Contradictions | `node build\check-contradictions.js` | Hard | Compare answer file, documented scripts, MCP state, and Git state. |
-| Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules and onboarding defaults in the handoff templates. |
+| Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules, secret protection rules, and onboarding defaults in the handoff templates. |
 | Format check | `None` | Gap | No formatter is configured. |
 | Typecheck | `None` | Gap | No typechecker is configured. |
 | Focused test | `node --check build\app.js` | Hard | Run after JavaScript changes in `build\`. |
@@ -348,6 +348,42 @@ Read this section before any edit, commit, push, or pull request.
 Set `user.name` and `user.email` from `build\git-details.local.json`. Do not use
 these values in another project or in a generic template. Keep
 `build\git-details.local.json` ignored.
+
+### 8.1 Secret and credential protection
+
+Before you create or modify a commit, inspect every staged file and the staged
+diff. Inspect untracked files that you are about to add.
+
+Treat these as potentially sensitive, not only files named `.env`:
+
+- API keys, tokens, passwords, private keys, certificates, connection strings,
+  and session cookies.
+- Cloud, database, payment, source-control, and deployment credentials.
+- Credential stores, local agent settings, logs, backups, exports, and files
+  with names such as `*secret*`, `*credential*`, `*token*`, or `*key*`.
+
+If you find a likely secret:
+
+1. Do not stage or commit it. Do not print, quote, or copy the secret into chat,
+   logs, commands, or generated files.
+2. Report the file path and a brief reason, with the suspected value redacted.
+3. Suggest removing the secret from the change. Add the file or pattern to
+   `.gitignore` where appropriate. Use an environment variable or an approved
+   secret manager instead.
+4. If the secret may already be committed or shared, advise the owner to revoke
+   or rotate it.
+
+Do not assume `.gitignore` protects a file that is already tracked. Verify
+whether a file is staged or tracked before you claim it is excluded. Do not
+delete or rewrite a user file automatically.
+
+The owner may override a warning for a specific file. Explain that the file
+appears to contain sensitive data. Ask for confirmation. Proceed only after a
+clear and specific confirmation. Never reveal the suspected value. A general
+instruction such as "ignore the warnings" is not confirmation for a particular
+secret-bearing file.
+
+Note. A tool approval prompt does not relax this rule.
 
 ## 9. Building and running
 
@@ -465,7 +501,8 @@ Explicit confirmation required:
 Never:
 
 - commit a secret or personal data,
-- print a secret,
+- stage or commit a file that contains a likely secret,
+- print, quote, or copy a secret into chat, logs, commands, or generated files,
 - write project files outside the project root,
 - store project data outside the project root at any time,
 - store a database or data file outside the `data\` subfolder,

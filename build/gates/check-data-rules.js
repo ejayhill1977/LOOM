@@ -1,5 +1,5 @@
 // check-data-rules.js
-// Title: Data storage and onboarding default rules gate
+// Title: Data storage, secret protection, and onboarding default rules gate
 
 const fs = require('fs');
 const path = require('path');
@@ -17,6 +17,12 @@ const dataRulePhrases = [
   'Never modify, move, or delete a file or folder'
 ];
 
+const secretRulePhrases = [
+  'Secret and credential protection',
+  'Do not stage or commit it',
+  'Do not assume `.gitignore` protects a file that is already tracked'
+];
+
 const ruleFiles = [
   'AGENTS.md',
   'build\\AGENTS.template.md',
@@ -28,6 +34,11 @@ for (const relative of ruleFiles) {
   for (const phrase of dataRulePhrases) {
     if (!text.includes(phrase)) {
       failures.push(relative + ' is missing data rule: ' + phrase);
+    }
+  }
+  for (const phrase of secretRulePhrases) {
+    if (!text.includes(phrase)) {
+      failures.push(relative + ' is missing secret rule: ' + phrase);
     }
   }
 }
@@ -66,4 +77,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log('PASS: data storage rules and onboarding defaults');
+console.log('PASS: data storage rules, secret protection, and onboarding defaults');

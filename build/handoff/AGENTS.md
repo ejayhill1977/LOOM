@@ -347,6 +347,42 @@ Read this section before any edit, commit, push, or pull request.
     shell.
 19. Never commit `desktop.ini`. Keep it in `.gitignore`.
 
+### 8.1 Secret and credential protection
+
+Before you create or modify a commit, inspect every staged file and the staged
+diff. Inspect untracked files that you are about to add.
+
+Treat these as potentially sensitive, not only files named `.env`:
+
+- API keys, tokens, passwords, private keys, certificates, connection strings,
+  and session cookies.
+- Cloud, database, payment, source-control, and deployment credentials.
+- Credential stores, local agent settings, logs, backups, exports, and files
+  with names such as `*secret*`, `*credential*`, `*token*`, or `*key*`.
+
+If you find a likely secret:
+
+1. Do not stage or commit it. Do not print, quote, or copy the secret into chat,
+   logs, commands, or generated files.
+2. Report the file path and a brief reason, with the suspected value redacted.
+3. Suggest removing the secret from the change. Add the file or pattern to
+   `.gitignore` where appropriate. Use an environment variable or an approved
+   secret manager instead.
+4. If the secret may already be committed or shared, advise the owner to revoke
+   or rotate it.
+
+Do not assume `.gitignore` protects a file that is already tracked. Verify
+whether a file is staged or tracked before you claim it is excluded. Do not
+delete or rewrite a user file automatically.
+
+The owner may override a warning for a specific file. Explain that the file
+appears to contain sensitive data. Ask for confirmation. Proceed only after a
+clear and specific confirmation. Never reveal the suspected value. A general
+instruction such as "ignore the warnings" is not confirmation for a particular
+secret-bearing file.
+
+Note. A tool approval prompt does not relax this rule.
+
 ## 9. Building and running
 
 ### 9.1 Supported commands
@@ -457,7 +493,8 @@ Explicit confirmation required:
 Never:
 
 - commit a secret or personal data,
-- print a secret,
+- stage or commit a file that contains a likely secret,
+- print, quote, or copy a secret into chat, logs, commands, or generated files,
 - write project files outside the project root,
 - store project data outside the project root at any time,
 - store a database or data file outside the `data\` subfolder,
