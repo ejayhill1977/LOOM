@@ -126,6 +126,16 @@ Apply this standard to every code and documentation change.
 - Preserve the detected architecture. Record a required architecture change in
   `ROADMAP.md` before implementation.
 
+### 2.1 Presenting multiple options
+
+- When presenting multiple options, never use a bulleted or numbered list.
+- Render each option as a selectable card in a responsive grid.
+- Keep each card concise.
+- Make the whole card selectable.
+- Let the grid wrap to fit the available screen width and height.
+- If the interface cannot render interactive cards, say so rather than pretending
+  plain-text boxes are selectable.
+
 ## 3. Writing rules
 
 These rules apply to code comments, documentation, commit messages, pull
