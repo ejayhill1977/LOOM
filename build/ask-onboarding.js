@@ -1,3 +1,7 @@
+// ask-onboarding.js
+// Role: Ask one onboarding question per run and store the answer.
+// Last reviewed: 2026-11-26
+
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');

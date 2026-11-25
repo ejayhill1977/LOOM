@@ -1,3 +1,7 @@
+// app.js
+// Role: Draw the handoff viewer and copy the selected template to the clipboard.
+// Last reviewed: 2026-11-26
+
 (function () {
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   const panel = document.getElementById('doc-panel');

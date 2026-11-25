@@ -1,3 +1,7 @@
+// check-contradictions.js
+// Role: Compare the documents with the answer file, MCP state, and Git state.
+// Last reviewed: 2026-11-26
+
 const fs = require('fs');
 const path = require('path');
 const lib = require('./mcp-lib');
@@ -104,7 +108,10 @@ const sharedFiles = [
   'build\\handoff\\ROADMAP.md',
   'build\\handoff\\SKILLS.md',
   'build\\onboarding-answers.template.json',
+  'build\\one-shot.js',
   'build\\smoke-test.js',
+  'build\\update-comments.js',
+  'build\\update-roadmap.js',
   'builds\\index.html',
   'builds\\favicon.ico',
   'builds\\styles.css',

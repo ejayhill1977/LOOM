@@ -1,3 +1,7 @@
+// check-docs.js
+// Role: Check the documents, handoff templates, and built viewer artifacts.
+// Last reviewed: 2026-11-26
+
 const fs = require('fs');
 const path = require('path');
 
@@ -219,7 +223,9 @@ const scripts = [
   'generate-docs.js',
   'mcp-lib.js',
   'one-shot.js',
-  'smoke-test.js'
+  'smoke-test.js',
+  'update-comments.js',
+  'update-roadmap.js'
 ];
 
 for (const file of scripts) {

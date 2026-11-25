@@ -1,3 +1,7 @@
+// mcp-lib.js
+// Role: Share MCP configuration discovery between the local tools.
+// Last reviewed: 2026-11-26
+
 const fs = require('fs');
 const path = require('path');
 

@@ -1,3 +1,7 @@
+// generate-docs.js
+// Role: Embed the handoff templates and write the static viewer to builds\.
+// Last reviewed: 2026-11-26
+
 const fs = require('fs');
 const path = require('path');
 

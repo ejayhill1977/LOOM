@@ -272,7 +272,7 @@ only source of truth.
 | Browser smoke test | `node build\smoke-test.js` | Gap when unavailable | Run when Playwright is installed. State a skip. |
 | Full test | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js; node build\generate-docs.js; node --check build\app.js; node --check build\generate-docs.js; node --check build\docs.js; node build\smoke-test.js` | Hard | Run all local checks before completion. State a browser skip. |
 | Gates | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` | Hard | Do not weaken or skip a gate. |
-| one-shot pipeline | `node build\one-shot.js one-shot` | Hard | Run gates, update documentation, commit, push, and build in one command. |
+| one-shot pipeline | `node build\one-shot.js one-shot` | Hard | Run gates, review code comments, refresh the roadmap, build artifacts, commit, and push in one command. |
 
 Rules:
 
@@ -396,6 +396,8 @@ Note. A tool approval prompt does not relax this rule.
 | Ask next onboarding question | `node build\ask-onboarding.js` |
 | Discover MCP configuration | `node build\discover-mcp.js` |
 | Run checks | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` |
+| Update code comments | `node build\update-comments.js` |
+| Update roadmap | `node build\update-roadmap.js` |
 | Browser smoke test | `node build\smoke-test.js` |
 | Build | `node build\generate-docs.js` |
 | Build gates only | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` |
@@ -412,7 +414,9 @@ No legacy build entry point exists. The source viewer is a static page in
    standing owner request is the only exception.
 2. Do code work, comments, documentation, verification, and the commit before
    asking about a build.
-3. Run gates first. A failed gate stops the run before any artifact is written.
+3. Run the preflight gates first. A failed preflight gate stops the run before
+   any artifact is written. Build the artifact before the gate that checks
+   artifact freshness.
 4. Do not bypass, skip, or weaken a gate to make a build pass.
 5. Write artifacts only to `builds\`.
 6. Keep one artifact shape. Use the static viewer with `index.html`,

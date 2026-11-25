@@ -16,7 +16,7 @@ links to the other documents instead of restating them.
 
 ## 2. Status snapshot
 
-Verified on 2026-11-25.
+Verified on 2026-11-26.
 
 | Item | State | Evidence |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ Verified on 2026-11-25.
 | Final output folder | `builds\` | Five viewer files in `builds\` |
 | Tabbed viewer | Present | `build\index.html` and `build\handoff\` |
 | Docs embed generator | Present | `build\generate-docs.js` |
+| Code comment updater | Present | `build\update-comments.js` |
+| Roadmap updater | Present | `build\update-roadmap.js` |
+| One-shot pipeline | Present | `build\one-shot.js` |
 | Document check gate | Present | `build\check-docs.js` |
 | Onboarding question catalogue | Present | `AGENTS.md` section 0 |
 | Onboarding answer file | Present | `onboarding-answers.json` |
@@ -102,7 +105,6 @@ fixture, and is documented with its closure check.
 - Add a handoff template registry for common protocol contracts.
 - Add a migration checklist from legacy docs into the three-document model.
 - Add an onboarding answer validator gate.
-- Add a command table generator from `package.json` or equivalent.
 
 Each planned item needs a measurable closure check before it moves to open
 work.
@@ -110,6 +112,7 @@ work.
 ## 5. Known gaps and debt
 
 - Regression gates still live in `build\`. The data rules gate is the first gate in `build\gates\`.
+- The one-shot pipeline builds artifacts before the artifact gate, so a failed late gate leaves regenerated files uncommitted.
 - Browser verification has not run. The smoke test reports a skip.
 - No full controlled language check exists.
 - MCP discovery reads local config files only.
@@ -148,6 +151,11 @@ work.
 | 2026-11-25 | Bake onboarding defaults into the handoff templates | Owner wants sensible defaults for each question |
 | 2026-11-25 | Add a data rules regression gate in `build\gates\` | Prevent silent removal of the data rules and defaults |
 | 2026-11-25 | Add a secret and credential protection policy to every rulebook | Prevent secrets from entering commits |
+| 2026-11-25 | Build the viewer artifacts before the gate that compares them | The freshness gate can only pass after a rebuild |
+| 2026-11-25 | Commit only after every gate passes | A failed gate must not reach history |
+| 2026-11-25 | Scan the staged change for likely secrets before each commit | A file name alone does not show a secret |
+| 2026-11-25 | Record one pipeline line per day in the change log | Provenance stays short and free of repeats |
+| 2026-11-25 | Keep the pipeline on `main` and `origin` only | Every run ends on one published branch |
 
 ## 7. Change log
 
@@ -255,6 +263,15 @@ work.
 - Clarified that the Q9 installer timestamp uses the local build time.
 - Recorded the browser smoke test skip as an accepted gap.
 - Added the secret and credential protection policy to the handoff, root, and template rulebooks and to the data rules gate.
+- Upgraded the one-shot pipeline to review code comments, refresh the roadmap, build artifacts before the artifact gate, scan the staged change for secrets, then commit and push.
+- Added `build\update-comments.js` to keep each build script header current.
+- Added `build\update-roadmap.js` to refresh the verified date and the pipeline entry.
+- Fixed the pipeline order so artifacts are built and verified before the commit.
+- Recorded the pipeline order, the secret scan, and the daily record rule in the decisions table.
+
+### 2026-11-26
+
+- Ran the one-shot pipeline: gates, code comment review, roadmap refresh, artifact build, commit, push.
 
 ## 8. Maintenance
 

@@ -1,3 +1,7 @@
+// discover-mcp.js
+// Role: Print the MCP servers found in local configuration files.
+// Last reviewed: 2026-11-26
+
 const fs = require('fs');
 const path = require('path');
 const lib = require('./mcp-lib');

@@ -1,3 +1,7 @@
+// smoke-test.js
+// Role: Open the built viewer and compare each tab with its handoff template.
+// Last reviewed: 2026-11-26
+
 const fs = require('fs');
 const path = require('path');
 

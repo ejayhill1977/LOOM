@@ -1,5 +1,7 @@
 // check-data-rules.js
 // Title: Data storage, secret protection, and onboarding default rules gate
+// Role: Enforce the data storage, secret protection, and onboarding default rules.
+// Last reviewed: 2026-11-26
 
 const fs = require('fs');
 const path = require('path');

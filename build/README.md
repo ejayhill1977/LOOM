@@ -20,6 +20,9 @@ checks.
 | `docs.js` | Generated template data used by the viewer |
 | `check-docs.js` | Documentation gate |
 | `check-contradictions.js` | Contradiction detector gate |
+| `update-comments.js` | Refreshes the header date on each changed build script |
+| `update-roadmap.js` | Refreshes the verified date and the pipeline entry |
+| `one-shot.js` | Runs gates, comments, roadmap, artifacts, commit, and push |
 | `gates\` | Regression gates that enforce project rules |
 | `mcp-lib.js` | Shared MCP config discovery logic |
 | `discover-mcp.js` | MCP config discovery command |
@@ -112,6 +115,31 @@ Run this command from the project root after any handoff template changes.
 The command reads `build\handoff\` and rewrites `build\docs.js`. It then copies
 the viewer files and generated data into `builds\`. Do not edit `docs.js` or the
 files in `builds\` by hand.
+
+## One-shot pipeline
+
+Run this command from the project root.
+
+`node build\one-shot.js one-shot`
+
+The pipeline runs eight steps in order.
+
+| Step | Action |
+| --- | --- |
+| 1 | Check `main`, `origin`, and the GitHub remote. |
+| 2 | Run the contradiction gate and the data rules gate. |
+| 3 | Refresh each changed build script header date. |
+| 4 | Refresh the verified date and the pipeline entry in `ROADMAP.md`. |
+| 5 | Build the static viewer in `builds\` and confirm all five artifacts. |
+| 6 | Run the documentation gate, the other two gates, and a syntax check on each script. |
+| 7 | Scan the staged change for likely secrets, then commit with a detailed message. |
+| 8 | Push `main` to `origin`. |
+
+Step 7 runs only when the tree has changes. The pipeline exits non-zero at the
+first failure and names the step. The artifact build comes before the gate that
+compares `builds\` with `build\`, because that gate cannot pass on a stale
+artifact. The commit follows the full gate set, so a failed gate leaves no
+commit and no push.
 
 ## Gates
 
