@@ -16,7 +16,7 @@ links to the other documents instead of restating them.
 
 ## 2. Status snapshot
 
-Verified on 2026-11-22.
+Verified on 2026-11-25.
 
 | Item | State | Evidence |
 | --- | --- | --- |
@@ -46,6 +46,8 @@ Verified on 2026-11-22.
 | Browser verification | Not run | No Playwright browser is installed |
 | Version control | `main` published | `git status -sb` and `git branch -vv` |
 | Controlled language enforcement | Absent | Rules documented, not checked |
+| Data storage rules | Present | `AGENTS.md` section 1 and section 5 |
+| Data rules gate | Present | `build\gates\check-data-rules.js` |
 
 The active branch is `main`.
 
@@ -106,7 +108,7 @@ work.
 
 ## 5. Known gaps and debt
 
-- Regression gates still live in `build\`. The `build\gates\` rule is documented, not applied.
+- Regression gates still live in `build\`. The data rules gate is the first gate in `build\gates\`.
 - Browser verification has not run. The smoke test reports a skip.
 - No full controlled language check exists.
 - MCP discovery reads local config files only.
@@ -140,6 +142,10 @@ work.
 | 2026-11-22 | Write final viewer artifacts to `builds\` and keep tools in `build\` | Owner separates build tools from final output artifacts |
 | 2026-11-22 | Store every regression gate in `build\gates\` | Keep gates separate from tools and templates |
 | 2026-11-22 | Keep `favicon.ico` at 16x16 pixels | A larger icon adds bytes without improving the browser tab |
+| 2026-11-25 | Store all project data inside the project root and in `data\` | Owner rule for every project |
+| 2026-11-25 | Treat locations outside the project root as read only during analysis | Owner rule for every project |
+| 2026-11-25 | Bake onboarding defaults into the handoff templates | Owner wants sensible defaults for each question |
+| 2026-11-25 | Add a data rules regression gate in `build\gates\` | Prevent silent removal of the data rules and defaults |
 
 ## 7. Change log
 
@@ -236,6 +242,16 @@ work.
 | Gate verdict | `check-docs` PASS, `check-contradictions` PASS |
 | Not run | Browser smoke test skipped because Playwright is absent |
 | Signing | Not performed because no signing step exists |
+
+### 2026-11-25
+
+- Added onboarding defaults to the handoff `AGENTS.md` question table and `SKILLS.md` interview steps.
+- Added data storage rules to the handoff `AGENTS.md`, the root `AGENTS.md`, and `build\AGENTS.template.md`.
+- Added the read only rule for locations outside the project root.
+- Added the `data\` subfolder convention and ignored `data\` in `.gitignore`.
+- Added `build\gates\check-data-rules.js` and wired it into the gates, full test, and one-shot pipeline.
+- Clarified that the Q9 installer timestamp uses the local build time.
+- Recorded the browser smoke test skip as an accepted gap.
 
 ## 8. Maintenance
 

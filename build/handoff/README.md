@@ -15,6 +15,8 @@ interaction, accessibility, and prohibitions.
 
 Link to a focused subdocument instead of copying its content.
 
+Data storage rules live in `AGENTS.md` section 1 and section 5.
+
 ## Document map
 
 | Document | Use |

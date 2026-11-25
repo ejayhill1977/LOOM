@@ -20,6 +20,7 @@ checks.
 | `docs.js` | Generated template data used by the viewer |
 | `check-docs.js` | Documentation gate |
 | `check-contradictions.js` | Contradiction detector gate |
+| `gates\` | Regression gates that enforce project rules |
 | `mcp-lib.js` | Shared MCP config discovery logic |
 | `discover-mcp.js` | MCP config discovery command |
 | `smoke-test.js` | Browser smoke test |
@@ -118,13 +119,15 @@ files in `builds\` by hand.
 | --- | --- | --- |
 | Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
+| Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules and onboarding defaults in the handoff templates |
 
 Both gates exit `0` on pass and non-zero on failure. Both print `PASS: ...` or
 `FAIL: ...`. The contradiction gate reports one conflict per run. Use
 `--answers <path>` to test another answer file.
 
 Store every regression gate in `build\gates\`. Name each gate file `check-*.js`.
-The gates in this folder remain in `build\` until the move is complete.
+The gates in this folder remain in `build\` until the move is complete. The data
+rules gate already lives in `build\gates\`.
 
 ## MCP discovery
 

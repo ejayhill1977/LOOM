@@ -23,6 +23,7 @@ function main() {
   console.log('\n--- Step 1: Run gates ---');
   run('node build\\check-docs.js', 'documentation checks');
   run('node build\\check-contradictions.js', 'contradiction checks');
+  run('node build\\gates\\check-data-rules.js', 'data rule checks');
 
   // Step 2: Update documentation (regenerate embedded docs from templates)
   console.log('\n--- Step 2: Update documentation ---');

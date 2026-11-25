@@ -112,6 +112,10 @@ a dated record.
    configuration and repair the document.
 8. Do not read, edit, move, delete, or commit a directory marked private by the
    owner. Never un-ignore a private directory.
+9. Never store project data outside `{{PROJECT_ROOT}}` at any time.
+10. Store every database and data file in the `data\` subfolder.
+11. When you query or analyze a location outside `{{PROJECT_ROOT}}`, treat it as
+    read only. Never modify, move, or delete a file or folder there.
 
 ## 2. Professional standard
 
@@ -202,10 +206,13 @@ step failed and why. Report evidence, not intent.
 
 - Resolve application, resource, and user data paths at runtime. Do not hard-code
   absolute paths in program code.
-- Keep user data inside the project root unless the product documents a narrow
-  installed-app exception.
+- Keep all project data inside the project root at all times.
+- Store every database and data file in the `data\` subfolder.
+- Add `data\` to `.gitignore` when the files are local user data.
 - Put test sandboxes inside the project and add them to `.gitignore`. Do not
   write project data to the OS temp folder.
+- When you analyze a location outside the project root, do not modify or remove
+  any file or folder there.
 - Keep dependency versions pinned. Keep related runtime packages compatible.
 - Bundle every runtime binary the product needs.
 - Validate and sanitize IPC input, external data, file paths, and URI input.
@@ -435,6 +442,9 @@ Never:
 - commit a secret or personal data,
 - print a secret,
 - write project files outside the project root,
+- store project data outside the project root at any time,
+- store a database or data file outside the `data\` subfolder,
+- modify or remove a file or folder outside the project root during analysis,
 - weaken a gate to make a build pass,
 - claim a check that did not run,
 - hide `.git`,

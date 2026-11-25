@@ -63,7 +63,7 @@ new project. Confirm the stored answers for an existing project.
 | Q5 | LOOM turns observed agentic documentation patterns into reusable templates. |
 | Q6 | Static HTML, CSS, JavaScript, and Node local checks |
 | Q7 | `node build\generate-docs.js` |
-| Q8 | `node build\check-docs.js; node build\check-contradictions.js` |
+| Q8 | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` |
 | Q9 | `builds\` |
 | Q10 | None |
 | Q11 | No known conflict |
@@ -110,6 +110,10 @@ a dated record.
    configuration and repair the document.
 9. Do not read, edit, move, delete, or commit a directory marked private by the
    owner. Never un-ignore a private directory.
+10. Never store project data outside the project root at any time.
+11. Store every database and data file in the `data\` subfolder.
+12. When you query or analyze a location outside the project root, treat it as
+    read only. Never modify, move, or delete a file or folder there.
 
 ## 2. Professional standard
 
@@ -210,10 +214,13 @@ step failed and why. Report evidence, not intent.
 
 - Resolve application, resource, and user data paths at runtime. Do not hard-code
   absolute paths in program code.
-- Keep user data inside the project root unless the product documents a narrow
-  installed-app exception.
+- Keep all project data inside the project root at all times.
+- Store every database and data file in the `data\` subfolder.
+- Add `data\` to `.gitignore` when the files are local user data.
 - Put test sandboxes inside the project and add them to `.gitignore`. Do not
   write project data to the OS temp folder.
+- When you analyze a location outside the project root, do not modify or remove
+  any file or folder there.
 - Keep dependency versions pinned. Keep related runtime packages compatible.
 - Bundle every runtime binary the product needs.
 - Keep LOOM branding in `branding\`. Track both icon files in Git.
@@ -258,12 +265,13 @@ only source of truth.
 | --- | --- | --- | --- |
 | Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, and writing markers. |
 | Contradictions | `node build\check-contradictions.js` | Hard | Compare answer file, documented scripts, MCP state, and Git state. |
+| Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules and onboarding defaults in the handoff templates. |
 | Format check | `None` | Gap | No formatter is configured. |
 | Typecheck | `None` | Gap | No typechecker is configured. |
 | Focused test | `node --check build\app.js` | Hard | Run after JavaScript changes in `build\`. |
 | Browser smoke test | `node build\smoke-test.js` | Gap when unavailable | Run when Playwright is installed. State a skip. |
-| Full test | `node build\check-docs.js; node build\check-contradictions.js; node build\generate-docs.js; node --check build\app.js; node --check build\generate-docs.js; node --check build\docs.js; node build\smoke-test.js` | Hard | Run all local checks before completion. State a browser skip. |
-| Gates | `node build\check-docs.js; node build\check-contradictions.js` | Hard | Do not weaken or skip a gate. |
+| Full test | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js; node build\generate-docs.js; node --check build\app.js; node --check build\generate-docs.js; node --check build\docs.js; node build\smoke-test.js` | Hard | Run all local checks before completion. State a browser skip. |
+| Gates | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` | Hard | Do not weaken or skip a gate. |
 | one-shot pipeline | `node build\one-shot.js one-shot` | Hard | Run gates, update documentation, commit, push, and build in one command. |
 
 Rules:
@@ -351,10 +359,10 @@ these values in another project or in a generic template. Keep
 | Run in development | Open `build\index.html` in a browser |
 | Ask next onboarding question | `node build\ask-onboarding.js` |
 | Discover MCP configuration | `node build\discover-mcp.js` |
-| Run checks | `node build\check-docs.js; node build\check-contradictions.js` |
+| Run checks | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` |
 | Browser smoke test | `node build\smoke-test.js` |
 | Build | `node build\generate-docs.js` |
-| Build gates only | `node build\check-docs.js; node build\check-contradictions.js` |
+| Build gates only | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` |
 | Rebuild build tool | `node build\generate-docs.js` |
 | Clean staging | `None` |
 
@@ -459,6 +467,9 @@ Never:
 - commit a secret or personal data,
 - print a secret,
 - write project files outside the project root,
+- store project data outside the project root at any time,
+- store a database or data file outside the `data\` subfolder,
+- modify or remove a file or folder outside the project root during analysis,
 - weaken a gate to make a build pass,
 - claim a check that did not run,
 - hide `.git`,

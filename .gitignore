@@ -2,4 +2,5 @@ build/git-details.local.json
 .env
 .env.*
 node_modules/
+data/
 desktop.ini

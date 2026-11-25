@@ -38,11 +38,12 @@ matches its description. This file keeps those procedures in one catalogue.
 
 1. Run the onboarding interview in section 15.
 2. Copy `AGENTS.md`, `README.md`, `ROADMAP.md`, and this file into the project root.
-3. Replace every placeholder token with a verified answer.
-4. Record the project root, owner, runtime, commands, and output path in `AGENTS.md`.
-5. Record the product purpose and setup steps in `README.md`.
-6. Record the first measured status entry in `ROADMAP.md`.
-7. Run the local gates before the first edit.
+3. Create the `data\` subfolder for databases and data files.
+4. Replace every placeholder token with a verified answer.
+5. Record the project root, owner, runtime, commands, and output path in `AGENTS.md`.
+6. Record the product purpose and setup steps in `README.md`.
+7. Record the first measured status entry in `ROADMAP.md`.
+8. Run the local gates before the first edit.
 
 Use section 18 for a project that already has these documents.
 
@@ -208,6 +209,18 @@ Ask one question at a time. Use the required questions in `AGENTS.md` section 0.
 Wait for each answer before asking the next question. Offer one short answer
 field. Offer a default when a default is known. Do not combine questions. Do not
 infer a missing answer from a path.
+
+Use these defaults. For Q2 offer the current working directory and allow a
+custom directory. For Q4 default to `main` and allow an override. For Q6 offer a
+tier list of the best runtime and stack choices with a short reason for each and
+allow a custom entry. For Q7 use plain words such as which command should create
+your final product or installer. For Q8 default to `check` and allow an
+alternative. For Q9 default to `builds\` and name installers
+`{ProjectName}-Setup-YYYY.MM.DD-HHMM-x64.exe` where `HHMM` is the local build
+time.
+For Q10 offer the best Model Context Protocol (MCP) surface for the project and
+explain what it does. For Q11 bring each contradiction to the user and ask the
+user to resolve it.
 
 Record each answer in the owning document. Ask a follow-up question when an
 answer is unclear. Stop when every required answer is known.

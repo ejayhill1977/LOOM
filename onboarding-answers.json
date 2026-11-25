@@ -6,7 +6,7 @@
   "Q5": "LOOM turns observed agentic documentation patterns into reusable templates.",
   "Q6": "Static HTML, CSS, JavaScript, and Node local checks",
   "Q7": "node build\\generate-docs.js",
-  "Q8": "node build\\check-docs.js; node build\\check-contradictions.js",
+  "Q8": "node build\\check-docs.js; node build\\check-contradictions.js; node build\\gates\\check-data-rules.js",
   "Q9": "builds\\",
   "Q10": "None",
   "Q11": "No known conflict"
