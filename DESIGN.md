@@ -198,6 +198,15 @@ All buttons:
 - Default transitions: 150-250ms ease
 - No auto-playing animations > 5s without pause control
 
+### 5.4 Presenting multiple options
+
+- When presenting multiple options, never use a bulleted or numbered list.
+- Render each option as a selectable card in a responsive grid.
+- Keep each card concise.
+- Make the whole card selectable.
+- Let the grid wrap to fit the available screen width and height.
+- If the interface cannot render interactive cards, say so rather than pretending plain-text boxes are selectable.
+
 ## 6. Accessibility requirements
 
 ### 6.1 Semantic HTML
