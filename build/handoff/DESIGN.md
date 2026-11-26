@@ -12,7 +12,7 @@ This document records approved UI components, design tokens, interaction require
 - Applies to template source and generated artifacts.
 - Does not apply to external documentation rendered by the project.
 
-> Replace every `{{PLACEHOLDER}}` before using this file. This template provides a starting point — adapt tokens, components, and rules to the project's actual design system.
+> Replace every `{{PLACEHOLDER}}` before using this file. This template provides a starting point. Adapt tokens, components, and rules to the project's actual design system.
 
 ## 3. Design tokens
 

@@ -272,6 +272,9 @@ work.
 ### 2026-11-26
 
 - Ran the one-shot pipeline: gates, code comment review, roadmap refresh, artifact build, commit, push.
+- Fixed the handoff `SKILLS.md` structure: removed the duplicate section 11, renumbered sections to 12 through 19, and updated every cross-reference.
+- Updated the `check-docs` gate to require the renumbered onboarding, contradiction, MCP, and update sections. A duplicate number or a drifted reference must fail the gate.
+- Replaced the em dashes in the handoff `DESIGN.md` and the root `DESIGN.md` with commas and a full stop.
 
 ## 8. Maintenance
 

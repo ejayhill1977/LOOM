@@ -36,7 +36,7 @@ matches its description. This file keeps those procedures in one catalogue.
 
 ## 1. Start a new project
 
-1. Run the onboarding interview in section 15.
+1. Run the onboarding interview in section 16.
 2. Copy `AGENTS.md`, `README.md`, `ROADMAP.md`, and this file into the project root.
 3. Create the `data\` subfolder for databases and data files.
 4. Replace every placeholder token with a verified answer.
@@ -45,7 +45,7 @@ matches its description. This file keeps those procedures in one catalogue.
 7. Record the first measured status entry in `ROADMAP.md`.
 8. Run the local gates before the first edit.
 
-Use section 18 for a project that already has these documents.
+Use section 19 for a project that already has these documents.
 
 ## 2. Audit an existing project
 
@@ -58,7 +58,7 @@ Use section 18 for a project that already has these documents.
 7. Repair the losing document.
 8. Record each decision and date in `ROADMAP.md`.
 
-Use section 18 to apply the current template after the audit.
+Use section 19 to apply the current template after the audit.
 
 ## 3. Compare documents with code
 
@@ -157,7 +157,7 @@ Use section 18 to apply the current template after the audit.
 6. Record conflicts between sources.
 7. Turn only evidence-backed patterns into templates.
 
-## 11. Write controlled prose
+## 12. Write controlled prose
 
 1. Use short words and one meaning per word.
 2. Use the same term for the same thing every time.
@@ -169,7 +169,7 @@ Use section 18 to apply the current template after the audit.
 8. Wrap paths, commands, and literal values in backticks.
 9. Use a vertical list for a complex sequence.
 
-## 12. Resolve a conflict
+## 13. Resolve a conflict
 
 1. Name one conflict in one sentence.
 2. Name the two sources.
@@ -180,7 +180,7 @@ Use section 18 to apply the current template after the audit.
 7. Record the decision and date in `ROADMAP.md`.
 8. Repeat for the next conflict.
 
-## 13. Apply a change
+## 14. Apply a change
 
 1. Reproduce the failure.
 2. Inspect bounded logs, state, and source.
@@ -192,7 +192,7 @@ Use section 18 to apply the current template after the audit.
 8. Repeat the original reproduction.
 9. Update the owning document.
 
-## 14. Finish a change
+## 15. Finish a change
 
 1. Confirm the requested behavior works.
 2. Confirm no unrequested surface was added.
@@ -203,7 +203,7 @@ Use section 18 to apply the current template after the audit.
 7. Review status, diff, and recent history when Git is present.
 8. State which checks ran and which checks did not run.
 
-## 15. Run an onboarding interview
+## 16. Run an onboarding interview
 
 Ask one question at a time. Use the required questions in `AGENTS.md` section 0.
 Wait for each answer before asking the next question. Offer one short answer
@@ -228,7 +228,7 @@ answer is unclear. Stop when every required answer is known.
 Use a local onboarding runner when one exists. Use a copyable prompt when one
 exists. Store answers in `onboarding-answers.json`.
 
-## 16. Resolve contradictions
+## 17. Resolve contradictions
 
 Run the local contradiction checker before manual review when one exists.
 Compare each current document with executable configuration. Name one conflict
@@ -239,7 +239,7 @@ Repair the losing document. Record the decision and date in `ROADMAP.md`.
 Repeat from the next conflict. Record a missing checker as a gap. Do not
 simulate its output.
 
-## 17. Document MCP integration
+## 18. Document MCP integration
 
 Run local MCP discovery when one exists. Record the project MCP role, server
 packages, configuration path, exposed tools, and trust boundary in `AGENTS.md`
@@ -254,7 +254,7 @@ client after its MCP configuration changes. Document each tool in `README.md`
 or a subsystem document. Record a missing tool as a gap. Do not simulate its
 output.
 
-## 18. Update an existing project
+## 19. Update an existing project
 
 Use this skill to bring an existing project onto the current template.
 
@@ -265,7 +265,7 @@ Use this skill to bring an existing project onto the current template.
 5. Keep every verified project fact. Replace only stale or missing content.
 6. Preserve the decisions and dated history in `ROADMAP.md`.
 7. Record the update with the date, source, change, and gate result.
-8. Run the checks in section 14. State each check that did not run.
+8. Run the checks in section 15. State each check that did not run.
 
 Closure check: no placeholder remains, every answer matches configuration, and
 all gates pass.

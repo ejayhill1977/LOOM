@@ -390,7 +390,7 @@ These guidelines are derived from behavioral science Principle Cards. Each repre
 ### 12.1 Make It Easy (Friction Reduction)
 - Audit every conversion flow, signup, and onboarding step for micro-barriers (an extra click, a mandatory field, a download-before-action) and remove them.
 - Measure the outsized impact of each removal rather than assuming users will push through.
-- For unwanted behaviors (cancellation, data scraping), add deliberate friction instead — but never confuse the two directions.
+- For unwanted behaviors (cancellation, data scraping), add deliberate friction instead, but never confuse the two directions.
 
 ### 12.2 The Von Restorff Effect (Isolation & Distinctiveness)
 - Audit competitor UX patterns, typography, and color schemes in your category.
@@ -404,7 +404,7 @@ These guidelines are derived from behavioral science Principle Cards. Each repre
 - Use peaks and endings for onboarding, demos, and support.
 
 ### 12.4 The Zeigarnik Effect (Incomplete Tasks & Information Gaps)
-- Harness incomplete cognitive loops across onboarding flows and profile setups with persistent visual progress indicators (e.g., "78% profile completed — 1 final step remaining: add webhook URL").
+- Harness incomplete cognitive loops across onboarding flows and profile setups with persistent visual progress indicators (e.g., "78% profile completed, 1 final step remaining: add webhook URL").
 - Avoid dumping complete feature explanations upfront; instead, reveal teasing previews of high-value insights or analytics that unlock only upon finishing the setup sequence.
 
 ### 12.5 The Right Amount of Weird (MAYA Optimal Distinctiveness)
@@ -423,10 +423,10 @@ These guidelines are derived from behavioral science Principle Cards. Each repre
 - Expose backend effort using step-by-step progress microcopy (e.g., "Analyzing 45,000 data points against 14 compliance rules...") to dramatically elevate perceived value.
 
 ### 12.8 The Concreteness Effect (Vivid Copywriting)
-- Replace abstract marketing buzzwords ("scalable end-to-end architecture," "seamless synergy") with vivid, tangible descriptions — such as "Deploy updates before your coffee cools" or "Search 10 million rows in a single blink."
+- Replace abstract marketing buzzwords ("scalable end-to-end architecture," "seamless synergy") with vivid, tangible descriptions, such as "Deploy updates before your coffee cools" or "Search 10 million rows in a single blink."
 
 ### 12.9 The Generation Effect (Self-Generated Recall)
-- Replace declarative statements with interactive discovery — such as onboarding quizzes that let users infer their ideal plan, placeholder text that prompts completion rather than stating the answer, or config wizards where users select their own defaults.
+- Replace declarative statements with interactive discovery, such as onboarding quizzes that let users infer their ideal plan, placeholder text that prompts completion rather than stating the answer, or config wizards where users select their own defaults.
 - Users generate the conclusion and remember it longer.
 
 ### 12.10 WYSIATI (Coherence Beats Completeness)
