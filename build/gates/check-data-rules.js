@@ -1,6 +1,6 @@
 // check-data-rules.js
-// Title: Data storage, secret protection, and onboarding default rules gate
-// Role: Enforce the data storage, secret protection, and onboarding default rules.
+// Title: Data storage, MCP test result, secret protection, and onboarding default rules gate
+// Role: Enforce the data storage, MCP test result, secret protection, and onboarding default rules.
 // Last reviewed: 2026-11-26
 
 const fs = require('fs');
@@ -17,6 +17,13 @@ const dataRulePhrases = [
   'Never store project data outside',
   'Store every database and data file in the `data\\` subfolder',
   'Never modify, move, or delete a file or folder'
+];
+
+const mcpResultRulePhrases = [
+  'Store every MCP test result inside the project folder under the',
+  'knowledge base',
+  'mcp-{server}-{YYYY-MM-DD-HHMM}.md',
+  'Change the storage folder only when the owner asks'
 ];
 
 const secretRulePhrases = [
@@ -36,6 +43,11 @@ for (const relative of ruleFiles) {
   for (const phrase of dataRulePhrases) {
     if (!text.includes(phrase)) {
       failures.push(relative + ' is missing data rule: ' + phrase);
+    }
+  }
+  for (const phrase of mcpResultRulePhrases) {
+    if (!text.includes(phrase)) {
+      failures.push(relative + ' is missing MCP test result rule: ' + phrase);
     }
   }
   for (const phrase of secretRulePhrases) {
@@ -79,4 +91,4 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log('PASS: data storage rules, secret protection, and onboarding defaults');
+console.log('PASS: data storage rules, MCP test result storage rules, secret protection, and onboarding defaults');

@@ -45,6 +45,7 @@ Verified on 2026-11-26.
 | MCP integration section | Present | `AGENTS.md` section 10 |
 | MCP discovery helper | Present | `build\discover-mcp.js` |
 | MCP surface | None | No configured server or tool |
+| MCP test result storage | Present | `tests\README.md` and `AGENTS.md` section 10.1 |
 | Browser smoke test | Present, not run | `build\smoke-test.js` |
 | Browser verification | Not run | No Playwright browser is installed |
 | Version control | `main` published | `git status -sb` and `git branch -vv` |
@@ -152,6 +153,7 @@ work.
 | 2026-11-25 | Add a data rules regression gate in `build\gates\` | Prevent silent removal of the data rules and defaults |
 | 2026-11-25 | Add a secret and credential protection policy to every rulebook | Prevent secrets from entering commits |
 | 2026-11-25 | Build the viewer artifacts before the gate that compares them | The freshness gate can only pass after a rebuild |
+| 2026-11-26 | Store every MCP test result in `tests\` inside the project root | Keeps results with the project and builds a persistent troubleshooting knowledge base. The owner may change the folder. |
 | 2026-11-25 | Commit only after every gate passes | A failed gate must not reach history |
 | 2026-11-25 | Scan the staged change for likely secrets before each commit | A file name alone does not show a secret |
 | 2026-11-25 | Record one pipeline line per day in the change log | Provenance stays short and free of repeats |
@@ -275,6 +277,10 @@ work.
 - Fixed the handoff `SKILLS.md` structure: removed the duplicate section 11, renumbered sections to 12 through 19, and updated every cross-reference.
 - Updated the `check-docs` gate to require the renumbered onboarding, contradiction, MCP, and update sections. A duplicate number or a drifted reference must fail the gate.
 - Replaced the em dashes in the handoff `DESIGN.md` and the root `DESIGN.md` with commas and a full stop.
+- Added the MCP test result storage rule to `AGENTS.md` section 10.1, `build\AGENTS.template.md`, and `build\handoff\AGENTS.md`. The default folder is `tests\` under the project root. The owner may change it by editing the rule.
+- Added the same storage rule to `SKILLS.md` section 17 and `build\handoff\SKILLS.md` section 18.
+- Added `tests\README.md` as the index for the troubleshooting knowledge base.
+- Extended the data rules gate to assert the MCP test result rule in all three rulebooks.
 
 ## 8. Maintenance
 

@@ -451,6 +451,20 @@ Run local MCP discovery before recording the MCP answers.
 7. Document each tool in `README.md` or a subsystem document.
 8. Record a missing tool as a gap. Do not simulate its output.
 
+### 10.1 MCP test result storage
+
+1. Store every MCP test result inside the project folder under the
+   `{{PROJECT_ROOT}}\tests\` subfolder. The stored results form a persistent
+   knowledge base for troubleshooting.
+2. Create one file for each MCP test session. Name the file
+   `mcp-{server}-{YYYY-MM-DD-HHMM}.md`.
+3. Record the date, server, tool, request, response summary, expected result,
+   actual result, cause, and fix in each file.
+4. Redact secrets and personal data before you write the file.
+5. Keep each result file that supports a recorded fix. Do not delete it.
+6. Change the storage folder only when the owner asks. Edit this subsection, then
+   move the existing result files to the new folder.
+
 ## 11. Autonomy and safety
 
 Auto-approved:

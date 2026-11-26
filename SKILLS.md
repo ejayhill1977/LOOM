@@ -350,8 +350,12 @@ Run `node build\discover-mcp.js` before asking the MCP questions.
 
 Do not simulate a missing tool or invent its output.
 
-Closure check: the MCP section matches executable configuration, and every tool
-has a documented trust rule.
+Store every MCP test result in `tests\` under the project root. Section 10.1 of
+`AGENTS.md` owns the folder, the file name, and the record fields. The stored
+results form a persistent knowledge base for troubleshooting.
+
+Closure check: the MCP section matches executable configuration, every tool has
+a documented trust rule, and each test result is stored in `tests\`.
 
 ## 18. Update an existing project
 

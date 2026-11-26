@@ -254,6 +254,9 @@ client after its MCP configuration changes. Document each tool in `README.md`
 or a subsystem document. Record a missing tool as a gap. Do not simulate its
 output.
 
+Store every MCP test result in the `tests\` folder of the project root. Section
+10.1 of `AGENTS.md` owns the folder, the file name, and the record fields.
+
 ## 19. Update an existing project
 
 Use this skill to bring an existing project onto the current template.

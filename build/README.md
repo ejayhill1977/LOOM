@@ -147,7 +147,7 @@ commit and no push.
 | --- | --- | --- |
 | Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
-| Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules, secret protection rules, and onboarding defaults in the handoff templates |
+| Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks |
 
 Both gates exit `0` on pass and non-zero on failure. Both print `PASS: ...` or
 `FAIL: ...`. The contradiction gate reports one conflict per run. Use
@@ -166,6 +166,16 @@ Run this command from the project root.
 The command reads local config files only. It prints server names and paths. It
 never prints tool arguments or secrets. Use `--json` for a structured report.
 Use `--update-answers` to write the result to `Q10` in the answer file.
+
+## MCP test results
+
+`tests\` at the project root holds every MCP test result. Each file records one
+test session and supports later troubleshooting. `AGENTS.md` section 10.1 owns
+the rule, the file name pattern, and the record fields. Read `tests\README.md`
+for the folder procedure.
+
+The owner may change the storage folder. Edit `AGENTS.md` section 10.1, the two
+template copies, and `tests\README.md` together, then move the stored files.
 
 ## Browser smoke test
 
