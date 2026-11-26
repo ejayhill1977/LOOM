@@ -24,6 +24,7 @@ start with a proven rulebook and help an existing project repair its docs.
 | `build\README.md` | Viewer and local gate procedures |
 | `builds\` | Final static viewer artifact |
 | `branding\` | LOOM icon assets shown on GitHub |
+| `tests\README.md` | MCP test result knowledge base for troubleshooting |
 
 ## Evidence base
 
