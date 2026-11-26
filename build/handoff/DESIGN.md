@@ -208,6 +208,7 @@ All buttons:
 - Make the whole card selectable.
 - Let the grid wrap to fit the available screen width and height.
 - If the interface cannot render interactive cards, say so rather than pretending plain-text boxes are selectable.
+- If an agentic agent or CLI cannot render selectable cards, use a grid picker instead.
 
 ## 6. Accessibility requirements
 

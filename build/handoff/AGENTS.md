@@ -145,8 +145,9 @@ Apply this standard to every code and documentation change.
 - Keep each card concise.
 - Make the whole card selectable.
 - Let the grid wrap to fit the available screen width and height.
-- If the interface cannot render interactive cards, say so rather than pretending
+- If the interface cannot render interactive cards, use a grid picker instead of pretending
   plain-text boxes are selectable.
+- If an agentic agent or CLI cannot render selectable cards, use a grid picker instead.
 
 ## 3. Writing rules
 
