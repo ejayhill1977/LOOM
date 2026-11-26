@@ -315,7 +315,7 @@ only source of truth.
 | --- | --- | --- | --- |
 | Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, and writing markers. |
 | Contradictions | `node build\check-contradictions.js` | Hard | Compare answer file, documented scripts, MCP state, and Git state. |
-| Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules, secret protection rules, and onboarding defaults in the handoff templates. |
+| Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks and the handoff README. |
 | Format check | `None` | Gap | No formatter is configured. |
 | Typecheck | `None` | Gap | No typechecker is configured. |
 | Focused test | `node --check build\app.js` | Hard | Run after JavaScript changes in `build\`. |

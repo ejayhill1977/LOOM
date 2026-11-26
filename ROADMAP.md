@@ -281,6 +281,7 @@ work.
 - Added the same storage rule to `SKILLS.md` section 17 and `build\handoff\SKILLS.md` section 18.
 - Added `tests\README.md` as the index for the troubleshooting knowledge base.
 - Extended the data rules gate to assert the MCP test result rule in all three rulebooks.
+- Added the storage instruction and the owner change path to `build\handoff\README.md`, and extended the gate to check that README. The handoff set now carries the rule in `AGENTS.md` section 10.1, `SKILLS.md` section 18, and `README.md`.
 
 ## 8. Maintenance
 

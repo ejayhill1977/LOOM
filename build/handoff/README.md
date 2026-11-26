@@ -84,6 +84,13 @@ A missing tool is a failure or a stated gap. It is never a silent pass.
 Document each exposed tool here or in a focused subdocument. Put write tools
 behind explicit confirmation. Redact secrets in logs and error reports.
 
+Store every MCP test result in the `tests\` folder of the project root. The
+stored results form a persistent knowledge base for troubleshooting. `AGENTS.md`
+section 10.1 owns the folder, the file name, and the record fields.
+
+Change the storage folder only when the owner asks. Edit `AGENTS.md` section
+10.1, then move the existing result files to the new folder.
+
 ## Terminology
 
 | Term | Meaning |

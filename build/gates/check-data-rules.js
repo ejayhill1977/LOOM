@@ -57,6 +57,19 @@ for (const relative of ruleFiles) {
   }
 }
 
+const handoffReadme = read('build\\handoff\\README.md');
+
+const handoffReadmePhrases = [
+  'Store every MCP test result in the `tests\\` folder of the project root',
+  'section 10.1 owns the folder, the file name, and the record fields'
+];
+
+for (const phrase of handoffReadmePhrases) {
+  if (!handoffReadme.includes(phrase)) {
+    failures.push('handoff README.md is missing MCP test result instruction: ' + phrase);
+  }
+}
+
 const handoffAgents = read('build\\handoff\\AGENTS.md');
 
 const defaultPhrases = [
