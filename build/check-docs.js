@@ -68,6 +68,33 @@ function checkLinks(name, filePath, text) {
   }
 }
 
+function checkDocumentMap(name, filePath, text) {
+  const start = text.indexOf('## Document map');
+  if (start === -1) {
+    return;
+  }
+  const rest = text.slice(start);
+  const end = rest.indexOf('\n## ', 1);
+  const block = end === -1 ? rest : rest.slice(0, end);
+  let rowCount = 0;
+  for (const line of block.split('\n')) {
+    const row = /^\|\s*`([^`]+)`\s*\|/.exec(line);
+    if (!row) {
+      continue;
+    }
+    rowCount += 1;
+    const rawPath = row[1].replace(/[\\/]+$/, '');
+    const target = rawPath.replace(/\\/g, '/');
+    const resolved = path.resolve(path.dirname(filePath), target);
+    if (!fs.existsSync(resolved)) {
+      failures.push('Document map path does not exist in ' + name + ': ' + row[1]);
+    }
+  }
+  if (rowCount === 0) {
+    failures.push('Document map in ' + name + ' lists no paths to check');
+  }
+}
+
 for (const name of markdownFiles) {
   const filePath = path.join(root, name);
   const text = fs.readFileSync(filePath, 'utf8');
@@ -86,6 +113,10 @@ for (const name of markdownFiles) {
 
   checkWriting(name, text);
   checkLinks(name, filePath, text);
+
+  if (name === 'README.md') {
+    checkDocumentMap(name, filePath, text);
+  }
 }
 
 for (const name of tabbedFiles) {

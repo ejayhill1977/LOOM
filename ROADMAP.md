@@ -282,6 +282,8 @@ work.
 - Added `tests\README.md` as the index for the troubleshooting knowledge base.
 - Extended the data rules gate to assert the MCP test result rule in all three rulebooks.
 - Added the storage instruction and the owner change path to `build\handoff\README.md`, and extended the gate to check that README. The handoff set now carries the rule in `AGENTS.md` section 10.1, `SKILLS.md` section 18, and `README.md`.
+- Listed `tests\README.md` in the root `README.md` document map.
+- Added a document map path check to the documentation gate. Each path in the root `README.md` document map must exist, so a renamed or removed file fails the gate instead of leaving a stale row.
 
 ## 8. Maintenance
 

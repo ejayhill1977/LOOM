@@ -145,7 +145,7 @@ commit and no push.
 
 | Gate | Command | Rule |
 | --- | --- | --- |
-| Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
+| Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, root document map paths, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
 | Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks |
 

@@ -313,7 +313,7 @@ only source of truth.
 
 | Check | Command | Gate style | Rule |
 | --- | --- | --- | --- |
-| Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, and writing markers. |
+| Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, root document map paths, and writing markers. |
 | Contradictions | `node build\check-contradictions.js` | Hard | Compare answer file, documented scripts, MCP state, and Git state. |
 | Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks and the handoff README. |
 | Format check | `None` | Gap | No formatter is configured. |
