@@ -192,6 +192,56 @@ chat replies may use clear standard English.
 - Record a build, measurement, or tooling investigation with the fix and the
   rule that must not break.
 
+### 3.4 Citation standards
+
+These rules apply when you write research synthesis, technical documentation,
+academic papers, code comments, legal or policy briefs, or other content that
+needs source attribution.
+
+1. Core mandate. Always verify and use the latest official edition of the chosen
+   citation style. Do not rely on an outdated edition unless the owner asks for
+   it.
+2. Use a tiered list of citation formats for the current project. Rank the tiers
+   from most appropriate to least appropriate. Give a clear reason for each tier
+   before you apply the top style. If the choice is ambiguous, wait for owner
+   input.
+3. Enforce dual format separation. Keep the in-text citation and the reference
+   list entry separate. Do not paste a full bibliographic entry inline. Do not
+   leave an unexpanded inline marker in the reference list.
+
+Authoritative formats and official specifications:
+
+- Engineering, computer science, and electronics. Use IEEE or ACM. The latest
+  versions are the IEEE Editorial Style Manual for Authors and the ACM Primary
+  Article Templates and Reference Format.
+- Social sciences, psychology, education, and general research. Use APA or
+  Chicago. The latest versions are APA 7th edition and Chicago 18th edition.
+- Humanities, history, publishing, and multidisciplinary work. Use Chicago,
+  Turabian, MLA, or Harvard. The latest versions are Chicago 18th edition,
+  Turabian 9th edition, MLA 9th edition, and Harvard referencing.
+- Medicine, life sciences, and clinical research. Use AMA or Vancouver. The
+  latest versions are AMA 11th edition and Vancouver 2nd edition.
+- Law and government policy. Use The Bluebook or Harvard. The latest versions
+  are The Bluebook 22nd edition and Harvard referencing.
+- Commonwealth, UK, Australian, or South African academic and institutional
+  work. Use Harvard. The latest versions follow the target institution or a
+  standard such as Cite Them Right.
+
+Tiered recommendation protocol:
+
+- Before you write or refactor citations, output a tiered citation recommendation.
+  Rank tiers from Tier 1 to Tier N. Tier 1 is the primary recommended standard.
+  Tier 2 is a viable alternative. Tier 3 is not recommended.
+
+Dual format rule:
+
+1. In-text or inline citation. Use it in body prose, footnotes, or code
+   docstrings. Use a compact format. For code comments, use a compact marker. Put
+   the full entry in a module header, README, or references file.
+2. Reference list entry. Use it in the terminal source section. Follow the sorting
+   rule of the chosen style. Do not omit required punctuation, italics, case
+   rules, or identifiers.
+
 ## 4. Change workflow
 
 Use this loop for every defect or requested change.
