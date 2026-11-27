@@ -143,6 +143,9 @@ const citedSkills = fs.readFileSync(path.join(handoffDir, 'SKILLS.md'), 'utf8');
 if (!citedSkills.includes('[agentskills.io](https://agentskills.io/)')) {
   failures.push('Handoff SKILLS.md is missing the format citation');
 }
+if (!citedSkills.includes('MainWindowHandle') || !citedSkills.includes('Show the failing case first')) {
+  failures.push('Handoff SKILLS.md installer skill is missing the window evidence or failing-case rule');
+}
 const rootIgnore = fs.readFileSync(path.join(root, '.gitignore'), 'utf8');
 if (!rootIgnore.split(/\r?\n/).includes('desktop.ini')) {
   failures.push('Root .gitignore omits desktop.ini');

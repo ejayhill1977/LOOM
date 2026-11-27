@@ -293,7 +293,11 @@ installer code.
 7. Preserve blocking for a real open app.
 8. Add one regression case for each outcome. A helper must not block. A running
    app must block.
-9. Report the changed files and the tests run.
+9. Require the process evidence before the edit. Ask for the name, executable
+   path, `MainWindowHandle`, and parent process of each counted process.
+10. Require the failing case first. A green installer run alone does not prove
+    the probe changed.
+11. Report the changed files and the tests run.
 
 ```text
 You are reviewing a Windows NSIS installer for a false "application is running" detection that blocks installation even when no app window is open.
@@ -306,5 +310,10 @@ Task
 5. Make the smallest safe change. Preserve blocking for a real open app. Make the check fail open (a query error must not block installation).
 6. Add regression tests for both cases: an installer-owned helper/sidecar must not block installation; a running installed app must block installation.
 7. Verify the fix and run the tests. Report the files changed and the tests run.
-Key precedent: count only processes with a non-zero MainWindowHandle (a real app owns a window; a headless sidecar does not), and default to allowing the install when the probe itself errors
+
+Before you edit
+8. Report the blocking process evidence first: process name, executable path, MainWindowHandle, and parent process for every process the current check counts.
+9. Show the failing case first. Reproduce the false block and capture the output before the change. Then show the same command pass after the change. A green installer run alone does not prove the probe changed.
+
+Key precedent: count only processes with a non-zero MainWindowHandle (a real app owns a window; a headless sidecar does not), and default to allowing the install when the probe itself errors.
 ```
