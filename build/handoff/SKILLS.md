@@ -276,12 +276,35 @@ all gates pass.
 
 ## 20. Review installer running-app detection
 
-Use this prompt when a Windows installer or updater reports a false running-app detection. Copy the block below into a new agent session before the agent edits installer code.
+Use this skill when a Windows installer or updater reports a false running-app
+detection. Copy the prompt below into a new session before the agent edits
+installer code.
+
+1. Find the running-app check. Search the NSIS script for
+   `customCheckAppRunning`, `.onInit` callers, and `tasklist` or process scans.
+2. Trace the detection logic and every caller before you change a line.
+3. Identify how the check separates a real app from an installer-owned helper
+   that reuses the executable name, such as an engine or sidecar process.
+4. Reject a broad name-based skip. Use executable path, process ancestry, the
+   parent process, a helper-only environment variable, or window ownership.
+5. Count only processes with a non-zero `MainWindowHandle`. A real app owns a
+   window. A headless sidecar does not.
+6. Make the probe fail open. A query error must allow the install, not block it.
+7. Preserve blocking for a real open app.
+8. Add one regression case for each outcome. A helper must not block. A running
+   app must block.
+9. Report the changed files and the tests run.
 
 ```text
-Review this application’s Windows installer and updater for false “application is running” detections. In particular, check whether process detection treats every process with the app’s executable name as an instance of the installed app, including installer-launched engine helpers or sidecars that reuse that name.
+You are reviewing a Windows NSIS installer for a false "application is running" detection that blocks installation even when no app window is open.
 
-Trace the detection logic and its callers before changing anything. Identify how the installer can reliably distinguish a running installed app from its own temporary or helper processes. Prefer evidence such as executable path, process ancestry, or explicit installer/helper metadata; don’t fix this by broadly ignoring every process with that name, since that could allow installation over a genuinely running app.
-
-Make the smallest safe change, preserve the existing behavior for real app instances, and add regression tests covering both cases: an installer-owned sidecar should not block installation, while a running installed app should. Include any relevant edge cases, explain the rationale, and report the files changed and tests run.
+Task
+1. Find the installer's app-running check (for example, an NSIS macro such as customCheckAppRunning, or a tasklist/process scan).
+2. Trace the detection logic and its callers before changing anything.
+3. Identify how the installer distinguishes a real running app from its own helper or sidecar processes that reuse the app's executable name (for example, an Electron/WebTorrent sidecar launched with the same exe).
+4. Do not fix this by broadly ignoring every process with that name; that could allow installation over a genuinely running app. Prefer evidence such as executable path, process ancestry, parent process, a helper-only environment variable, or whether the process owns a window.
+5. Make the smallest safe change. Preserve blocking for a real open app. Make the check fail open (a query error must not block installation).
+6. Add regression tests for both cases: an installer-owned helper/sidecar must not block installation; a running installed app must block installation.
+7. Verify the fix and run the tests. Report the files changed and the tests run.
+Key precedent: count only processes with a non-zero MainWindowHandle (a real app owns a window; a headless sidecar does not), and default to allowing the install when the probe itself errors
 ```

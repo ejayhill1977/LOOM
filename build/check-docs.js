@@ -22,7 +22,7 @@ const requiredSections = {
 
 const handoffSections = {
   'AGENTS.md': ['## 0. Agent onboarding', '### 0.6 Update an existing project', '## 3. Writing rules', '## 7. Linting, formatting, typechecking, and testing', '## 10. MCP integration', '## 12. Definition of done'],
-  'SKILLS.md': ['## Catalogue', '## 16. Run an onboarding interview', '## 17. Resolve contradictions', '## 18. Document MCP integration', '## 19. Update an existing project'],
+  'SKILLS.md': ['## Catalogue', '## 16. Run an onboarding interview', '## 17. Resolve contradictions', '## 18. Document MCP integration', '## 19. Update an existing project', '## 20. Review installer running-app detection'],
   'README.md': ['## Document map', '## Setup', '## Update an existing project', '## Operation', '## Verification', '## MCP surface', '## Terminology'],
   'ROADMAP.md': ['## Status snapshot', '## Open work', '## Decisions', '## Update record', '## Change log']
 };

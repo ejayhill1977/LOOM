@@ -284,6 +284,7 @@ work.
 - Added the storage instruction and the owner change path to `build\handoff\README.md`, and extended the gate to check that README. The handoff set now carries the rule in `AGENTS.md` section 10.1, `SKILLS.md` section 18, and `README.md`.
 - Listed `tests\README.md` in the root `README.md` document map.
 - Added a document map path check to the documentation gate. Each path in the root `README.md` document map must exist, so a renamed or removed file fails the gate instead of leaving a stale row.
+- Rewrote handoff `SKILLS.md` section 20 as a nine-step procedure with a copyable prompt for a false installer running-app detection. The prompt names the main-window evidence, the fail-open rule on a probe error, and both regression cases. The documentation gate now requires the section heading.
 
 ### 2026-11-27
 
