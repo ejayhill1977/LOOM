@@ -284,8 +284,8 @@ work.
 - Added the storage instruction and the owner change path to `build\handoff\README.md`, and extended the gate to check that README. The handoff set now carries the rule in `AGENTS.md` section 10.1, `SKILLS.md` section 18, and `README.md`.
 - Listed `tests\README.md` in the root `README.md` document map.
 - Added a document map path check to the documentation gate. Each path in the root `README.md` document map must exist, so a renamed or removed file fails the gate instead of leaving a stale row.
-- Rewrote handoff `SKILLS.md` section 20 as a nine-step procedure with a copyable prompt for a false installer running-app detection. The prompt names the main-window evidence, the fail-open rule on a probe error, and both regression cases. The documentation gate now requires the section heading, the `MainWindowHandle` evidence rule, and the failing-case-first instruction.
-- Added two prompt steps to handoff `SKILLS.md` section 20. The agent must report the name, path, `MainWindowHandle`, and parent process of each counted process before an edit, and must show the failing case before the fix.
+- Rewrote handoff `SKILLS.md` section 20 as an eleven-step procedure with a copyable prompt for a false installer running-app detection. The prompt names the main-window evidence, the fail-open rule on a probe error, and both regression cases. The documentation gate now requires the section heading, the `MainWindowHandle` evidence rule, and the failing-case-first instruction.
+- Added a `Before you edit` block to handoff `SKILLS.md` section 20. The copyable prompt gained steps 8 and 9, for nine steps in total. The procedure gained three steps, for eleven steps in total. The agent must report the name, path, `MainWindowHandle`, and parent process of each counted process before an edit, and must show the failing case before the fix.
 
 ### 2026-11-27
 
