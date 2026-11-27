@@ -193,7 +193,7 @@ function commit() {
     '',
     'Steps: preflight, preflight gates, code comments, roadmap, artifacts, gates, commit, push.',
     'Artifact: builds\\ with ' + artifactNames.join(', ') + '.',
-    'Gate verdict: check-docs PASS, check-contradictions PASS, check-data-rules PASS.'
+    'Gate verdict: check-docs PASS, check-contradictions PASS, check-data-rules PASS, check-free-locks PASS.'
   ].join('\n');
 
   run('git', ['commit', '-m', message]);
