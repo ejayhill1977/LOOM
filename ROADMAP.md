@@ -16,7 +16,7 @@ links to the other documents instead of restating them.
 
 ## 2. Status snapshot
 
-Verified on 2026-11-26.
+Verified on 2026-11-27.
 
 | Item | State | Evidence |
 | --- | --- | --- |
@@ -286,6 +286,8 @@ work.
 - Added a document map path check to the documentation gate. Each path in the root `README.md` document map must exist, so a renamed or removed file fails the gate instead of leaving a stale row.
 
 ### 2026-11-27
+
+- Ran the one-shot pipeline: gates, code comment review, roadmap refresh, artifact build, commit, push.
 
 - Added skill 20 to the handoff `SKILLS.md`: a copyable review prompt for false running-app detections in Windows installers and updaters.
 - Regenerated `build\docs.js` and the five files in `builds\`.
