@@ -155,8 +155,8 @@ commit and no push.
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
 | Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks |
 
-Both gates exit `0` on pass and non-zero on failure. Both print `PASS: ...` or
-`FAIL: ...`. The contradiction gate reports one conflict per run. Use
+Each gate exits `0` on pass and non-zero on failure. Each gate prints
+`PASS: ...` or `FAIL: ...`. The contradiction gate reports one conflict per run. Use
 `--answers <path>` to test another answer file.
 
 Store every regression gate in `build\gates\`. Name each gate file `check-*.js`.
