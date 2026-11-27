@@ -27,8 +27,9 @@ Verified on 2026-11-27.
 | Conflicts recorded with precedence | 6 | `ANALYSIS.md` section 6 |
 | Root docs drafted | 5 | `README.md`, `ANALYSIS.md`, `AGENTS.md`, `SKILLS.md`, `ROADMAP.md` |
 | Template applied to LOOM | 1 | `AGENTS.md` has no placeholders |
-| Handoff template set | 4 | `build\handoff\` |
-| Existing-project update path | Present | Update sections in the four handoff templates |
+| Handoff template set | 5 | `build\handoff\` holds `AGENTS.md`, `DESIGN.md`, `README.md`, `ROADMAP.md`, and `SKILLS.md` |
+| Tabbed handoff templates | 4 | `build\index.html` tabs `AGENTS.md`, `SKILLS.md`, `README.md`, and `ROADMAP.md` |
+| Existing-project update path | Present | Update sections in four templates. `DESIGN.md` is a reference, not an update target |
 | Final output folder | `builds\` | Five viewer files in `builds\` |
 | Tabbed viewer | Present | `build\index.html` and `build\handoff\` |
 | Docs embed generator | Present | `build\generate-docs.js` |
