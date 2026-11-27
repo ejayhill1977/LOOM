@@ -315,7 +315,7 @@ only source of truth.
 
 | Check | Command | Gate style | Rule |
 | --- | --- | --- | --- |
-| Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, root document map paths, and writing markers. |
+| Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, root document map paths, the build lock stop rule, and writing markers. |
 | Contradictions | `node build\check-contradictions.js` | Hard | Compare answer file, documented scripts, MCP state, and Git state. |
 | Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks and the handoff README. |
 | Format check | `None` | Gap | No formatter is configured. |
@@ -475,8 +475,11 @@ No legacy build entry point exists. The source viewer is a static page in
    `styles.css`, `app.js`, `favicon.ico`, and `docs.js`.
 7. Do not build or ship a portable folder, ZIP, unpacked folder, or per-user
    variant unless the owner asks for it.
-8. Close running app instances that lock build output. Retry on `EBUSY` or a
-   lock error. Do not force-kill a running app during a build.
+8. Stop any process that locks a build output path or an installation target.
+   Stop it without asking. Identify the process by ID and executable path. Stop
+   only a process that holds the locked path or runs from the project output. Do
+   not stop a process by a name pattern. Record the process ID, name, and path in
+   the build report. Retry the locked write after the process stops.
 9. Keep staging inside the checkout. Clean staging after success and failure.
 10. Keep the newest artifact. Delete older artifacts only under the documented
     retention rule.

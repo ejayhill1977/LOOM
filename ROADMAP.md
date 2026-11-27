@@ -154,6 +154,7 @@ work.
 | 2026-11-25 | Add a secret and credential protection policy to every rulebook | Prevent secrets from entering commits |
 | 2026-11-25 | Build the viewer artifacts before the gate that compares them | The freshness gate can only pass after a rebuild |
 | 2026-11-26 | Store every MCP test result in `tests\` inside the project root | Keeps results with the project and builds a persistent troubleshooting knowledge base. The owner may change the folder. |
+| 2026-11-27 | Stop a process that locks a build output path or an install target without asking | The owner asked for an automatic stop instead of a manual close. The process is identified by ID and path, never by a name pattern. |
 | 2026-11-25 | Commit only after every gate passes | A failed gate must not reach history |
 | 2026-11-25 | Scan the staged change for likely secrets before each commit | A file name alone does not show a secret |
 | 2026-11-25 | Record one pipeline line per day in the change log | Provenance stays short and free of repeats |
@@ -292,6 +293,9 @@ work.
 - Ran the one-shot pipeline: gates, code comment review, roadmap refresh, artifact build, commit, push.
 
 - Added skill 20 to the handoff `SKILLS.md`: a copyable review prompt for false running-app detections in Windows installers and updaters.
+- Replaced build rule 8 in `AGENTS.md`, `build\AGENTS.template.md`, and `build\handoff\AGENTS.md`. A process that locks a build output path or an install target is now stopped without asking. It is identified by process ID and executable path, never by a name pattern.
+- Updated the build skill in `SKILLS.md` section 8 and in handoff `SKILLS.md` section 8 to match.
+- Documented the lock stop rule in `build\README.md` and made the documentation gate require it in all three rulebooks.
 - Regenerated `build\docs.js` and the five files in `builds\`.
 - Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS.
 

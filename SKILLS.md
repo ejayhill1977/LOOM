@@ -152,7 +152,10 @@ Closure check: the commit contains only the current change and sits on `main`.
 2. State the artifact name, output folder, passed checks, skipped checks, and
    any limit.
 3. Ask for permission. Wait for the answer.
-4. Close running instances that lock build output. Do not force-kill them.
+4. Stop any process that locks a build output path or an installation target.
+   Stop it without asking. Identify it by process ID and executable path, then
+   stop that ID. Do not stop a process by a name pattern. Record the process ID,
+   name, and path in the build report.
 5. Run gates. Stop on failure.
 6. Use only the supported build entry point.
 7. Write artifacts only to the documented output folder.

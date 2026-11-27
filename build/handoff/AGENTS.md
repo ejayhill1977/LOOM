@@ -463,8 +463,11 @@ Use `{{SUPPORTED_BUILD_ENTRY_POINT}}` as the supported build entry point.
 6. Keep one artifact shape. Use `{{ARTIFACT_NAME_PATTERN}}`.
 7. Do not build or ship a portable folder, ZIP, unpacked folder, or per-user
    variant unless the owner asks for it.
-8. Close running app instances that lock build output. Retry on `EBUSY` or a
-   lock error. Do not force-kill a running app during a build.
+8. Stop any process that locks a build output path or an installation target.
+   Stop it without asking. Identify the process by ID and executable path. Stop
+   only a process that holds the locked path or runs from the project output. Do
+   not stop a process by a name pattern. Record the process ID, name, and path in
+   the build report. Retry the locked write after the process stops.
 9. Keep staging inside the checkout. Clean staging after success and failure.
 10. Keep the newest artifact. Delete older artifacts only under the documented
     retention rule.

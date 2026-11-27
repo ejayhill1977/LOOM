@@ -135,6 +135,12 @@ The pipeline runs eight steps in order.
 | 7 | Scan the staged change for likely secrets, then commit with a detailed message. |
 | 8 | Push `main` to `origin`. |
 
+The pipeline and an installer run stop any process that locks an output path or
+an install target. Identify the process by ID and executable path, then stop that
+ID. Never stop a process by a name pattern, because a pattern can match an
+unrelated process or the build shell itself. Record the process ID, name, and
+path.
+
 Step 7 runs only when the tree has changes. The pipeline exits non-zero at the
 first failure and names the step. The artifact build comes before the gate that
 compares `builds\` with `build\`, because that gate cannot pass on a stale

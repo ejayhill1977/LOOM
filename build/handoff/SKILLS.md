@@ -122,6 +122,11 @@ Use section 19 to apply the current template after the audit.
 5. Record the commit, branch, uncommitted paths, and gate verdict.
 6. State any check that did not run.
 7. Ask for permission before a new build when no standing approval exists.
+8. Stop any process that locks a build output path or an installation target.
+   Stop it without asking. Identify the process by ID and executable path, then
+   stop that ID. Stop only a process that holds the locked path or runs from the
+   project output. Do not stop a process by a name pattern. Record the process
+   ID, name, and path in the build report.
 
 ## 9. Design a build system
 

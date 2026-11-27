@@ -294,6 +294,17 @@ const handoffAgentsText = fs.readFileSync(path.join(handoffDir, 'AGENTS.md'), 'u
 if (!handoffAgentsText.includes(gateRule) || !handoffAgentsText.includes('Keep build tools in `build\\`.')) {
   failures.push('Handoff build rules omit the artifact folder or gate folder');
 }
+const lockRule = 'Stop any process that locks a build output path';
+const lockRuleFiles = [
+  path.join(root, 'AGENTS.md'),
+  path.join(root, 'build', 'AGENTS.template.md'),
+  path.join(handoffDir, 'AGENTS.md')
+];
+for (const file of lockRuleFiles) {
+  if (!fs.readFileSync(file, 'utf8').includes(lockRule)) {
+    failures.push('Missing build lock stop rule: ' + path.relative(root, file));
+  }
+}
 
 const builtHtml = fs.existsSync(path.join(outputDir, 'index.html'))
   ? fs.readFileSync(path.join(outputDir, 'index.html'), 'utf8')
