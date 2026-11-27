@@ -297,8 +297,11 @@ work.
 - Replaced build rule 8 in `AGENTS.md`, `build\AGENTS.template.md`, and `build\handoff\AGENTS.md`. A process that locks a build output path or an install target is now stopped without asking. It is identified by process ID and executable path, never by a name pattern.
 - Updated the build skill in `SKILLS.md` section 8 and in handoff `SKILLS.md` section 8 to match.
 - Documented the lock stop rule in `build\README.md` and made the documentation gate require it in all three rulebooks.
+- Added `build\free-locks.js`. It resolves each target, lists processes, reports each holder as `LOCK: pid=... name=... path=... target=...`, and stops that PID. It skips its own process tree and protected system processes, supports `--dry-run`, and fails open on a scan error.
+- Wired the helper into one-shot step 5 before the artifact build.
+- Added `build\gates\check-free-locks.js` and wired it into step 6. The gate starts a holder, proves the helper names its PID and path and stops it, proves a dry run keeps the holder alive, and proves an empty folder reports no holder.
 - Regenerated `build\docs.js` and the five files in `builds\`.
-- Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS.
+- Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS, `check-free-locks` PASS.
 
 ## 8. Maintenance
 

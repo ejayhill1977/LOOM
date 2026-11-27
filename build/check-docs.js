@@ -1,6 +1,6 @@
 // check-docs.js
 // Role: Check the documents, handoff templates, and built viewer artifacts.
-// Last reviewed: 2026-11-26
+// Last reviewed: 2026-11-27
 
 const fs = require('fs');
 const path = require('path');
@@ -254,6 +254,7 @@ const scripts = [
   'check-contradictions.js',
   'check-docs.js',
   'docs.js',
+  'free-locks.js',
   'generate-docs.js',
   'mcp-lib.js',
   'one-shot.js',

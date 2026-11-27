@@ -16,6 +16,7 @@ checks.
 | `ONBOARDING-PROMPT.md` | Copyable prompt for an agent session |
 | `onboarding-answers.template.json` | Empty answer file template |
 | `ask-onboarding.js` | Asks one onboarding question per run |
+| `free-locks.js` | Names and stops a process that may lock a build output or install target |
 | `generate-docs.js` | Embeds handoff templates into `docs.js` |
 | `docs.js` | Generated template data used by the viewer |
 | `check-docs.js` | Documentation gate |
@@ -130,7 +131,7 @@ The pipeline runs eight steps in order.
 | 2 | Run the contradiction gate and the data rules gate. |
 | 3 | Refresh each changed build script header date. |
 | 4 | Refresh the verified date and the pipeline entry in `ROADMAP.md`. |
-| 5 | Build the static viewer in `builds\` and confirm all five artifacts. |
+| 5 | Free any lock holder in `builds\`, build the static viewer, and confirm all five artifacts. |
 | 6 | Run the documentation gate, the other two gates, and a syntax check on each script. |
 | 7 | Scan the staged change for likely secrets, then commit with a detailed message. |
 | 8 | Push `main` to `origin`. |
@@ -140,6 +141,27 @@ an install target. Identify the process by ID and executable path, then stop tha
 ID. Never stop a process by a name pattern, because a pattern can match an
 unrelated process or the build shell itself. Record the process ID, name, and
 path.
+
+## Free a locked build output
+
+Step 5 runs this command before the artifact build.
+
+`node build\free-locks.js builds`
+
+The command resolves each target path, lists the running processes, and reports
+`LOCK: pid=... name=... path=... target=...` for each process whose executable
+path or command line names the target. It stops that exact PID, then prints
+`STOPPED: pid=...` or `WARN: ...`. It skips its own process tree and protected
+system processes with `SKIP: ... reason=...`.
+
+Add `--dry-run` before the target to report holders without stopping them. Pass
+another path, such as an install folder, in place of `builds`. A scan error
+prints `WARN: ...` and exits `0`, so an unrelated build is not blocked by a
+probe failure.
+
+The lock gate in `build\gates\check-free-locks.js` starts a holder process, checks
+that the helper names its PID and path and stops it, then checks that a dry run
+keeps a holder alive and that an empty folder reports no holder.
 
 Step 7 runs only when the tree has changes. The pipeline exits non-zero at the
 first failure and names the step. The artifact build comes before the gate that
@@ -154,6 +176,7 @@ commit and no push.
 | Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, root document map paths, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
 | Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks |
+| Build lock | `node build\gates\check-free-locks.js` | Prove the lock helper names a holder by PID and path, stops that PID, and leaves an empty target alone |
 
 Each gate exits `0` on pass and non-zero on failure. Each gate prints
 `PASS: ...` or `FAIL: ...`. The contradiction gate reports one conflict per run. Use

@@ -1,6 +1,6 @@
 // one-shot.js
 // Role: Run the gates, refresh the docs, commit, push, and build in one command.
-// Last reviewed: 2026-11-26
+// Last reviewed: 2026-11-27
 
 const fs = require('fs');
 const path = require('path');
@@ -16,13 +16,15 @@ const syntaxFiles = [
   'check-contradictions.js',
   'check-docs.js',
   'discover-mcp.js',
+  'free-locks.js',
   'generate-docs.js',
   'mcp-lib.js',
   'one-shot.js',
   'smoke-test.js',
   'update-comments.js',
   'update-roadmap.js',
-  path.join('gates', 'check-data-rules.js')
+  path.join('gates', 'check-data-rules.js'),
+  path.join('gates', 'check-free-locks.js')
 ];
 const results = [];
 
@@ -136,6 +138,8 @@ function assertNoSecrets() {
 }
 
 function buildArtifacts() {
+  // The lock step runs first because a holder of builds\\ blocks the artifact write.
+  run(node, [buildFile('free-locks.js'), 'builds']);
   run(node, [buildFile('generate-docs.js')]);
 
   const outputDir = path.join(root, 'builds');
@@ -153,6 +157,7 @@ function gates() {
   run(node, [buildFile('check-docs.js')]);
   run(node, [buildFile('check-contradictions.js')]);
   run(node, [buildFile(path.join('gates', 'check-data-rules.js'))]);
+  run(node, [buildFile(path.join('gates', 'check-free-locks.js'))]);
 
   for (const relative of syntaxFiles) {
     run(node, ['--check', buildFile(relative)]);

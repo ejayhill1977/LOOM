@@ -1,6 +1,6 @@
 // update-comments.js
 // Role: Refresh the header comment date on each changed build script.
-// Last reviewed: 2026-11-26
+// Last reviewed: 2026-11-27
 
 const fs = require('fs');
 const path = require('path');
@@ -15,8 +15,10 @@ const scripts = [
   'build/check-contradictions.js',
   'build/check-docs.js',
   'build/discover-mcp.js',
+  'build/free-locks.js',
   'build/generate-docs.js',
   'build/gates/check-data-rules.js',
+  'build/gates/check-free-locks.js',
   'build/mcp-lib.js',
   'build/one-shot.js',
   'build/smoke-test.js',
