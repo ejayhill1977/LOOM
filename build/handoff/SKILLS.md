@@ -33,6 +33,7 @@ matches its description. This file keeps those procedures in one catalogue.
 | 17 | Resolve contradictions | Documents disagree with executable configuration. |
 | 18 | Document MCP integration | The project exposes or consumes MCP surfaces. |
 | 19 | Update an existing project | A project needs its docs brought to the current template. |
+| 20 | Review installer running-app detection | A Windows installer or updater reports a false running-app detection. |
 
 ## 1. Start a new project
 
@@ -272,3 +273,15 @@ Use this skill to bring an existing project onto the current template.
 
 Closure check: no placeholder remains, every answer matches configuration, and
 all gates pass.
+
+## 20. Review installer running-app detection
+
+Use this prompt when a Windows installer or updater reports a false running-app detection. Copy the block below into a new agent session before the agent edits installer code.
+
+```text
+Review this application’s Windows installer and updater for false “application is running” detections. In particular, check whether process detection treats every process with the app’s executable name as an instance of the installed app, including installer-launched engine helpers or sidecars that reuse that name.
+
+Trace the detection logic and its callers before changing anything. Identify how the installer can reliably distinguish a running installed app from its own temporary or helper processes. Prefer evidence such as executable path, process ancestry, or explicit installer/helper metadata; don’t fix this by broadly ignoring every process with that name, since that could allow installation over a genuinely running app.
+
+Make the smallest safe change, preserve the existing behavior for real app instances, and add regression tests covering both cases: an installer-owned sidecar should not block installation, while a running installed app should. Include any relevant edge cases, explain the rationale, and report the files changed and tests run.
+```

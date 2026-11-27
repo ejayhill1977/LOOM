@@ -285,6 +285,12 @@ work.
 - Listed `tests\README.md` in the root `README.md` document map.
 - Added a document map path check to the documentation gate. Each path in the root `README.md` document map must exist, so a renamed or removed file fails the gate instead of leaving a stale row.
 
+### 2026-11-27
+
+- Added skill 20 to the handoff `SKILLS.md`: a copyable review prompt for false running-app detections in Windows installers and updaters.
+- Regenerated `build\docs.js` and the five files in `builds\`.
+- Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS.
+
 ## 8. Maintenance
 
 1. Re-measure every figure with the named command before editing it.
