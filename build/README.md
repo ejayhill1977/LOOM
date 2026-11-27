@@ -176,6 +176,7 @@ commit and no push.
 | Documentation | `node build\check-docs.js` | Check root placeholders, handoff links and headings, root document map paths, writing markers, update sections, build rules, format citations, embedded templates, tab order, build artifacts, and syntax |
 | Contradictions | `node build\check-contradictions.js` | Check answer data, documented scripts, MCP state, and Git state |
 | Data rules | `node build\gates\check-data-rules.js` | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks |
+| Backup policy | `node build\gates\check-backup.js` | Assert the backup policy rules in rulebooks and handoff templates |
 | Build lock | `node build\gates\check-free-locks.js` | Prove the lock helper names a holder by PID and path, stops that PID, and leaves an empty target alone |
 
 Each gate exits `0` on pass and non-zero on failure. Each gate prints

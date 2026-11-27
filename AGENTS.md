@@ -284,6 +284,28 @@ step failed and why. Report evidence, not intent.
 - Keep credentials in the environment or an untracked local file. Never commit
   a token, certificate, password, or personal key.
 
+### 5.1 Backup policy
+
+Make every backup feature resilient. A backup operation or backup feature must
+resist a crash. It must also resist an upgrade installation, an uninstallation,
+and a reinstallation. A crash, an upgrade, an uninstallation, or a
+reinstallation must not lose user data.
+
+Keep every custom setting. A backup must keep every custom in-app setting.
+After a restore, the app must use the user settings from the backup. Do not
+reset a setting that the user changed.
+
+Make one backup each day. The app must make a backup each day without a user
+action. Use a daily schedule. A missed day must not stop the next daily backup.
+
+Keep at least 10 daily backups. The app must keep at least 10 days of backups.
+Delete the oldest backup only after the app has 10 backups. Any of the 10
+backups must allow a full restore.
+
+Test each backup path. Add a regression gate for each backup and restore path.
+The gate must add a custom setting, make a backup, simulate a crash or a
+reinstall, and confirm the setting returns.
+
 ## 6. Context hygiene and tool use
 
 Use the first tool that covers the domain. Use a raw shell command only when no
@@ -318,12 +340,13 @@ only source of truth.
 | Lint | `node build\check-docs.js` | Hard | Check placeholders, links, required sections, root document map paths, the build lock stop rule, and writing markers. |
 | Contradictions | `node build\check-contradictions.js` | Hard | Compare answer file, documented scripts, MCP state, and Git state. |
 | Data rules | `node build\gates\check-data-rules.js` | Hard | Assert the data storage rules, MCP test result storage rules, secret protection rules, and onboarding defaults in the rulebooks and the handoff README. |
+| Backup policy | `node build\gates\check-backup.js` | Hard | Assert the backup policy rules in rulebooks and handoff templates. |
 | Format check | `None` | Gap | No formatter is configured. |
 | Typecheck | `None` | Gap | No typechecker is configured. |
 | Focused test | `node --check build\app.js` | Hard | Run after JavaScript changes in `build\`. |
 | Browser smoke test | `node build\smoke-test.js` | Gap when unavailable | Run when Playwright is installed. State a skip. |
-| Full test | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js; node build\generate-docs.js; node --check build\app.js; node --check build\generate-docs.js; node --check build\docs.js; node build\smoke-test.js` | Hard | Run all local checks before completion. State a browser skip. |
-| Gates | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js` | Hard | Do not weaken or skip a gate. |
+| Full test | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js; node build\gates\check-backup.js; node build\generate-docs.js; node --check build\app.js; node --check build\generate-docs.js; node --check build\docs.js; node build\smoke-test.js` | Hard | Run all local checks before completion. State a browser skip. |
+| Gates | `node build\check-docs.js; node build\check-contradictions.js; node build\gates\check-data-rules.js; node build\gates\check-backup.js` | Hard | Do not weaken or skip a gate. |
 | one-shot pipeline | `node build\one-shot.js one-shot` | Hard | Run gates, review code comments, refresh the roadmap, build artifacts, commit, and push in one command. |
 
 Rules:

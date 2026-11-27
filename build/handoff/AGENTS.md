@@ -290,6 +290,28 @@ step failed and why. Report evidence, not intent.
 - Keep credentials in the environment or an untracked local file. Never commit
   a token, certificate, password, or personal key.
 
+### 5.1 Backup policy
+
+Make every backup feature resilient. A backup operation or backup feature must
+resist a crash. It must also resist an upgrade installation, an uninstallation,
+and a reinstallation. A crash, an upgrade, an uninstallation, or a
+reinstallation must not lose user data.
+
+Keep every custom setting. A backup must keep every custom in-app setting.
+After a restore, the app must use the user settings from the backup. Do not
+reset a setting that the user changed.
+
+Make one backup each day. The app must make a backup each day without a user
+action. Use a daily schedule. A missed day must not stop the next daily backup.
+
+Keep at least 10 daily backups. The app must keep at least 10 days of backups.
+Delete the oldest backup only after the app has 10 backups. Any of the 10
+backups must allow a full restore.
+
+Test each backup path. Add a regression gate for each backup and restore path.
+The gate must add a custom setting, make a backup, simulate a crash or a
+reinstall, and confirm the setting returns.
+
 ## 6. Context hygiene and tool use
 
 Use the first tool that covers the domain. Use a raw shell command only when no
