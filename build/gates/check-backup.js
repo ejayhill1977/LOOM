@@ -1,7 +1,7 @@
 // check-backup.js
 // Title: Backup policy regression gate
 // Role: Enforce the backup policy rules in rulebooks and handoff templates.
-// Last reviewed: 2026-11-27
+// Last reviewed: 2026-11-28
 
 const fs = require('fs');
 const path = require('path');
@@ -16,6 +16,8 @@ function read(relative) {
 const backupRulePhrases = [
   'Make every backup feature resilient',
   'Keep every custom setting',
+  'Make backups on by default',
+  'always have an option to disable backups or to enable them again',
   'Make one backup each day',
   'Keep at least 10 daily backups',
   'Test each backup path'

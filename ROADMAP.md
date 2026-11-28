@@ -303,6 +303,13 @@ work.
 - Regenerated `build\docs.js` and the five files in `builds\`.
 - Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS, `check-free-locks` PASS.
 
+### 2026-11-28
+
+- Added a backup default rule to `AGENTS.md`, `build\AGENTS.template.md`, and `build\handoff\AGENTS.md` section 5.1. Backups stay on by default, and the user always keeps an option to disable them or enable them again, with that choice respected until the user changes it.
+- Extended `build\gates\check-backup.js` with both phrases, so a rulebook that drops the default or the user toggle fails the gate.
+- Regenerated `build\docs.js` and the five files in `builds\`.
+- Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS, `check-backup` PASS, `check-free-locks` PASS.
+
 ## 8. Maintenance
 
 1. Re-measure every figure with the named command before editing it.
