@@ -9,5 +9,6 @@
   "Q8": "node build\\check-docs.js; node build\\check-contradictions.js; node build\\gates\\check-data-rules.js",
   "Q9": "builds\\",
   "Q10": "None",
-  "Q11": "No known conflict"
+  "Q11": "No known conflict",
+  "Q12": "Offered project-graveyard, not installed"
 }

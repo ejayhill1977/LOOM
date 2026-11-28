@@ -46,6 +46,17 @@ new project. Confirm the stored answers for an existing project.
 | Q9 | Where does the build write artifacts? | `AGENTS.md` |
 | Q10 | Which MCP servers or tools does the project use? | `AGENTS.md` section 10 |
 | Q11 | Does any current document disagree with executable configuration? | `ROADMAP.md` |
+| Q12 | Which optional skills should the project install? | `onboarding-answers.json` |
+
+At Q12, offer the `project-graveyard` skill from
+`https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/project-graveyard`.
+Install it only after the owner agrees. Record the owner's choice in
+`onboarding-answers.json`. Do not install a skill that the owner declined. Use
+this command:
+
+```text
+npx skills add https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/project-graveyard
+```
 
 ### 0.3 Contradiction protocol
 
@@ -72,6 +83,7 @@ new project. Confirm the stored answers for an existing project.
 | Q9 | `{{BUILD_OUTPUT_PATH}}` |
 | Q10 | `{{MCP_SURFACE}}` |
 | Q11 | `{{DOCUMENTATION_CONTRADICTIONS}}` |
+| Q12 | `{{OPTIONAL_SKILLS}}` |
 
 ### 0.5 Onboarding tools
 

@@ -26,6 +26,12 @@ Ask these questions in order:
 9. Where does the build write artifacts?
 10. Which MCP servers or tools does the project use?
 11. Does any current document disagree with executable configuration?
+12. Which optional skills should the project install?
+
+At question 12, offer the project-graveyard skill. Install it only after I
+agree. Use this command when I agree:
+
+npx skills add https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/agent_skills/project-graveyard
 
 When I report a contradiction, name one conflict at a time. Ask which source is
 true. Trust executable configuration until I answer. Repair the losing document.

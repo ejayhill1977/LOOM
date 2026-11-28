@@ -309,6 +309,9 @@ work.
 - Extended `build\gates\check-backup.js` with both phrases, so a rulebook that drops the default or the user toggle fails the gate.
 - Regenerated `build\docs.js` and the five files in `builds\`.
 - Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS, `check-backup` PASS, `check-free-locks` PASS.
+- Added onboarding question Q12 to `AGENTS.md`, `build\AGENTS.template.md`, and `build\handoff\AGENTS.md`. It offers the `project-graveyard` skill with its `npx skills add` command and records the owner's choice. The owner decides, and a declined skill is not installed.
+- Added Q12 to `build\ONBOARDING-PROMPT.md`, `onboarding-answers.json`, `build\onboarding-answers.template.json`, and the required answer list in `build\check-docs.js`. `ask-onboarding.js` now defaults Q12 to `None`.
+- Gate result after the change: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS, `check-backup` PASS, `check-free-locks` PASS.
 
 ## 8. Maintenance
 

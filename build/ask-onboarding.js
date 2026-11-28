@@ -1,6 +1,6 @@
 // ask-onboarding.js
 // Role: Ask one onboarding question per run and store the answer.
-// Last reviewed: 2026-11-26
+// Last reviewed: 2026-11-28
 
 const fs = require('fs');
 const path = require('path');
@@ -21,7 +21,7 @@ const answersPath = path.resolve(root, option('--answers') || 'onboarding-answer
 const preview = args.includes('--preview');
 const yes = args.includes('--yes');
 const suppliedAnswer = option('--answer');
-const defaults = { Q3: 'EJ Hill', Q4: 'main', Q10: 'None' };
+const defaults = { Q3: 'EJ Hill', Q4: 'main', Q10: 'None', Q12: 'None' };
 
 const agents = fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8');
 const questionSection = agents

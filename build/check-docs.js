@@ -239,7 +239,7 @@ if (!generatorSource.includes("const handoffDir = path.join(__dirname, 'handoff'
 
 try {
   const answers = JSON.parse(fs.readFileSync(path.join(root, 'onboarding-answers.json'), 'utf8'));
-  for (const id of ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11']) {
+  for (const id of ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q12']) {
     if (!Object.prototype.hasOwnProperty.call(answers, id)) {
       failures.push('Missing onboarding answer: ' + id);
     }
