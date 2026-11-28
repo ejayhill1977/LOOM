@@ -234,12 +234,13 @@ Keep every custom setting. A backup must keep every custom in-app setting.
 After a restore, the app must use the user settings from the backup. Do not
 reset a setting that the user changed.
 
-Make backups on by default. Backups must be enabled by default. The user must
-always have an option to disable backups or to enable them again. Respect that
-choice until the user changes it.
+Include a backup system. The app must include a backup feature. It must make
+one backup each day by default, without a user action. A missed day must not
+stop the next daily backup.
 
-Make one backup each day. The app must make a backup each day without a user
-action. Use a daily schedule. A missed day must not stop the next daily backup.
+Keep the user in control. Backups are on by default. The user must always have
+an option to disable backups or to enable them again. Respect that choice until
+the user changes it.
 
 Keep at least 10 daily backups. The app must keep at least 10 days of backups.
 Delete the oldest backup only after the app has 10 backups. Any of the 10

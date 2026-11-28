@@ -16,9 +16,9 @@ function read(relative) {
 const backupRulePhrases = [
   'Make every backup feature resilient',
   'Keep every custom setting',
-  'Make backups on by default',
-  'always have an option to disable backups or to enable them again',
-  'Make one backup each day',
+  'Include a backup system',
+  'one backup each day by default',
+  'option to disable backups or to enable them again',
   'Keep at least 10 daily backups',
   'Test each backup path'
 ];
