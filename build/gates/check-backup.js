@@ -14,13 +14,10 @@ function read(relative) {
 }
 
 const backupRulePhrases = [
-  'Make every backup feature resilient',
-  'Keep every custom setting',
-  'Include a backup system',
-  'one backup each day by default',
-  'option to disable backups or to enable them again',
-  'Keep at least 10 daily backups',
-  'Test each backup path'
+  'implement a backup feature',
+  'daily backups with a retention of at least 7 copies',
+  'disable or switch OFF automated backups',
+  'Every project should have a backup strategy'
 ];
 
 const ruleFiles = [

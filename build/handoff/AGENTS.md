@@ -304,29 +304,7 @@ step failed and why. Report evidence, not intent.
 
 ### 5.1 Backup policy
 
-Make every backup feature resilient. A backup operation or backup feature must
-resist a crash. It must also resist an upgrade installation, an uninstallation,
-and a reinstallation. A crash, an upgrade, an uninstallation, or a
-reinstallation must not lose user data.
-
-Keep every custom setting. A backup must keep every custom in-app setting.
-After a restore, the app must use the user settings from the backup. Do not
-reset a setting that the user changed.
-
-Include a backup system. It must make one backup each day by default, without
-a user action. A missed day must not stop the next daily backup.
-
-Keep the user in control. Backups are on by default. The user must always have
-an option to disable backups or to enable them again. Respect that choice until
-the user changes it.
-
-Keep at least 10 daily backups. The app must keep at least 10 days of backups.
-Delete the oldest backup only after the app has 10 backups. Any of the 10
-backups must allow a full restore.
-
-Test each backup path. Add a regression gate for each backup and restore path.
-The gate must add a custom setting, make a backup, simulate a crash or a
-reinstall, and confirm the setting returns.
+Make sure to implement a backup feature for every project that makes daily backups with a retention of at least 7 copies. The user should be able to disable or switch OFF automated backups from the Settings section. Every project should have a backup strategy.
 
 ## 6. Context hygiene and tool use
 
