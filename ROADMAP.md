@@ -16,7 +16,7 @@ links to the other documents instead of restating them.
 
 ## 2. Status snapshot
 
-Verified on 2026-11-27.
+Verified on 2026-11-28.
 
 | Item | State | Evidence |
 | --- | --- | --- |
@@ -304,6 +304,8 @@ work.
 - Gate result: `check-docs` PASS, `check-contradictions` PASS, `check-data-rules` PASS, `check-free-locks` PASS.
 
 ### 2026-11-28
+
+- Ran the one-shot pipeline: gates, code comment review, roadmap refresh, artifact build, commit, push.
 
 - Added a backup default rule to `AGENTS.md`, `build\AGENTS.template.md`, and `build\handoff\AGENTS.md` section 5.1. The policy now says an app includes a backup feature, that it makes one backup each day by default, and that the user always keeps an option to disable or enable backups. It does not require backups to stay on against the user's choice.
 - Extended `build\gates\check-backup.js` with both phrases, so a rulebook that drops the default or the user toggle fails the gate.
